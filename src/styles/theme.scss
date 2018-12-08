@@ -1,2 +1,60 @@
-$primary:   hotpink;
-$secondary: green;
+$azure: #1dace8;
+$dark-slate-blue: #1c366b;
+$tomato: #f24d29;
+$beige: #e5c4a1;
+$silver: #c4cfd0;
+$white: #fff;
+$light-grey: #999999;
+$dark-grey: #777777;
+$black: #212529;
+
+$base-text-color: $black;
+
+$primary: $dark-slate-blue;
+$secondary: $azure;
+$warning: $tomato;
+
+@function contrast-background-color($color) {
+  @if (lightness($color) > 50) {
+    @return $base-text-color;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+$primary-contrast-text: contrast-background-color($primary);
+$secondary-contrast-text: contrast-background-color($secondary);
+$warning-contrast-text: contrast-background-color($warning);
+
+$primary-light: lighten($primary, 30%);
+$secondary-light: lighten($secondary, 30%);
+$warning-light: lighten($warning, 30%);
+
+$primary-dark: darken($primary, 10%);
+$secondary-dark: darken($secondary, 10%);
+$warning-dark: darken($warning, 10%);
+
+$font-mono: "Courier", monospace;
+$font-sans: "Source Sans Pro", Arial, sans-serif;
+$font-serif: "Bree Serif", Times, serif;
+
+$title-font: $font-sans;
+$content-font: $font-serif;
+
+$base-font-size: 16px;
+$footnote-font-size: 8px;
+
+$font-normal: 400;
+$font-semibold: 600;
+$font-bold: 700;
+
+$base-line-height: 1.5;
+$button-line-height: 2.5;
+
+$base-padding: 0 1em;
+
+$base-radius: 0;
+
+$border-width: 1px;
+
+$focus-shadow: 0 0 3px 3px;
