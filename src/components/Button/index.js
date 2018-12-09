@@ -5,7 +5,7 @@ import Button from "./Button";
 export default styled(Button)`
   cursor: pointer;
   background-color: ${props => {
-    if (props.hollow) {
+    if (props.hollow || props.isResetButton) {
       return props.theme.white;
     } else {
       switch (props.variant) {
@@ -19,6 +19,9 @@ export default styled(Button)`
     }
   }};
   color: ${props => {
+    if (props.isResetButton) {
+      return props.theme.baseTextColor;
+    }
     switch (props.variant) {
       case "secondary":
         return props.hollow
@@ -35,12 +38,18 @@ export default styled(Button)`
     }
   }};
   font-family: ${props => props.theme.fontSans};
-  padding: ${props => props.theme.basePadding};
+  padding: ${props => {
+    if (props.isResetButton) {
+      return 0;
+    } else {
+      return props.theme.basePadding;
+    }
+  }};
   font-size: ${props => props.theme.baseFontSize};
   font-weight: ${props => props.theme.fontSemibold};
-  line-height: ${props => props.theme.buttonLineHeight};
+  line-height: ${props => props.theme.baseLineHeight};
   outline: 0;
-  border-width: ${props => (props.hollow ? props.theme.borderWidth : 0)};
+  border-width: ${props => props.theme.borderWidth};
   border-style: solid;
   border-color: ${props => {
     switch (props.variant) {
@@ -64,6 +73,8 @@ export default styled(Button)`
           default:
             return "border-color:" + props.theme.primaryDark;
         }
+      } else if (props.isResetButton) {
+        return "font-weight:" + props.theme.fontBold;
       } else {
         switch (props.variant) {
           case "secondary":
@@ -76,4 +87,9 @@ export default styled(Button)`
       }
     }};
   }
+  ${props => {
+    if (props.isResetButton) {
+      return "transform:translate(-1.5rem,0);border: none;";
+    }
+  }};
 `;

@@ -19,6 +19,7 @@ ReactDOM.render(
     <Button variant='secondary' hollow={true} onClick={showClick}>Click me</Button>
     <Button variant='warning' onClick={showClick}>Click me</Button>
     <Button variant='warning' hollow={true} onClick={showClick}>Click me</Button>
+    <Input onChange={showChange} resetButton={true} onReset={showClick}/>
     <Input onChange={showChange}/>
   </ThemeProvider>,
   document.getElementById("root")
