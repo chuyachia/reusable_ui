@@ -8,7 +8,8 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist")
   },
-//   devtool: "inline-source-map",
+  devtool: "cheap-source-map",
+  mode: "development",
   devServer: {
     contentBase: path.resolve(__dirname, "dist")
   },

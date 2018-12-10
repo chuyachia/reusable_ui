@@ -1,32 +1,29 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import Input from "./Input";
+import Select from "./Select";
 import { ButtonContext } from "../Button";
 
-const StyledInput = styled(Input)`
-  display: inline-block;
-  white-space: nowrap;
-  color: ${props => props.theme.baseTextColor};
-  font-weight: ${props => props.theme.fontNormal};
-  line-height: ${props => props.theme.baseLineHeight};
-  & input {
+const StyledSelect =  styled(Select)`
+  display:inline-block;
+  cursor:pointer;
+  & div {
     padding: ${props => props.theme.basePadding};
     font-family: ${props => props.theme.fontSans};
     font-size: ${props => props.theme.baseFontSize};
+    font-weight: ${props => props.theme.fontNormal};
+    color: ${props => props.theme.baseTextColor};
     line-height: ${props => props.theme.baseLineHeight};
     border-width: ${props => props.theme.borderWidth};
     border-style: solid;
     border-color: ${props => props.theme.primary};
     border-radius: ${props => props.theme.baseRadius};
-    outline: 0;
-    &:focus {
-      box-shadow: ${props => props.theme.boxShadow};
-    }
   }
 `;
+
 export default props => (
-  <ButtonContext.Provider value="input">
-    <StyledInput {...props} />
-  </ButtonContext.Provider>
-);
+    <ButtonContext.Provider value="select">
+      <StyledSelect {...props} />
+    </ButtonContext.Provider>
+  );
+  

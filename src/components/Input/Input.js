@@ -7,7 +7,7 @@ const Input = ({ resetButton, onReset, onChange, ...props }) => (
   <div {...props}>
     <input onChange={onChange}/>
     {resetButton && (
-      <Button isResetButton={true} onClick={onReset}>
+      <Button onClick={onReset}>
         X
       </Button>
     )}

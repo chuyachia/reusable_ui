@@ -26,9 +26,9 @@ $primary-contrast-text: contrast-background-color($primary);
 $secondary-contrast-text: contrast-background-color($secondary);
 $warning-contrast-text: contrast-background-color($warning);
 
-$primary-light: lighten($primary, 30%);
-$secondary-light: lighten($secondary, 30%);
-$warning-light: lighten($warning, 30%);
+$primary-light: lighten($primary, 60%);
+$secondary-light: lighten($secondary, 60%);
+$warning-light: lighten($warning, 60%);
 
 $primary-dark: darken($primary, 10%);
 $secondary-dark: darken($secondary, 10%);
@@ -57,4 +57,4 @@ $base-radius: 0;
 
 $border-width: 1px;
 
-$focus-shadow: 0 0 3px 3px;
+$box-shadow:  1px 1px 1px $light-grey;
