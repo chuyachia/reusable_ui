@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input renders 1`] = `
+exports[`Input should render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
@@ -25,12 +25,11 @@ ShallowWrapper {
         <input
           onChange={[MockFunction]}
         />,
-        <ForwardRef(render)
-          isResetButton={true}
+        <_default
           onClick={[MockFunction]}
         >
           X
-        </ForwardRef(render)>,
+        </_default>,
       ],
     },
     "ref": null,
@@ -52,66 +51,11 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": "X",
-          "isResetButton": true,
           "onClick": [MockFunction],
         },
         "ref": null,
         "rendered": "X",
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "__emotion_base": [Function],
-          "__emotion_forwardProp": undefined,
-          "__emotion_real": [Circular],
-          "__emotion_styles": Array [
-            "
-  cursor: pointer;
-  background-color: ",
-            [Function],
-            ";
-  color: ",
-            [Function],
-            ";
-  font-family: ",
-            [Function],
-            ";
-  padding: ",
-            [Function],
-            ";
-  font-size: ",
-            [Function],
-            ";
-  font-weight: ",
-            [Function],
-            ";
-  line-height: ",
-            [Function],
-            ";
-  outline: 0;
-  border-width: ",
-            [Function],
-            ";
-  border-style: solid;
-  border-color: ",
-            [Function],
-            ";
-  border-radius: ",
-            [Function],
-            ";
-  &:hover {
-    ",
-            [Function],
-            ";
-  }
-  ",
-            [Function],
-            ";
-",
-          ],
-          "defaultProps": undefined,
-          "displayName": "Styled(Button)",
-          "render": [Function],
-          "withComponent": [Function],
-        },
+        "type": [Function],
       },
     ],
     "type": "div",
@@ -126,12 +70,11 @@ ShallowWrapper {
           <input
             onChange={[MockFunction]}
           />,
-          <ForwardRef(render)
-            isResetButton={true}
+          <_default
             onClick={[MockFunction]}
           >
             X
-          </ForwardRef(render)>,
+          </_default>,
         ],
       },
       "ref": null,
@@ -153,66 +96,11 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": "X",
-            "isResetButton": true,
             "onClick": [MockFunction],
           },
           "ref": null,
           "rendered": "X",
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "__emotion_base": [Function],
-            "__emotion_forwardProp": undefined,
-            "__emotion_real": [Circular],
-            "__emotion_styles": Array [
-              "
-  cursor: pointer;
-  background-color: ",
-              [Function],
-              ";
-  color: ",
-              [Function],
-              ";
-  font-family: ",
-              [Function],
-              ";
-  padding: ",
-              [Function],
-              ";
-  font-size: ",
-              [Function],
-              ";
-  font-weight: ",
-              [Function],
-              ";
-  line-height: ",
-              [Function],
-              ";
-  outline: 0;
-  border-width: ",
-              [Function],
-              ";
-  border-style: solid;
-  border-color: ",
-              [Function],
-              ";
-  border-radius: ",
-              [Function],
-              ";
-  &:hover {
-    ",
-              [Function],
-              ";
-  }
-  ",
-              [Function],
-              ";
-",
-            ],
-            "defaultProps": undefined,
-            "displayName": "Styled(Button)",
-            "render": [Function],
-            "withComponent": [Function],
-          },
+          "type": [Function],
         },
       ],
       "type": "div",

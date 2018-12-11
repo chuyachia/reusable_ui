@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should render 1`] = `
+exports[`DropDownItem should render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
-    onClick={[MockFunction]}
+  Symbol(enzyme.__unrendered__): <DropDownItem
+    value="A"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -19,11 +19,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "onClick": [MockFunction],
+      "value": "A",
     },
     "ref": null,
     "rendered": null,
-    "type": "button",
+    "type": "li",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -31,11 +31,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "onClick": [MockFunction],
+        "value": "A",
       },
       "ref": null,
       "rendered": null,
-      "type": "button",
+      "type": "li",
     },
   ],
   Symbol(enzyme.__options__): Object {

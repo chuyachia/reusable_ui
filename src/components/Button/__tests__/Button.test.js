@@ -8,7 +8,7 @@ describe("Button", () => {
     mockFunc = jest.fn();
     wrapper = shallow(<Button onClick={mockFunc} />);
   });
-  it("renders", () => {
+  it("should render", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("should call onClick function when clicked", () => {

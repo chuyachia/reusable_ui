@@ -9,8 +9,4 @@ DropDownList.propTypes = {
   children: PropTypes.node
 };
 
-DropDownList.defaultProps = {
-  show: true
-};
-
 export default DropDownList;
