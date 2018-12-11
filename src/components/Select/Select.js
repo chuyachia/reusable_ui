@@ -6,7 +6,7 @@ import Button from "../Button";
 const Select = ({ onClick, value, open, children, ...rest }) => (
   <div {...rest}>
     <div onClick={onClick}>
-      {value}
+      {value?<span>{value}</span>:<span>&nbsp;</span>}
       {open ? <Button>&#9650;</Button> : <Button>&#9660;</Button>}
     </div>
     {open && children}

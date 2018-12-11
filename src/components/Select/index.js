@@ -4,9 +4,11 @@ import styled from "@emotion/styled";
 import Select from "./Select";
 import { ButtonContext } from "../Button";
 
-const StyledSelect =  styled(Select)`
-  display:inline-block;
-  cursor:pointer;
+const StyledSelect = styled(Select)`
+  min-width: 120px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
   & div {
     padding: ${props => props.theme.basePadding};
     font-family: ${props => props.theme.fontSans};
@@ -22,8 +24,7 @@ const StyledSelect =  styled(Select)`
 `;
 
 export default props => (
-    <ButtonContext.Provider value="select">
-      <StyledSelect {...props} />
-    </ButtonContext.Provider>
-  );
-  
+  <ButtonContext.Provider value="select">
+    <StyledSelect {...props} />
+  </ButtonContext.Provider>
+);

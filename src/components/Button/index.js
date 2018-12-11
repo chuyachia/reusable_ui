@@ -95,11 +95,12 @@ ${props => {
     return "border:0;";
   }
 }};
-${props=>{
-  if (props.context=="input") {
-    return "transform:translate(-1.5rem,0);";
+${props => {
+  if (props.context == "select") {
+    return "float:right;";
   }
-}}
+}};
+
 `
 export { ButtonContext };
 export default props => (
