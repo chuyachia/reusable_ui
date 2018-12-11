@@ -20,19 +20,19 @@ ReactDOM.render(
     <Button variant="secondary" onClick={showClick}>
       Click me
     </Button>
-    <Button hollow={true} onClick={showClick}>
+    <Button hollow onClick={showClick}>
       Click me
     </Button>
-    <Button variant="secondary" hollow={true} onClick={showClick}>
+    <Button variant="secondary" hollow onClick={showClick}>
       Click me
     </Button>
     <Button variant="warning" onClick={showClick}>
       Click me
     </Button>
-    <Button variant="warning" hollow={true} onClick={showClick}>
+    <Button variant="warning" hollow onClick={showClick}>
       Click me
     </Button>
-    <Input onChange={showChange} resetButton={true} onReset={showClick} />
+    <Input onChange={showChange} resetButton onReset={showClick} />
     <Input onChange={showChange} />
     <Select open={true} onClick={showClick} value="A">
     <DropDownList onClick={showSelection}>

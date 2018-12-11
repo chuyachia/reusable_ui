@@ -69,11 +69,11 @@ border-radius: ${props => props.theme.baseRadius};
     if (props.hollow) {
       switch (props.variant) {
         case "secondary":
-          return "border-color:" + props.theme.secondaryDark;
+          return "background-color:" + props.theme.secondaryLight;
         case "warning":
-          return "border-color:" + props.theme.warningDark;
+          return "background-color:" + props.theme.warningLight;
         default:
-          return "border-color:" + props.theme.primaryDark;
+          return "background-color:" + props.theme.primaryLight;
       }
     } else if (props.context === "input" || props.context === "select") {
       return "font-weight:" + props.theme.fontBold;

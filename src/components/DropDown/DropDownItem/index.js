@@ -12,7 +12,7 @@ export default styled(DropDownItem)`
   color:  ${props => props.theme.baseTextColor};
   line-height: ${props => props.theme.baseLineHeight};
   &:hover {
-      background-color:  ${props => props.theme.primaryLight};
+      background-color:  ${props => props.theme.secondaryLight};
       font-weight: ${props => props.theme.fontSemibold};
   }
 `;

@@ -21,10 +21,13 @@ const StyledInput = styled(Input)`
     box-shadow: ${props => props.theme.boxShadow};
   }
   & input {
-    border-width:0px;
-    padding:0px;
-    line-height:inherit;
+    border-width: 0px;
+    padding: 0px;
+    line-height: inherit;
     outline: 0;
+    font-weight: ${props => props.theme.fontNormal};
+    font-size: ${props => props.theme.baseFontSize};
+    font-family: ${props => props.theme.fontSans};
   }
 `;
 export default props => (
