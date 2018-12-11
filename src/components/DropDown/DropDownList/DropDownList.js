@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DropDownList = ({ show, ...props }) => (show ? <ul {...props} /> : null);
+const DropDownList = ({ show, ...props }) => {
+  return show ? <ul {...props} /> : null;
+};
 
 DropDownList.propTypes = {
   show: PropTypes.bool,

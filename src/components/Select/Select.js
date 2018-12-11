@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 
 import Button from "../Button";
 
-const Select = ({ onClick, value, open, children, ...rest }) => (
-  <div {...rest}>
-    <div onClick={onClick}>
-      {value?<span>{value}</span>:<span>&nbsp;</span>}
-      {open ? <Button>&#9650;</Button> : <Button>&#9660;</Button>}
+const Select = ({ onClick, value, open, children, ...rest }) => {
+  return (
+    <div {...rest}>
+      <div onClick={onClick}>
+        {value ? <span>{value}</span> : <span>&nbsp;</span>}
+        {open ? <Button>&#9650;</Button> : <Button>&#9660;</Button>}
+      </div>
+      {open && children}
     </div>
-    {open && children}
-  </div>
-);
+  );
+};
 
 Select.propTypes = {
   onClick: PropTypes.func,

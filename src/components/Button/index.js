@@ -7,7 +7,6 @@ const ButtonContext = React.createContext("default");
 const StyledButton =  styled(Button)`
 cursor: pointer;
 background-color: ${props => {
-  console.log(props);
   if (props.hollow || props.context === "input" || props.context === "select") {
     return props.theme.white;
   } else {

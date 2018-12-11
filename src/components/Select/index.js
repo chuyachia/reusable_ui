@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import Select from "./Select";
 import { ButtonContext } from "../Button";
+import { DropDownListContext } from "../DropDown/DropDownList";
 
 const StyledSelect = styled(Select)`
   min-width: 120px;
@@ -25,6 +26,8 @@ const StyledSelect = styled(Select)`
 
 export default props => (
   <ButtonContext.Provider value="select">
-    <StyledSelect {...props} />
+    <DropDownListContext.Provider value={props.open}>
+      <StyledSelect {...props} />
+    </DropDownListContext.Provider>
   </ButtonContext.Provider>
 );
