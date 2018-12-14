@@ -9,10 +9,19 @@ export default styled(DropDownItem)`
   font-family: ${props => props.theme.fontSans};
   font-size: ${props => props.theme.baseFontSize};
   font-weight: ${props => props.theme.fontNormal};
-  color:  ${props => props.theme.baseTextColor};
+  color: ${props => props.theme.baseTextColor};
   line-height: ${props => props.theme.baseLineHeight};
   &:hover {
-      background-color:  ${props => props.theme.secondaryLight};
-      font-weight: ${props => props.theme.fontSemibold};
+    background-color: ${props => {
+      switch (props.variant) {
+        case "secondary":
+          return props.theme.secondaryLight;
+        case "warning":
+          return props.theme.warningLight;
+        default:
+          return props.theme.primaryLight;
+      }
+    }};
+    font-weight: ${props => props.theme.fontSemibold};
   }
 `;

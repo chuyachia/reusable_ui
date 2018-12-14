@@ -2,7 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider } from "emotion-theming";
 
-import { Button, Input, DropDownItem, DropDownList, Select } from "./components";
+import {
+  Button,
+  Input,
+  DropDownItem,
+  DropDownList,
+  Select
+} from "./components";
 
 const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./styles/theme.scss');
 const showClick = () => {
@@ -11,8 +17,14 @@ const showClick = () => {
 const showChange = () => {
   console.log("change");
 };
-const showSelection = (e) => {
-  console.log(e.target.getAttribute('value'));
+const showSelection = e => {
+  console.log(e.target.getAttribute("value"));
+};
+const keyDown = e => {
+  var key = event.keyCode || event.charCode;
+  if (key == 8 || key == 46) {
+    console.log("delete");
+  }
 };
 ReactDOM.render(
   <ThemeProvider theme={theme}>
@@ -34,17 +46,29 @@ ReactDOM.render(
     </Button>
     <Input onChange={showChange} resetButton onReset={showClick} />
     <Input onChange={showChange} />
-    <Select open={true} onClick={showClick} value="A">
-    <DropDownList onClick={showSelection}>
-      <DropDownItem value="a">A</DropDownItem>
-      <DropDownItem value="b">B</DropDownItem>
-    </DropDownList>
+    <Select open={true} value="A">
+      <DropDownList onClick={showSelection}>
+        <DropDownItem value="a">A</DropDownItem>
+        <DropDownItem value="b">B</DropDownItem>
+      </DropDownList>
     </Select>
-    <Select open={false} onClick={showClick}>
-    <DropDownList onClick={showSelection}>
-      <DropDownItem value="a">A</DropDownItem>
-      <DropDownItem value="b">B</DropDownItem>
-    </DropDownList>
+    <Select open={false}>
+      <DropDownList onClick={showSelection}>
+        <DropDownItem value="a">A</DropDownItem>
+        <DropDownItem value="b">B</DropDownItem>
+      </DropDownList>
+    </Select>
+    <Select open={false} multiple value={["A", "B"]} onKeyDown={keyDown} onInput={showChange}>
+      <DropDownList onClick={showSelection}>
+        <DropDownItem value="a">A</DropDownItem>
+        <DropDownItem value="b">B</DropDownItem>
+      </DropDownList>
+    </Select>
+    <Select open={true} variant="secondary" multiple value={["A", "B"]} onKeyDown={keyDown} onInput={showChange}>
+      <DropDownList onClick={showSelection}>
+        <DropDownItem value="a">A</DropDownItem>
+        <DropDownItem value="b">B</DropDownItem>
+      </DropDownList>
     </Select>
   </ThemeProvider>,
   document.getElementById("root")

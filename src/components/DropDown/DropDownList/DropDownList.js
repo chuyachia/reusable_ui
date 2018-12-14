@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DropDownList = ({ show, ...props }) => {
-  return show ? <ul {...props} /> : null;
+const DropDownList = ({ show, children, variant, ...props }) => {
+  return show ? (
+    <ul {...props}>
+      {React.Children.map(children, child =>
+        React.cloneElement(child, { variant: variant })
+      )}
+    </ul>
+  ) : null;
 };
 
 DropDownList.propTypes = {

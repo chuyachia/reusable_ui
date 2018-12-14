@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Button from "../Button";
 
 const Input = ({ resetButton, onReset, onChange, ...props }) => (
-  <div {...props}>
+  <div className="input-wrap" {...props}>
     <input onChange={onChange}/>
     {resetButton && (
       <Button onClick={onReset}>

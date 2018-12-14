@@ -10,7 +10,7 @@ const StyledSelect = styled(Select)`
   position: relative;
   display: inline-block;
   cursor: pointer;
-  & div {
+  & > div {
     padding: ${props => props.theme.basePadding};
     font-family: ${props => props.theme.fontSans};
     font-size: ${props => props.theme.baseFontSize};
@@ -21,6 +21,19 @@ const StyledSelect = styled(Select)`
     border-style: solid;
     border-color: ${props => props.theme.primary};
     border-radius: ${props => props.theme.baseRadius};
+    display:block;
+  }
+  & .input-wrap {
+    display:inline-block;
+  }
+  & input {
+    padding: ${props => props.theme.smallPadding};
+    font-family: ${props => props.theme.fontSans};
+    font-size: ${props => props.theme.baseFontSize};
+    font-weight: ${props => props.theme.fontNormal};
+    outline:0;
+    line-height: ${props => props.theme.baseLineHeight};
+    border:none; 
   }
 `;
 

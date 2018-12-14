@@ -15,6 +15,7 @@ const StyledDropDownList = styled(DropDownList)`
   border-style: solid;
   border-color: ${props => props.theme.lightGrey};
   box-shadow: ${props => props.theme.boxShadow};
+  background-color: ${props => props.theme.white};
 `;
 
 export { DropDownListContext };
