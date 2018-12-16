@@ -1,19 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DropDownList = ({ show, children, variant, ...props }) => {
-  return show ? (
-    <ul {...props}>
-      {React.Children.map(children, child =>
-        React.cloneElement(child, { variant: variant })
-      )}
+const DropDownList = ({
+  open,
+  children,
+  variant,
+  onClick,
+  onClickParent,
+  ...props
+}) => {
+  const onClickCombinded = e => {
+    if (onClickParent) {
+      onClickParent();
+    }
+    onClick(e);
+  };
+  return open ? (
+    <ul onClick={onClickCombinded} {...props}>
+      {children &&
+        React.Children.map(children, child =>
+          React.cloneElement(child, { variant: variant })
+        )}
     </ul>
   ) : null;
 };
 
 DropDownList.propTypes = {
-  show: PropTypes.bool,
+  open: PropTypes.bool,
   onClick: PropTypes.func,
+  onClickParent: PropTypes.func,
   children: PropTypes.node
 };
 

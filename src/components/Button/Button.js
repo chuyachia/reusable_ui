@@ -5,9 +5,9 @@ const Button = props => <button {...props} />;
 
 Button.propTypes = {
   variant: PropTypes.string,
-  hollow: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node,
+  hollow: PropTypes.bool
 };
 
 export default Button;

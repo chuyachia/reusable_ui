@@ -5,6 +5,7 @@ const DropDownItem = props => <li {...props} />;
 
 DropDownItem.propTypes = {
   value: PropTypes.string,
+  label : PropTypes.string,
   children: PropTypes.node
 };
 

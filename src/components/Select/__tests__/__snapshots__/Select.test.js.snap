@@ -22,12 +22,15 @@ ShallowWrapper {
           <span>
              
           </span>
-          <_default>
+          <_default
+            onClick={[Function]}
+          >
             ▼
           </_default>
         </div>,
         undefined,
       ],
+      "className": undefined,
     },
     "ref": null,
     "rendered": Array [
@@ -40,11 +43,13 @@ ShallowWrapper {
             <span>
                
             </span>,
-            <_default>
+            undefined,
+            <_default
+              onClick={[Function]}
+            >
               ▼
             </_default>,
           ],
-          "onClick": undefined,
         },
         "ref": null,
         "rendered": Array [
@@ -59,12 +64,14 @@ ShallowWrapper {
             "rendered": " ",
             "type": "span",
           },
+          undefined,
           Object {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
             "props": Object {
               "children": "▼",
+              "onClick": [Function],
             },
             "ref": null,
             "rendered": "▼",
@@ -88,12 +95,15 @@ ShallowWrapper {
             <span>
                
             </span>
-            <_default>
+            <_default
+              onClick={[Function]}
+            >
               ▼
             </_default>
           </div>,
           undefined,
         ],
+        "className": undefined,
       },
       "ref": null,
       "rendered": Array [
@@ -106,11 +116,13 @@ ShallowWrapper {
               <span>
                  
               </span>,
-              <_default>
+              undefined,
+              <_default
+                onClick={[Function]}
+              >
                 ▼
               </_default>,
             ],
-            "onClick": undefined,
           },
           "ref": null,
           "rendered": Array [
@@ -125,12 +137,14 @@ ShallowWrapper {
               "rendered": " ",
               "type": "span",
             },
+            undefined,
             Object {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "children": "▼",
+                "onClick": [Function],
               },
               "ref": null,
               "rendered": "▼",

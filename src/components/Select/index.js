@@ -6,10 +6,9 @@ import { ButtonContext } from "../Button";
 import { DropDownListContext } from "../DropDown/DropDownList";
 
 const StyledSelect = styled(Select)`
-  min-width: 120px;
+  min-width: ${props => props.theme.inputMinWidth};
   position: relative;
   display: inline-block;
-  cursor: pointer;
   & > div {
     padding: ${props => props.theme.basePadding};
     font-family: ${props => props.theme.fontSans};
@@ -34,6 +33,7 @@ const StyledSelect = styled(Select)`
     outline:0;
     line-height: ${props => props.theme.baseLineHeight};
     border:none; 
+    width:${props => props.theme.inputMinWidth};
   }
 `;
 

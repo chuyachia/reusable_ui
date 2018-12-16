@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import Button from "../Button";
 
-const Input = ({ resetButton, onReset, onChange, ...props }) => (
+const Input = ({ resetButton, onReset, onChange,onFocus,onKeyDown,value,controlled, ...props }) => (
   <div className="input-wrap" {...props}>
-    <input onChange={onChange}/>
+    <input value={controlled&&value} onChange={onChange} onFocus={onFocus} onKeyDown={onKeyDown}/>
     {resetButton && (
       <Button onClick={onReset}>
         X
@@ -15,6 +15,9 @@ const Input = ({ resetButton, onReset, onChange, ...props }) => (
 );
 
 Input.propTypes = {
+  controlled:PropTypes.bool,
+  onKeyDown:PropTypes.func,
+  onFocus:PropTypes.func,
   onChange: PropTypes.func,
   onReset: PropTypes.func,
   resetButton: PropTypes.bool,

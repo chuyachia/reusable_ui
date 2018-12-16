@@ -31,6 +31,7 @@ ShallowWrapper {
           X
         </_default>,
       ],
+      "className": "input-wrap",
     },
     "ref": null,
     "rendered": Array [
@@ -40,6 +41,9 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "onChange": [MockFunction],
+          "onFocus": undefined,
+          "onKeyDown": undefined,
+          "value": undefined,
         },
         "ref": null,
         "rendered": null,
@@ -76,6 +80,7 @@ ShallowWrapper {
             X
           </_default>,
         ],
+        "className": "input-wrap",
       },
       "ref": null,
       "rendered": Array [
@@ -85,6 +90,9 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "onChange": [MockFunction],
+            "onFocus": undefined,
+            "onKeyDown": undefined,
+            "value": undefined,
           },
           "ref": null,
           "rendered": null,
