@@ -13,6 +13,6 @@ describe("Button", () => {
   });
   it("should call onClick function when clicked", () => {
     wrapper.simulate("click");
-    expect(mockFunc.mock.calls.length).toBe(1);
+    expect(mockFunc).toBeCalledTimes(1);
   });
 });

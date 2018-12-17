@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Tag from "./Tag";
 
 export default styled(Tag)`
+  cursor:pointer;
   color: ${props => props.theme.baseTextColor};
   background-color: ${props => {
     switch (props.variant) {

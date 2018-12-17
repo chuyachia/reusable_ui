@@ -14,7 +14,11 @@ class App extends React.Component {
     input: "",
     select: { value: "", label: "" },
     multiselect: [],
-    selectoptions: [{ value: "a", label: "A" }, { value: "b", label: "B" }],
+    selectoptions: [
+      { value: "coco", label: "Coco" },
+      { value: "gare", label: "Gare" },
+      { value: "montreal", label: "Montreal" }
+    ],
     filter: ""
   };
   showClick = () => {
@@ -37,11 +41,13 @@ class App extends React.Component {
       select: { value: "", label: "" }
     });
   };
-  deleteMultiSelect = () => {
-    var newMultiSelect = this.state.multiselect.slice(
-      0,
-      this.state.multiselect.length - 1
-    );
+  deleteMultiSelect = value => {
+    var endIndex = value
+      ? this.state.multiselect.map(s => s.value).indexOf(value)
+      : this.state.multiselect.length - 1;
+    var newMultiSelect = this.state.multiselect
+      .slice(0, endIndex)
+      .concat(this.state.multiselect.slice(endIndex + 1));
     this.setState({
       multiselect: newMultiSelect
     });
@@ -50,19 +56,17 @@ class App extends React.Component {
     this.setState({ filter: value });
   };
   render() {
-    const selectLabel = this.state.select.label;
-    const multiSelectLabels = this.state.multiselect.map(s => s.label);
     const selectOptions = this.state.selectoptions.filter(s => {
       var filtered =
         this.state.filter.length > 0
-          ? RegExp(this.state.filter, "i").test(s.label)
+          ? s.label.toLowerCase().indexOf(this.state.filter.toLowerCase()) > -1
           : true;
       return filtered;
     });
     const multiSelectOptions = this.state.selectoptions.filter(s => {
       var filtered =
         this.state.filter.length > 0
-          ? RegExp(this.state.filter, "i").test(s.label)
+          ? s.label.toLowerCase().indexOf(this.state.filter.toLowerCase()) > -1
           : true;
       var multiselectvalues = this.state.multiselect.map(s => s.value);
       var notselected = multiselectvalues.indexOf(s.value) == -1;
@@ -98,7 +102,7 @@ class App extends React.Component {
           value={this.state.input}
           onChange={this.setTextInput}
         />
-        <Select label={selectLabel} onSelect={this.setSelect}>
+        <Select selected={this.state.select} onSelect={this.setSelect}>
           <DropDownList>
             {selectOptions.map(s => (
               <DropDownItem key={s.value} {...s}>
@@ -107,7 +111,16 @@ class App extends React.Component {
             ))}
           </DropDownList>
         </Select>
-        <Select label={selectLabel} onSelect={this.setSelect}>
+        <Select selected={this.state.select} onSelect={this.setSelect} iscontrolled open={false}>
+          <DropDownList>
+            {selectOptions.map(s => (
+              <DropDownItem key={s.value} {...s}>
+                {s.label}
+              </DropDownItem>
+            ))}
+          </DropDownList>
+        </Select>
+        <Select selected={this.state.select} onSelect={this.setSelect}>
           <DropDownList>
             {selectOptions.map(s => (
               <DropDownItem key={s.value} {...s}>
@@ -118,8 +131,9 @@ class App extends React.Component {
         </Select>
         <Select
           multiple
-          label={multiSelectLabels}
+          selected={this.state.multiselect}
           onSelect={this.setMultiSelect}
+          onDelete={this.deleteMultiSelect}
         >
           <DropDownList>
             {multiSelectOptions.map(s => (
@@ -132,8 +146,9 @@ class App extends React.Component {
         <Select
           variant="secondary"
           multiple
-          label={multiSelectLabels}
+          selected={this.state.multiselect}
           onSelect={this.setMultiSelect}
+          onDelete={this.deleteMultiSelect}
         >
           <DropDownList>
             {multiSelectOptions.map(s => (
@@ -146,7 +161,7 @@ class App extends React.Component {
         <Select
           variant="secondary"
           suggestion
-          label={selectLabel}
+          selected={this.state.select}
           onDelete={this.deleteSelect}
           onInput={this.filterSelectOptions}
           onSelect={this.setSelect}
@@ -163,7 +178,7 @@ class App extends React.Component {
           variant="secondary"
           multiple
           suggestion
-          label={multiSelectLabels}
+          selected={this.state.multiselect}
           onDelete={this.deleteMultiSelect}
           onInput={this.filterSelectOptions}
           onSelect={this.setMultiSelect}
