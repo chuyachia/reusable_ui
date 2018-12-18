@@ -138,7 +138,8 @@ Select.propTypes = {
   open: PropTypes.bool,
   children: PropTypes.node,
   controlled: PropTypes.bool,
-  multiple: PropTypes.bool
+  multiple: PropTypes.bool,
+  suggestion: PropTypes.bool
 };
 
 export default Select;

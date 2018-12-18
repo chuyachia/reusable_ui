@@ -9,6 +9,9 @@ const StyledSelect = styled(Select)`
   min-width: ${props => props.theme.inputMinWidth};
   position: relative;
   display: inline-block;
+  & div {
+    display:inline-block;
+  }
   & > div {
     padding: ${props => props.theme.basePadding};
     font-family: ${props => props.theme.fontSans};
@@ -21,9 +24,6 @@ const StyledSelect = styled(Select)`
     border-color: ${props => props.theme.primary};
     border-radius: ${props => props.theme.baseRadius};
     display:block;
-  }
-  & .input-wrap {
-    display:inline-block;
   }
   & input {
     padding: ${props => props.theme.smallPadding};

@@ -17,9 +17,6 @@ const StyledInput = styled(Input)`
   border-style: solid;
   border-color: ${props => props.theme.primary};
   border-radius: ${props => props.theme.baseRadius};
-  &:focus {
-    box-shadow: ${props => props.theme.boxShadow};
-  }
   & input {
     border-width: 0px;
     padding: 0px;

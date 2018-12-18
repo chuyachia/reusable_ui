@@ -19,6 +19,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
+      "children": undefined,
+      "className": undefined,
       "onClick": [MockFunction],
     },
     "ref": null,
@@ -31,6 +33,8 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
+        "children": undefined,
+        "className": undefined,
         "onClick": [MockFunction],
       },
       "ref": null,

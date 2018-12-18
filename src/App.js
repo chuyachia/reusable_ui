@@ -1,12 +1,13 @@
 import React from "react";
-import { ThemeProvider } from "emotion-theming";
 
 import {
   Button,
   Input,
   DropDownItem,
   DropDownList,
-  Select
+  Select,
+  RadioInput,
+  RadioGroup
 } from "./components";
 
 class App extends React.Component {
@@ -23,6 +24,9 @@ class App extends React.Component {
   };
   showClick = () => {
     console.log("click");
+  };
+  showChange = e => {
+    console.log(e.target.value);
   };
   setTextInput = e => {
     this.setState({ input: e.target.value });
@@ -111,7 +115,12 @@ class App extends React.Component {
             ))}
           </DropDownList>
         </Select>
-        <Select selected={this.state.select} onSelect={this.setSelect} iscontrolled open={false}>
+        <Select
+          selected={this.state.select}
+          onSelect={this.setSelect}
+          controlled
+          open={false}
+        >
           <DropDownList>
             {selectOptions.map(s => (
               <DropDownItem key={s.value} {...s}>
@@ -191,6 +200,23 @@ class App extends React.Component {
             ))}
           </DropDownList>
         </Select>
+        <RadioGroup
+          onChange={this.showChange}
+          variant="secondary"
+        >
+          <RadioInput label="A" value="a" name="radiogroup" />
+          <RadioInput label="B" value="b" name="radiogroup" />
+          <RadioInput label="C" value="c" name="radiogroup" />
+        </RadioGroup>
+        <RadioGroup
+          onChange={this.showChange}
+          variant="warning"
+          direction="horizontal"
+        >
+          <RadioInput label="A" value="a" name="radiogroup" />
+          <RadioInput label="B" value="b" name="radiogroup" />
+          <RadioInput label="C" value="c" name="radiogroup" />
+        </RadioGroup>
       </div>
     );
   }

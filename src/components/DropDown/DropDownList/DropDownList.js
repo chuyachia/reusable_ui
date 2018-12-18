@@ -29,7 +29,8 @@ DropDownList.propTypes = {
   open: PropTypes.bool,
   onClick: PropTypes.func,
   onClickParent: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
+  variant: PropTypes.string
 };
 
 export default DropDownList;

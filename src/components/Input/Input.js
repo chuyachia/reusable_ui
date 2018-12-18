@@ -13,7 +13,7 @@ const Input = ({
   controlled,
   ...props
 }) => (
-  <div className="input-wrap" {...props}>
+  <div {...props}>
     <input
       value={controlled && value}
       onChange={onChange}
