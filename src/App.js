@@ -7,7 +7,7 @@ import {
   DropDownList,
   Select,
   RadioInput,
-  RadioGroup
+  RadioGroup,
 } from "./components";
 
 class App extends React.Component {
@@ -18,62 +18,72 @@ class App extends React.Component {
     selectoptions: [
       { value: "coco", label: "Coco" },
       { value: "gare", label: "Gare" },
-      { value: "montreal", label: "Montreal" }
+      { value: "montreal", label: "Montreal" },
     ],
-    filter: ""
+    filter: "",
   };
+
   showClick = () => {
     console.log("click");
   };
+
   showChange = e => {
     console.log(e.target.value);
   };
+
   setTextInput = e => {
     this.setState({ input: e.target.value });
   };
+
   resetTextInput = () => {
     this.setState({ input: "" });
   };
+
   setSelect = select => {
-    this.setState({ select: select });
+    this.setState({ select });
   };
+
   setMultiSelect = select => {
     this.setState({ multiselect: [...this.state.multiselect, select] });
   };
+
   deleteSelect = () => {
     this.setState({
-      select: { value: "", label: "" }
+      select: { value: "", label: "" },
     });
   };
+
   deleteMultiSelect = value => {
-    var endIndex = value
+    const endIndex = value
       ? this.state.multiselect.map(s => s.value).indexOf(value)
       : this.state.multiselect.length - 1;
-    var newMultiSelect = this.state.multiselect
+    const newMultiSelect = this.state.multiselect
       .slice(0, endIndex)
       .concat(this.state.multiselect.slice(endIndex + 1));
     this.setState({
-      multiselect: newMultiSelect
+      multiselect: newMultiSelect,
     });
   };
+
   filterSelectOptions = value => {
     this.setState({ filter: value });
   };
+
   render() {
     const selectOptions = this.state.selectoptions.filter(s => {
-      var filtered =
+      const filtered =
         this.state.filter.length > 0
           ? s.label.toLowerCase().indexOf(this.state.filter.toLowerCase()) > -1
           : true;
       return filtered;
     });
     const multiSelectOptions = this.state.selectoptions.filter(s => {
-      var filtered =
+      const filtered =
         this.state.filter.length > 0
           ? s.label.toLowerCase().indexOf(this.state.filter.toLowerCase()) > -1
           : true;
-      var multiselectvalues = this.state.multiselect.map(s => s.value);
-      var notselected = multiselectvalues.indexOf(s.value) == -1;
+      const multiselectvalues = this.state.multiselect.map(s => s.value);
+      const notselected = multiselectvalues.indexOf(s.value) == -1;
       return filtered && notselected;
     });
     return (
@@ -200,22 +210,20 @@ class App extends React.Component {
             ))}
           </DropDownList>
         </Select>
-        <RadioGroup
-          onChange={this.showChange}
-          variant="secondary"
-        >
+        <RadioGroup onChange={this.showChange} variant="secondary">
           <RadioInput label="A" value="a" name="radiogroup" />
           <RadioInput label="B" value="b" name="radiogroup" />
           <RadioInput label="C" value="c" name="radiogroup" />
+          <RadioInput label="D" value="d" name="radiogroup" />
         </RadioGroup>
         <RadioGroup
           onChange={this.showChange}
           variant="warning"
           direction="horizontal"
         >
-          <RadioInput label="A" value="a" name="radiogroup" />
-          <RadioInput label="B" value="b" name="radiogroup" />
-          <RadioInput label="C" value="c" name="radiogroup" />
+          <RadioInput label="A" value="a" name="radiogroup2" />
+          <RadioInput label="B" value="b" name="radiogroup2" />
+          <RadioInput label="C" value="c" name="radiogroup2" />
         </RadioGroup>
       </div>
     );

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider } from "emotion-theming";
+import {ThemeProvider} from "emotion-theming";
 
 import App from "./App";
 
-const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./styles/theme.scss');
+const theme = require("sass-extract-loader?{\"plugins\": [\"sass-extract-js\"]}!./styles/theme.scss");
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

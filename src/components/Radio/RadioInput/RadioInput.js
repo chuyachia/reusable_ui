@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const RadioInput = ({ label, value, className, name }) => (
   <label className={className}>
-    {label}
+    {label}&nbsp;
     <input type="radio" name={name} value={value}/>
     <span />
   </label>

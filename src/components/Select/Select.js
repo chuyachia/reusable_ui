@@ -139,7 +139,8 @@ Select.propTypes = {
   children: PropTypes.node,
   controlled: PropTypes.bool,
   multiple: PropTypes.bool,
-  suggestion: PropTypes.bool
+  suggestion: PropTypes.bool,
+	className:PropTypes.string
 };
 
 export default Select;

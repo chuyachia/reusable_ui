@@ -4,8 +4,8 @@ import styled from "@emotion/styled";
 import RadioInput from "./RadioInput";
 
 export default styled(RadioInput)`
-  display: ${props => {console.log(props);
-     return props.direction == "horizontal" ? "inline-block" : "block"}};
+  display: ${props => props.direction == "horizontal" ? "inline-block" : "block"};
+
   position: relative;
   cursor: pointer;
   font-family: ${props => props.theme.fontSans};

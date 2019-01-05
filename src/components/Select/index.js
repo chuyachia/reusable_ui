@@ -2,8 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Select from "./Select";
-import { ButtonContext } from "../Button";
-import { DropDownListContext } from "../DropDown/DropDownList";
+import {ButtonContext} from "../Button";
+import {DropDownListContext} from "../DropDown/DropDownList";
 
 const StyledSelect = styled(Select)`
   min-width: ${props => props.theme.inputMinWidth};
