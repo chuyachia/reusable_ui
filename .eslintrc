@@ -1,11 +1,11 @@
 {
 		"parser": "babel-eslint",
     "plugins": [
-      "react",
 			"prettier"
     ],
 		"rules": {
-			"prettier/prettier":"error"
+			"prettier/prettier": "error",
+			"no-console": "off"
 		},
 		"extends": ["eslint:recommended", "plugin:react/recommended","prettier"]
 }

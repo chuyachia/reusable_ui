@@ -1,35 +1,36 @@
 import styled from "@emotion/styled";
 
 import Tag from "./Tag";
+import useTheme from "../useTheme";
 
 export default styled(Tag)`
-  cursor:pointer;
-  color: ${props => props.theme.baseTextColor};
+  cursor: pointer;
+  color: ${props => useTheme(props, "baseTextColor")};
   background-color: ${props => {
     switch (props.variant) {
       case "secondary":
-        return props.theme.secondaryLight;
+        return useTheme(props, "secondaryLight");
       case "warning":
-        return props.theme.warningLight;
+        return useTheme(props, "warningLight");
       default:
-        return props.theme.primaryLight;
+        return useTheme(props, "primaryLight");
     }
   }};
-  line-height: ${props => props.theme.smallLineHeight};
-  padding: ${props => props.theme.smallPadding};
-  border-radius: ${props => props.theme.baseRadius};
-  border-width: ${props => props.theme.borderWidth};
+  line-height: ${props => useTheme(props, "smallLineHeight")};
+  padding: ${props => useTheme(props, "smallPadding")};
+  border-radius: ${props => useTheme(props, "baseRadius")};
+  border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;
   border-color: ${props => {
     switch (props.variant) {
       case "secondary":
-        return props.theme.secondary;
+        return useTheme(props, "secondary");
       case "warning":
-        return props.theme.warning;
+        return useTheme(props, "warning");
       default:
-        return props.theme.primary;
+        return useTheme(props, "primary");
     }
   }};
   display: inline-block;
-  margin-right:${props => props.theme.smallMargin};
+  margin-right: ${props => useTheme(props, "smallMargin")};
 `;

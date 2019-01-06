@@ -31,7 +31,7 @@ class Select extends React.Component {
     this.setState({ textinput: "" });
     this.props.onSelect({
       value: e.target.getAttribute("value"),
-      label: e.target.getAttribute("label")
+      label: e.target.getAttribute("label"),
     });
     if (this.props.onInput) {
       this.props.onInput("");
@@ -46,7 +46,7 @@ class Select extends React.Component {
       suggestion,
       className,
       open,
-      controlled
+      controlled,
     } = this.props;
     var isopen = controlled ? open : this.state.open;
     return (
@@ -110,7 +110,7 @@ class Select extends React.Component {
             variant: variant,
             open: isopen,
             onClick: this.selectOption,
-            onClickParent: this.openClose
+            onClickParent: this.openClose,
           })
         )}
       </div>
@@ -125,14 +125,14 @@ Select.propTypes = {
   selected: PropTypes.oneOfType([
     PropTypes.shape({
       value: PropTypes.string,
-      label: PropTypes.string
+      label: PropTypes.string,
     }),
     PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.string,
-        label: PropTypes.string
+        label: PropTypes.string,
       })
-    )
+    ),
   ]),
   variant: PropTypes.string,
   open: PropTypes.bool,
@@ -140,7 +140,7 @@ Select.propTypes = {
   controlled: PropTypes.bool,
   multiple: PropTypes.bool,
   suggestion: PropTypes.bool,
-	className:PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Select;

@@ -30,7 +30,7 @@ DropDownList.propTypes = {
   onClick: PropTypes.func,
   onClickParent: PropTypes.func,
   children: PropTypes.node,
-  variant: PropTypes.string
+  variant: PropTypes.string,
 };
 
 export default DropDownList;

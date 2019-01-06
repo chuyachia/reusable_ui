@@ -7,7 +7,7 @@ Tag.propTypes = {
   value: PropTypes.string,
   children: PropTypes.node,
   onClick: PropTypes.func,
-  variant:PropTypes.string
+  variant: PropTypes.string,
 };
 
 export default Tag;

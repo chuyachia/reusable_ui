@@ -1,3 +1,4 @@
+/*global console*/
 import React from "react";
 
 import {

@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Button = ({ children, onClick, className }) => (
-  <button className={className} children={children} onClick={onClick} />
+  <button className={className} onClick={onClick}>
+    {children}
+  </button>
 );
 
 Button.propTypes = {
+  className: PropTypes.string,
   variant: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node,
-  hollow: PropTypes.bool
+  hollow: PropTypes.bool,
 };
 
 export default Button;

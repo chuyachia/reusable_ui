@@ -1,27 +1,28 @@
 import styled from "@emotion/styled";
 
+import useTheme from "../../useTheme";
 import DropDownItem from "./DropDownItem";
 
 export default styled(DropDownItem)`
   list-style: none;
   cursor: pointer;
-  padding: ${props => props.theme.basePadding};
-  font-family: ${props => props.theme.fontSans};
-  font-size: ${props => props.theme.baseFontSize};
-  font-weight: ${props => props.theme.fontNormal};
-  color: ${props => props.theme.baseTextColor};
-  line-height: ${props => props.theme.baseLineHeight};
+  padding: ${props => useTheme(props, "basePadding")};
+  font-family: ${props => useTheme(props, "fontSans")};
+  font-size: ${props => useTheme(props, "baseFontSize")};
+  font-weight: ${props => useTheme(props, "fontNormal")};
+  color: ${props => useTheme(props, "baseTextColor")};
+  line-height: ${props => useTheme(props, "baseLineHeight")};
   &:hover {
     background-color: ${props => {
       switch (props.variant) {
         case "secondary":
-          return props.theme.secondaryLight;
+          return useTheme(props, "secondaryLight");
         case "warning":
-          return props.theme.warningLight;
+          return useTheme(props, "warningLight");
         default:
-          return props.theme.primaryLight;
+          return useTheme(props, "primaryLight");
       }
     }};
-    font-weight: ${props => props.theme.fontSemibold};
+    font-weight: ${props => useTheme(props, "fontSemibold")};
   }
 `;

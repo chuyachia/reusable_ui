@@ -5,9 +5,9 @@ const DropDownItem = props => <li {...props} />;
 
 DropDownItem.propTypes = {
   value: PropTypes.string,
-  label : PropTypes.string,
+  label: PropTypes.string,
   children: PropTypes.node,
-  variant: PropTypes.string
+  variant: PropTypes.string,
 };
 
 export default DropDownItem;

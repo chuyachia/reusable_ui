@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import useTheme from "../useTheme";
 import Button from "./Button";
 
 const ButtonContext = React.createContext("default");
@@ -8,85 +9,85 @@ const StyledButton = styled(Button)`
   cursor: pointer;
   background-color: ${props => {
     if (props.hollow) {
-      return props.theme.white;
+      return useTheme(props, "white");
     } else if (props.context === "input" || props.context === "select") {
       return "transparent";
     } else {
       switch (props.variant) {
         case "secondary":
-          return props.theme.secondary;
+          return useTheme(props, "secondary");
         case "warning":
-          return props.theme.warning;
+          return useTheme(props, "warning");
         default:
-          return props.theme.primary;
+          return useTheme(props, "primary");
       }
     }
   }};
   color: ${props => {
     if (props.context === "input" || props.context === "select") {
-      return props.theme.baseTextColor;
+      return useTheme(props, "baseTextColor");
     }
     switch (props.variant) {
       case "secondary":
         return props.hollow
-          ? props.theme.secondary
-          : props.theme.secondaryContrastText;
+          ? useTheme(props, "secondary")
+          : useTheme(props, "secondaryContrastText");
       case "warning":
         return props.hollow
-          ? props.theme.warning
-          : props.theme.warningContrastText;
+          ? useTheme(props, "warning")
+          : useTheme(props, "warningContrastText");
       default:
         return props.hollow
-          ? props.theme.primary
-          : props.theme.primaryContrastText;
+          ? useTheme(props, "primary")
+          : useTheme(props, "primaryContrastText");
     }
   }};
-  font-family: ${props => props.theme.fontSans};
+  font-family: ${props => useTheme(props, "fontSans")};
   padding: ${props => {
     if (props.context === "input" || props.context === "select") {
       return 0;
     } else {
-      return props.theme.basePadding;
+      return useTheme(props, "basePadding");
     }
   }};
-  font-size: ${props => props.theme.baseFontSize};
-  font-weight: ${props => props.theme.fontSemibold};
-  line-height: ${props => props.theme.baseLineHeight};
+  font-size: ${props => useTheme(props, "baseFontSize")};
+  font-weight: ${props => useTheme(props, "fontSemibold")};
+  line-height: ${props => useTheme(props, "baseLineHeight")};
   outline: 0;
-  border-width: ${props => props.theme.borderWidth};
+  border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;
   border-color: ${props => {
     switch (props.variant) {
       case "secondary":
-        return props.theme.secondary;
+        return useTheme(props, "secondary");
       case "warning":
-        return props.theme.warning;
+        return useTheme(props, "warning");
       default:
-        return props.theme.primary;
+        return useTheme(props, "primary");
     }
   }};
-  border-radius: ${props => props.theme.baseRadius};
+  border-radius: ${props => useTheme(props, "baseRadius")};
   &:hover {
     ${props => {
       if (props.hollow) {
         switch (props.variant) {
           case "secondary":
-            return "background-color:" + props.theme.secondaryLight;
+            return "background-color:" + useTheme(props, "secondaryLight");
           case "warning":
-            return "background-color:" + props.theme.warningLight;
+            return "background-color:" + useTheme(props, "warningLight");
           default:
-            return "background-color:" + props.theme.primaryLight;
+            return "background-color:" + useTheme(props, "primaryLight");
         }
       } else if (props.context === "input" || props.context === "select") {
-        return "font-weight:" + props.theme.fontBold;
+        return "font-weight:" + useTheme(props, "fontBold");
       } else {
         switch (props.variant) {
           case "secondary":
-            return "background-color:" + props.theme.secondaryDark;
+            return "background-color:" + useTheme(props, "secondaryDark");
           case "warning":
-            return "background-color:" + props.theme.warningDark;
+            return "background-color:" + useTheme(props, "warningDark");
           default:
-            return "background-color:" + props.theme.primaryDark;
+            return "background-color:" + useTheme(props, "primaryDark");
         }
       }
     }};
@@ -104,8 +105,9 @@ const StyledButton = styled(Button)`
   }};
 `;
 export { ButtonContext };
-export default props => (
+const StyledButtonWContext = props => (
   <ButtonContext.Consumer>
     {context => <StyledButton {...props} context={context} />}
   </ButtonContext.Consumer>
 );
+export default StyledButtonWContext;

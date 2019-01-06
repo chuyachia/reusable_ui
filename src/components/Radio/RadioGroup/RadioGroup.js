@@ -14,7 +14,8 @@ RadioGroup.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func,
   variant: PropTypes.string,
-  direction: PropTypes.string
+  direction: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default RadioGroup;

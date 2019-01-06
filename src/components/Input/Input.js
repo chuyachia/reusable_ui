@@ -32,7 +32,6 @@ Input.propTypes = {
   onReset: PropTypes.func,
   resetButton: PropTypes.bool,
   value: PropTypes.string,
-  controlled: PropTypes.bool
 };
 
 export default Input;
