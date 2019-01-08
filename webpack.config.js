@@ -9,6 +9,29 @@ module.exports = (env, argv) => ({
     filename: "index.js",
     libraryTarget: "umd",
   },
+  resolve: {
+    alias: {
+      react: path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
+      assets: path.resolve(__dirname, "assets"),
+    },
+  },
+  externals: {
+    react: {
+      root: "React",
+      commonjs2: "react",
+      commonjs: "react",
+      amd: "react",
+      umd: "react",
+    },
+    "react-dom": {
+      root: "ReactDOM",
+      commonjs2: "react-dom",
+      commonjs: "react-dom",
+      amd: "react-dom",
+      umd: "react-dom",
+    },
+  },
   devtool: argv.mode === "development" ? "cheap-source-map" : "",
   module: {
     rules: [
