@@ -1,19 +1,15 @@
-/*global require module __dirname*/
+/*global require module __dirname */
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: "./src/index.js",
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.join(__dirname, "dist"),
+    filename: "index.js",
+    libraryTarget: "umd",
   },
-  devtool: "cheap-source-map",
-  mode: "development",
-  devServer: {
-    contentBase: path.resolve(__dirname, "dist"),
-  },
+  devtool: argv.mode === "development" ? "cheap-source-map" : "",
   module: {
     rules: [
       {
@@ -32,11 +28,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(["dist"]),
-    new HtmlWebpackPlugin({
-      title: "Reusable components POC",
-      template: path.resolve(__dirname, "public", "index.html"),
-    }),
-  ],
-};
+  plugins: [new CleanWebpackPlugin(["dist"])],
+});

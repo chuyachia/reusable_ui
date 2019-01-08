@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+import useTheme from "../../useTheme";
 import RadioInput from "./RadioInput";
 
 export default styled(RadioInput)`
@@ -8,7 +9,7 @@ export default styled(RadioInput)`
 
   position: relative;
   cursor: pointer;
-  font-family: ${props => props.theme.fontSans};
+  font-family: ${props => useTheme(props, "fontSans")};
   padding-left: 1.5em;
   & input {
     position: absolute;
@@ -21,7 +22,7 @@ export default styled(RadioInput)`
     left: 0;
     height: 1em;
     width: 1em;
-    background-color: ${props => props.theme.silver};
+    background-color: ${props => useTheme(props, "silver")};
 
     border-radius: 50%;
   }
@@ -29,11 +30,11 @@ export default styled(RadioInput)`
     background-color: ${props => {
       switch (props.variant) {
         case "secondary":
-          return props.theme.secondaryLight;
+          return useTheme(props, "secondaryLight");
         case "warning":
-          return props.theme.warningLight;
+          return useTheme(props, "warningLight");
         default:
-          return props.theme.primaryLight;
+          return useTheme(props, "primaryLight");
       }
     }};
   }
@@ -41,11 +42,11 @@ export default styled(RadioInput)`
     background-color: ${props => {
       switch (props.variant) {
         case "secondary":
-          return props.theme.secondary;
+          return useTheme(props, "secondary");
         case "warning":
-          return props.theme.warning;
+          return useTheme(props, "warning");
         default:
-          return props.theme.primary;
+          return useTheme(props, "primary");
       }
     }};
   }
@@ -63,7 +64,7 @@ export default styled(RadioInput)`
     width: 0.5em;
     height: 0.5em;
     border-radius: 50%;
-    background: ${props => props.theme.silver};
+    background: ${props => useTheme(props, "silver")};
     transform: translate(-50%, -50%);
   }
 `;

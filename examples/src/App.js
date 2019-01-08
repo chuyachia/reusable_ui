@@ -9,7 +9,7 @@ import {
   Select,
   RadioInput,
   RadioGroup,
-} from "./components";
+} from "reusable-components-poc";
 
 class App extends React.Component {
   state = {
