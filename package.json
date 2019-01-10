@@ -30,6 +30,7 @@
     "eslint-loader": "^2.1.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "node-sass": "^4.10.0",
     "prettier": "^1.15.3",
@@ -43,8 +44,8 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
+    "test": "jest --coverage",
+    "test-watch": "jest --watch --coverage",
     "dev": "webpack --watch --mode=development",
     "build": "webpack --mode=production"
   },

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input should render 1`] = `
+exports[`RadioGroup  should render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Input />,
+  Symbol(enzyme.__unrendered__): <RadioGroup />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,29 +17,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <input />,
-        undefined,
-      ],
+      "children": undefined,
+      "className": undefined,
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "onChange": undefined,
-          "onFocus": undefined,
-          "onKeyDown": undefined,
-          "value": undefined,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": "input",
-      },
-      undefined,
-    ],
+    "rendered": null,
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -48,29 +30,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [
-          <input />,
-          undefined,
-        ],
+        "children": undefined,
+        "className": undefined,
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "onChange": undefined,
-            "onFocus": undefined,
-            "onKeyDown": undefined,
-            "value": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "input",
-        },
-        undefined,
-      ],
+      "rendered": null,
       "type": "div",
     },
   ],

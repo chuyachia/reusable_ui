@@ -10,12 +10,12 @@ describe("Input", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("should render value property if controlled", () => {
-    wrapper = shallow(<Input controlled value="A"/>);
-    expect(wrapper.find('input').prop('value')).toBe("A");
+    wrapper = shallow(<Input controlled value="A" />);
+    expect(wrapper.find("input").prop("value")).toBe("A");
   });
   it("should not render value property if not controlled", () => {
-    wrapper = shallow(<Input value="A"/>);
-    expect(wrapper.find('input').prop('value')).not.toBeDefined();
+    wrapper = shallow(<Input value="A" />);
+    expect(wrapper.find("input").prop("value")).not.toBeDefined();
   });
   it("should renders reset button when resetButton is true", () => {
     wrapper = shallow(<Input resetButton={true} />);
@@ -23,9 +23,7 @@ describe("Input", () => {
   });
   it("should call onChange function when recieving input value", () => {
     mockFunc = jest.fn();
-    wrapper = shallow(
-      <Input onChange={mockFunc} />
-    );
+    wrapper = shallow(<Input onChange={mockFunc} />);
     let input = wrapper.find("input");
     let changeEvent = { target: { value: "Hello" } };
     input.simulate("change", changeEvent);
@@ -35,18 +33,14 @@ describe("Input", () => {
   });
   it("should call onKeyDown function when key pressed", () => {
     mockFunc = jest.fn();
-    wrapper = shallow(
-      <Input onKeyDown={mockFunc} />
-    );
+    wrapper = shallow(<Input onKeyDown={mockFunc} />);
     let input = wrapper.find("input");
     input.simulate("keyDown");
     expect(mockFunc).toBeCalledTimes(1);
   });
   it("should call onFocus function when focused", () => {
     mockFunc = jest.fn();
-    wrapper = shallow(
-      <Input onFocus={mockFunc} />
-    );
+    wrapper = shallow(<Input onFocus={mockFunc} />);
     let input = wrapper.find("input");
     input.simulate("focus");
     expect(mockFunc).toBeCalledTimes(1);
