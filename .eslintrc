@@ -1,12 +1,19 @@
 {
 		"parser": "babel-eslint",
+		"env" : {
+			"jest":true
+		},
     "plugins": [
-			"prettier"
+			"prettier",
     ],
 		"rules": {
 			"prettier/prettier": "error",
-			"no-console": "off"
+			"no-console": "off",
+		},
+		"globals":{
+			"shallow":true,
+			"render":true,
+			"mount":true,
 		},
 		"extends": ["eslint:recommended", "plugin:react/recommended","prettier"]
 }
-
