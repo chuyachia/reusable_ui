@@ -7,8 +7,9 @@ import {
   DropDownItem,
   DropDownList,
   Select,
-  RadioInput,
-  RadioGroup,
+  RadioButton,
+  RadioCheckGroup,
+  Checkbox,
 } from "reusable-components-poc";
 
 class App extends React.Component {
@@ -21,6 +22,18 @@ class App extends React.Component {
       { value: "gare", label: "Gare" },
       { value: "montreal", label: "Montreal" },
     ],
+    radiooptions: [
+      { value: "coco", label: "Coco" },
+      { value: "gare", label: "Gare" },
+      { value: "montreal", label: "Montreal" },
+    ],
+    radioselection: "",
+    checkoptions: [
+      { value: "coco", label: "Coco" },
+      { value: "gare", label: "Gare" },
+      { value: "montreal", label: "Montreal" },
+    ],
+    checkselection: [],
     filter: "",
   };
 
@@ -211,21 +224,43 @@ class App extends React.Component {
             ))}
           </DropDownList>
         </Select>
-        <RadioGroup onChange={this.showChange} variant="secondary">
-          <RadioInput label="A" value="a" name="radiogroup" />
-          <RadioInput label="B" value="b" name="radiogroup" />
-          <RadioInput label="C" value="c" name="radiogroup" />
-          <RadioInput label="D" value="d" name="radiogroup" />
-        </RadioGroup>
-        <RadioGroup
+        <RadioCheckGroup
+          onChange={this.showChange}
+          variant="secondary"
+          childrenType="radio"
+          selected={this.state.radiooptions[0].value}
+        >
+          {this.state.radiooptions.map(({ value, label }) => (
+            <RadioButton
+              key={value}
+              label={label}
+              value={value}
+              name="radiogroup"
+            />
+          ))}
+        </RadioCheckGroup>
+        <RadioCheckGroup
+          onChange={this.showChange}
+          variant="secondary"
+          childrenType="checkbox"
+          selected={[
+            this.state.checkoptions[0].value,
+            this.state.checkoptions[1].value,
+          ]}
+        >
+          {this.state.checkoptions.map(({ value, label }) => (
+            <Checkbox key={value} label={label} value={value} />
+          ))}
+        </RadioCheckGroup>
+        <RadioCheckGroup
           onChange={this.showChange}
           variant="warning"
           direction="horizontal"
         >
-          <RadioInput label="A" value="a" name="radiogroup2" />
-          <RadioInput label="B" value="b" name="radiogroup2" />
-          <RadioInput label="C" value="c" name="radiogroup2" />
-        </RadioGroup>
+          <RadioButton label="A" value="a" name="radiogroup2" />
+          <RadioButton label="B" value="b" name="radiogroup2" />
+          <RadioButton label="C" value="c" name="radiogroup2" />
+        </RadioCheckGroup>
       </div>
     );
   }

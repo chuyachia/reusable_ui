@@ -32,7 +32,7 @@ module.exports = (env, argv) => ({
       umd: "react-dom",
     },
   },
-  devtool: argv.mode === "development" ? "cheap-source-map" : "",
+  devtool: argv && argv.mode === "development" ? "cheap-source-map" : "",
   module: {
     rules: [
       {

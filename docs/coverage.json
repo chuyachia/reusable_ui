@@ -1,0 +1,22 @@
+{
+  "coverage": "0%",
+  "expectCount": 3,
+  "actualCount": 0,
+  "files": {
+    "src/coverage/lcov-report/sorter.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/useTheme.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    }
+  }
+}
