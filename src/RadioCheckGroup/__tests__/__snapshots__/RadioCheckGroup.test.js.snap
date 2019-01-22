@@ -3,9 +3,7 @@
 exports[`RadioCheckGroup  should render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <RadioCheckGroup
-    onChange={[Function]}
-  />,
+  Symbol(enzyme.__unrendered__): <RadioCheckGroup />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -21,7 +19,7 @@ ShallowWrapper {
     "props": Object {
       "children": undefined,
       "className": undefined,
-      "onChange": [Function],
+      "onChange": undefined,
     },
     "ref": null,
     "rendered": null,
@@ -35,7 +33,7 @@ ShallowWrapper {
       "props": Object {
         "children": undefined,
         "className": undefined,
-        "onChange": [Function],
+        "onChange": undefined,
       },
       "ref": null,
       "rendered": null,

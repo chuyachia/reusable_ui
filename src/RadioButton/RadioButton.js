@@ -8,7 +8,8 @@ const RadioButton = ({
   name,
   selected,
   groupSelection,
-  onChange,
+  onChange = () => null,
+  // React complain when props.checked is set without onChange function but onChange can actually be on the parent wrapper
 }) => {
   var props = { name, value, onChange };
   if (selected || groupSelection === value) props.checked = true;

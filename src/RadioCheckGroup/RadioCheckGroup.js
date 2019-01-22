@@ -20,11 +20,7 @@ const RadioCheckGroup = ({
     </div>
   );
 };
-RadioCheckGroup.defaultProps = {
-  onChange: e => {
-    console.log(e.target.value);
-  },
-};
+
 RadioCheckGroup.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func,

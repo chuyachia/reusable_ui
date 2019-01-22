@@ -5,12 +5,14 @@ const Checkbox = ({
   label,
   value,
   className,
-  onChange,
+  onChange = () => null,
+  // React complain when props.checked is set without onChange function but onChange can actually be on the parent wrapper
   selected,
   groupSelection,
 }) => {
   var props = { value, onChange };
-  if (selected || groupSelection.indexOf(value) >= 0) props.checked = true;
+  if (selected || (groupSelection && groupSelection.indexOf(value) >= 0))
+    props.checked = true;
   return (
     <label className={className}>
       {label}&nbsp;

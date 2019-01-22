@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RadioButton should render 1`] = `
+exports[`Checkbox should render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <RadioButton />,
+  Symbol(enzyme.__unrendered__): <Checkbox />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -21,9 +21,8 @@ ShallowWrapper {
         undefined,
         " ",
         <input
-          checked={true}
           onChange={[Function]}
-          type="radio"
+          type="checkbox"
         />,
         <span />,
       ],
@@ -38,10 +37,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "checked": true,
-          "name": undefined,
           "onChange": [Function],
-          "type": "radio",
+          "type": "checkbox",
           "value": undefined,
         },
         "ref": null,
@@ -70,9 +67,8 @@ ShallowWrapper {
           undefined,
           " ",
           <input
-            checked={true}
             onChange={[Function]}
-            type="radio"
+            type="checkbox"
           />,
           <span />,
         ],
@@ -87,10 +83,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "checked": true,
-            "name": undefined,
             "onChange": [Function],
-            "type": "radio",
+            "type": "checkbox",
             "value": undefined,
           },
           "ref": null,
