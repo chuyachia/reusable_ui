@@ -10,6 +10,10 @@ import {
   RadioButton,
   RadioCheckGroup,
   Checkbox,
+  Table,
+  TableHead,
+  TableBody,
+  TableCell,
 } from "reusable-components-poc";
 
 class App extends React.Component {
@@ -261,6 +265,24 @@ class App extends React.Component {
           <RadioButton label="B" value="b" name="radiogroup2" />
           <RadioButton label="C" value="c" name="radiogroup2" />
         </RadioCheckGroup>
+        <Table>
+          <TableHead>
+            <tr>
+              <TableCell>Field1</TableCell>
+              <TableCell>Field2</TableCell>
+            </tr>
+          </TableHead>
+          <TableBody>
+            <tr>
+              <TableCell>409280</TableCell>
+              <TableCell>hi</TableCell>
+            </tr>
+            <tr>
+              <TableCell>367112</TableCell>
+              <TableCell>he</TableCell>
+            </tr>
+          </TableBody>
+        </Table>
       </div>
     );
   }
