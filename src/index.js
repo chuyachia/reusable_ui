@@ -6,3 +6,4 @@ export { default as Tag } from "./Tag";
 export { default as RadioButton } from "./RadioButton";
 export { default as RadioCheckGroup } from "./RadioCheckGroup";
 export { default as Checkbox } from "./Checkbox";
+export { TableHead, TableBody, TableRow, TableCell, Table } from "./Table";

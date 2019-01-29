@@ -11,6 +11,7 @@ import {
   RadioCheckGroup,
   Checkbox,
   Table,
+  TableRow,
   TableHead,
   TableBody,
   TableCell,
@@ -265,22 +266,40 @@ class App extends React.Component {
           <RadioButton label="B" value="b" name="radiogroup2" />
           <RadioButton label="C" value="c" name="radiogroup2" />
         </RadioCheckGroup>
-        <Table>
+        <Table variant="warning" highlight="column">
           <TableHead>
-            <tr>
+            <TableRow>
               <TableCell>Field1</TableCell>
               <TableCell>Field2</TableCell>
-            </tr>
+            </TableRow>
           </TableHead>
           <TableBody>
-            <tr>
+            <TableRow>
               <TableCell>409280</TableCell>
               <TableCell>hi</TableCell>
-            </tr>
-            <tr>
+            </TableRow>
+            <TableRow>
               <TableCell>367112</TableCell>
               <TableCell>he</TableCell>
-            </tr>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table variant="secondary" highlight="row">
+          <TableHead>
+            <TableRow>
+              <TableCell>Field1</TableCell>
+              <TableCell>Field2</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>409280</TableCell>
+              <TableCell>hi</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>367112</TableCell>
+              <TableCell>he</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </div>
