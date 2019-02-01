@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Button from "../Button";
 import Input from "../Input/Input";
 import Tag from "../Tag";
+import Arrow from "../Arrow";
 
 class Select extends React.Component {
   state = { open: false, textinput: "" };
@@ -77,9 +78,13 @@ class Select extends React.Component {
               />
             )}
             {isopen ? (
-              <Button onClick={this.openClose}>&#9650;</Button>
+              <Button onClick={this.openClose}>
+                <Arrow direction="up" />
+              </Button>
             ) : (
-              <Button onClick={this.openClose}>&#9660;</Button>
+              <Button onClick={this.openClose}>
+                <Arrow direction="down" />
+              </Button>
             )}
           </div>
         ) : (
@@ -99,9 +104,13 @@ class Select extends React.Component {
               />
             )}
             {isopen ? (
-              <Button onClick={this.openClose}>&#9650;</Button>
+              <Button onClick={this.openClose}>
+                <Arrow direction="up" />
+              </Button>
             ) : (
-              <Button onClick={this.openClose}>&#9660;</Button>
+              <Button onClick={this.openClose}>
+                <Arrow direction="down" />
+              </Button>
             )}
           </div>
         )}

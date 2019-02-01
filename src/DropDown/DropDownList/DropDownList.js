@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const DropDownList = ({
-  open,
   children,
   variant,
   onClick,
@@ -15,14 +14,14 @@ const DropDownList = ({
     }
     onClick(e);
   };
-  return open ? (
+  return (
     <ul onClick={onClickCombinded} {...props}>
       {children &&
         React.Children.map(children, child =>
           React.cloneElement(child, { variant: variant })
         )}
     </ul>
-  ) : null;
+  );
 };
 
 DropDownList.propTypes = {

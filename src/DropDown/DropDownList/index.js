@@ -17,6 +17,11 @@ const StyledDropDownList = styled(DropDownList)`
   border-color: ${props => useTheme(props, "lightGrey")};
   box-shadow: ${props => useTheme(props, "boxShadow")};
   background-color: ${props => useTheme(props, "white")};
+  transform: ${props => (props.open ? "scaleY(1)" : "scaleY(0)")};
+  opacity: ${props => (props.open ? "1" : "0")};
+  transform-origin: top;
+  transition: ${props =>
+    props.open ? "transform 0.3s" : "transform 0.3s,opacity 0.3s"};
 `;
 
 export { DropDownListContext };

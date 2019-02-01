@@ -11,8 +11,14 @@ const Checkbox = ({
   groupSelection,
 }) => {
   var props = { value, onChange };
-  if (selected || (groupSelection && groupSelection.indexOf(value) >= 0))
+  if (
+    selected ||
+    (groupSelection !== undefined && groupSelection.indexOf(value) >= 0)
+  ) {
     props.checked = true;
+  } else if (groupSelection !== undefined) {
+    props.checked = false;
+  }
   return (
     <label className={className}>
       {label}&nbsp;

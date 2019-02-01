@@ -46,13 +46,21 @@ const StyledButton = styled(Button)`
   padding: ${props => {
     if (props.context === "input" || props.context === "select") {
       return 0;
+    } else if (props.small) {
+      return useTheme(props, "smallPadding");
     } else {
       return useTheme(props, "basePadding");
     }
   }};
   font-size: ${props => useTheme(props, "baseFontSize")};
   font-weight: ${props => useTheme(props, "fontSemibold")};
-  line-height: ${props => useTheme(props, "baseLineHeight")};
+  line-height: ${props => {
+    if (props.small) {
+      return useTheme(props, "smallLineHeight");
+    } else {
+      return useTheme(props, "baseLineHeight");
+    }
+  }};
   outline: 0;
   border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;

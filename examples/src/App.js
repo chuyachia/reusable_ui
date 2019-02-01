@@ -15,6 +15,8 @@ import {
   TableHead,
   TableBody,
   TableCell,
+  Tag,
+  Arrow,
 } from "reusable-components-poc";
 
 class App extends React.Component {
@@ -111,7 +113,7 @@ class App extends React.Component {
         <Button variant="secondary" onClick={this.showClick}>
           Click me
         </Button>
-        <Button hollow onClick={this.showClick}>
+        <Button small hollow onClick={this.showClick}>
           Click me
         </Button>
         <Button variant="secondary" hollow onClick={this.showClick}>
@@ -269,8 +271,15 @@ class App extends React.Component {
         <Table variant="warning" highlight="column">
           <TableHead>
             <TableRow>
-              <TableCell>Field1</TableCell>
-              <TableCell>Field2</TableCell>
+              <TableCell>
+                <Tag onClick={() => console.log("field1")}>Field1</Tag>
+              </TableCell>
+              <TableCell>
+                Field2{" "}
+                <Button hollow small>
+                  <Arrow direction="down" />
+                </Button>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
