@@ -13,7 +13,6 @@ $base-text-color: $black;
 $primary: $dark-slate-blue;
 $secondary: $azure;
 $warning: $tomato;
-
 @function contrast-background-color($color) {
   @if (lightness($color) > 50) {
     @return $base-text-color;
@@ -42,7 +41,7 @@ $title-font: $font-sans;
 $content-font: $font-serif;
 
 $base-font-size: 16px;
-$footnote-font-size: 8px;
+$footnote-font-size: 12px;
 
 $font-normal: 400;
 $font-semibold: 600;

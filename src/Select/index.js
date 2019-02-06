@@ -10,7 +10,7 @@ import useTheme from "../useTheme";
 const StyledSelect = styled(Select)`
   min-width: ${props => useTheme(props, "inputMinWidth")};
   position: relative;
-  display: inline-block;
+	display: ${props => (props.inline ? "inline-block" : "block")};
   & div {
     display:inline-block;
   }

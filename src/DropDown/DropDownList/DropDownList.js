@@ -6,6 +6,7 @@ const DropDownList = ({
   variant,
   onClick,
   onClickParent,
+  show,
   ...props
 }) => {
   const onClickCombinded = e => {
@@ -30,6 +31,7 @@ DropDownList.propTypes = {
   onClickParent: PropTypes.func,
   children: PropTypes.node,
   variant: PropTypes.string,
+  show: PropTypes.bool,
 };
 
 export default DropDownList;

@@ -17,6 +17,7 @@ import {
   TableCell,
   Tag,
   Arrow,
+  InputValidator,
 } from "reusable-components-poc";
 
 class App extends React.Component {
@@ -113,31 +114,60 @@ class App extends React.Component {
         <Button variant="secondary" onClick={this.showClick}>
           Click me
         </Button>
-        <Button small hollow onClick={this.showClick}>
+        <Button small={true} hollow={true} onClick={this.showClick}>
           Click me
         </Button>
-        <Button variant="secondary" hollow onClick={this.showClick}>
+        <Button variant="secondary" hollow={true} onClick={this.showClick}>
           Click me
         </Button>
         <Button variant="warning" onClick={this.showClick}>
           Click me
         </Button>
-        <Button variant="warning" hollow onClick={this.showClick}>
+        <Button variant="warning" hollow={true} onClick={this.showClick}>
           Click me
         </Button>
-        <Input
-          controlled
-          value={this.state.input}
-          onChange={this.setTextInput}
-          resetButton
-          onReset={this.resetTextInput}
-        />
-        <Input
-          controlled
-          value={this.state.input}
-          onChange={this.setTextInput}
-        />
-        <Select selected={this.state.select} onSelect={this.setSelect}>
+        <InputValidator
+          validator={value => {
+            if (value.length > 5) {
+              return true;
+            } else {
+              return false;
+            }
+          }}
+          helpText="An input field"
+          warningText="The input value must be more than 5 characters"
+        >
+          <Input
+            inline={true}
+            controlled={true}
+            value={this.state.input}
+            onChange={this.setTextInput}
+            resetButton={true}
+            onReset={this.resetTextInput}
+          />
+        </InputValidator>
+        <InputValidator
+          validator={value => {
+            if (value.length > 5) {
+              return true;
+            } else {
+              return false;
+            }
+          }}
+          helpText="An input field"
+          warningText="The input value must be more than 5 characters"
+        >
+          <Input
+            controlled={true}
+            value={this.state.input}
+            onChange={this.setTextInput}
+          />
+        </InputValidator>
+        <Select
+          inline={true}
+          selected={this.state.select}
+          onSelect={this.setSelect}
+        >
           <DropDownList>
             {selectOptions.map(s => (
               <DropDownItem key={s.value} {...s}>
@@ -147,9 +177,10 @@ class App extends React.Component {
           </DropDownList>
         </Select>
         <Select
+          inline={true}
           selected={this.state.select}
           onSelect={this.setSelect}
-          controlled
+          controlled={true}
           open={false}
         >
           <DropDownList>
@@ -170,7 +201,7 @@ class App extends React.Component {
           </DropDownList>
         </Select>
         <Select
-          multiple
+          multiple={true}
           selected={this.state.multiselect}
           onSelect={this.setMultiSelect}
           onDelete={this.deleteMultiSelect}
@@ -185,7 +216,7 @@ class App extends React.Component {
         </Select>
         <Select
           variant="secondary"
-          multiple
+          multiple={true}
           selected={this.state.multiselect}
           onSelect={this.setMultiSelect}
           onDelete={this.deleteMultiSelect}
@@ -200,7 +231,7 @@ class App extends React.Component {
         </Select>
         <Select
           variant="secondary"
-          suggestion
+          suggestion={true}
           selected={this.state.select}
           onDelete={this.deleteSelect}
           onInput={this.filterSelectOptions}
@@ -216,8 +247,8 @@ class App extends React.Component {
         </Select>
         <Select
           variant="secondary"
-          multiple
-          suggestion
+          multiple={true}
+          suggestion={true}
           selected={this.state.multiselect}
           onDelete={this.deleteMultiSelect}
           onInput={this.filterSelectOptions}
@@ -275,10 +306,12 @@ class App extends React.Component {
                 <Tag onClick={() => console.log("field1")}>Field1</Tag>
               </TableCell>
               <TableCell>
-                Field2{" "}
-                <Button hollow small>
-                  <Arrow direction="down" />
-                </Button>
+                <div>
+                  Field2{" "}
+                  <Button minimal={true} small={true}>
+                    <Arrow direction="down" />
+                  </Button>
+                </div>
               </TableCell>
             </TableRow>
           </TableHead>

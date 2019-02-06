@@ -6,19 +6,17 @@ import Button from "../Button";
 const Input = ({
   resetButton,
   onReset,
-  onChange,
-  onFocus,
   onKeyDown,
   value,
   controlled,
+  inline,
   ...props
 }) => (
   <div {...props}>
     <input
       value={controlled && value}
-      onChange={onChange}
-      onFocus={onFocus}
       onKeyDown={onKeyDown}
+      onChange={() => null}
     />
     {resetButton && <Button onClick={onReset}>X</Button>}
   </div>
@@ -32,6 +30,7 @@ Input.propTypes = {
   onReset: PropTypes.func,
   resetButton: PropTypes.bool,
   value: PropTypes.string,
+  inline: PropTypes.bool,
 };
 
 export default Input;

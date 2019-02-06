@@ -8,7 +8,7 @@ const ButtonContext = React.createContext("default");
 const StyledButton = styled(Button)`
   cursor: pointer;
   background-color: ${props => {
-    if (props.hollow) {
+    if (props.hollow || props.minimal) {
       return useTheme(props, "white");
     } else if (props.context === "input" || props.context === "select") {
       return "transparent";
@@ -62,7 +62,13 @@ const StyledButton = styled(Button)`
     }
   }};
   outline: 0;
-  border-width: ${props => useTheme(props, "borderWidth")};
+  border-width: ${props => {
+    if (props.minimal) {
+      return 0;
+    } else {
+      return useTheme(props, "borderWidth");
+    }
+  }};
   border-style: solid;
   border-color: ${props => {
     switch (props.variant) {
@@ -77,7 +83,9 @@ const StyledButton = styled(Button)`
   border-radius: ${props => useTheme(props, "baseRadius")};
   &:hover {
     ${props => {
-      if (props.hollow) {
+      if (props.minimal) {
+        return "background-color:" + useTheme(props, "white");
+      } else if (props.hollow) {
         switch (props.variant) {
           case "secondary":
             return "background-color:" + useTheme(props, "secondaryLight");
