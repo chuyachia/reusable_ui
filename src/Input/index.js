@@ -16,7 +16,13 @@ const StyledInput = styled(Input)`
   font-size: ${props => useTheme(props, "baseFontSize")};
   border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;
-  border-color: ${props => useTheme(props, "primary")};
+  border-color: ${props => {
+    if (props.variant === "warning") {
+      return useTheme(props, "warning");
+    } else {
+      return useTheme(props, "primary");
+    }
+  }};
   border-radius: ${props => useTheme(props, "baseRadius")};
   & input {
     width: 100%;

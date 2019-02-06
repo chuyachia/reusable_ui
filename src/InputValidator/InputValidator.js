@@ -29,6 +29,9 @@ class InputValidator extends React.Component {
           onChange: this.handleChange,
           onClick: this.handleClick,
           inline: false,
+          variant: this.state.valid
+            ? this.props.children.props.variant
+            : "warning",
         })}
         {this.state.valid ? (
           <i>{this.props.helpText}</i>
