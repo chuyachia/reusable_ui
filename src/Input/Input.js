@@ -11,16 +11,20 @@ const Input = ({
   controlled,
   inline,
   ...props
-}) => (
-  <div {...props}>
-    <input
-      value={controlled && value}
-      onKeyDown={onKeyDown}
-      onChange={() => null}
-    />
-    {resetButton && <Button onClick={onReset}>X</Button>}
-  </div>
-);
+}) => {
+  var inputProps = {
+    onKeyDown,
+    onChange: () => null,
+  };
+  if (controlled) inputProps.value = value;
+
+  return (
+    <div {...props}>
+      <input {...inputProps} />
+      {resetButton && <Button onClick={onReset}>X</Button>}
+    </div>
+  );
+};
 
 Input.propTypes = {
   controlled: PropTypes.bool,

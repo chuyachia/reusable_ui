@@ -163,6 +163,19 @@ class App extends React.Component {
             onChange={this.setTextInput}
           />
         </InputValidator>
+        <InputValidator
+          validator={value => {
+            if (value.length > 5) {
+              return true;
+            } else {
+              return false;
+            }
+          }}
+          helpText="An input field"
+          warningText="The input value must be more than 5 characters"
+        >
+          <Input controlled={false} />
+        </InputValidator>
         <Select
           inline={true}
           selected={this.state.select}
