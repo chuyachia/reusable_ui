@@ -9,13 +9,17 @@ class InputValidator extends React.Component {
       inputValue: "",
     };
   }
-  handleClick = e => {
-    if (this.props.children.props.onClick) this.props.children.props.onClick(e);
+  handleClick = args => {
+    if (this.props.children.props.onClick)
+      this.props.children.props.onClick.apply(this.props.children, args);
+    const [e, ...rest] = args;
     this.setState({ inputValue: e.target.value }, this.validate);
   };
-  handleChange = e => {
+  handleChange = args => {
     if (this.props.children.props.onChange)
-      this.props.children.props.onChange(e);
+      this.props.children.props.onChange.apply(this.props.children, args);
+    const [e, ...rest] = args;
+    console.log(e.target.value);
     this.setState({ inputValue: e.target.value }, this.validate);
   };
   validate = () => {
@@ -26,17 +30,17 @@ class InputValidator extends React.Component {
     return (
       <div className={this.props.className}>
         {React.cloneElement(this.props.children, {
-          onChange: this.handleChange,
-          onClick: this.handleClick,
+          onChange: (...args) => this.handleChange(args),
+          onClick: (...args) => this.handleClick(args),
           inline: false,
           variant: this.state.valid
             ? this.props.children.props.variant
             : "warning",
         })}
         {this.state.valid ? (
-          <i>{this.props.helpText}</i>
+          <span>{this.props.helpText}</span>
         ) : (
-          <i className="warning">{this.props.warningText}</i>
+          <span className="warning">{this.props.warningText}</span>
         )}
       </div>
     );

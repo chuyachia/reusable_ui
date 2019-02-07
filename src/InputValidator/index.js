@@ -9,7 +9,7 @@ export default styled(InputValidator)`
   font-family: ${props => useTheme(props, "fontSans")};
   font-size: ${props => useTheme(props, "footnoteFontSize")};
   vertical-align: top;
-  & i {
+  & span {
     color: ${props => useTheme(props, "darkGrey")};
   }
   & .warning {
