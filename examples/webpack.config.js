@@ -8,6 +8,13 @@ module.exports = (env, argv) => ({
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
   },
+  resolve: {
+    alias: {
+      react: path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
+      assets: path.resolve(__dirname, "assets"),
+    },
+  },
   devtool: argv.mode === "development" ? "cheap-source-map" : "",
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),

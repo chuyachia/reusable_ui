@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "peerDependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   },
   "dependencies": {
     "@emotion/core": "^10.0.4",
@@ -36,8 +36,8 @@
     "jest": "^23.6.0",
     "node-sass": "^4.10.0",
     "prettier": "^1.15.3",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-styleguidist": "^8.0.6",
     "sass-extract": "^2.1.0",
     "sass-extract-js": "^0.4.0",
@@ -51,8 +51,8 @@
     "prepare": "npm run build",
     "dev": "webpack --watch --mode=development",
     "build": "webpack --mode=production",
-		"doc":"npx styleguidist server",
-		"doc-gen":"npx styleguidist build"
+    "doc": "npx styleguidist server",
+    "doc-gen": "npx styleguidist build"
   },
   "author": "",
   "license": "ISC"

@@ -8,6 +8,17 @@ import { DropDownListContext } from "../DropDown/DropDownList";
 import useTheme from "../useTheme";
 
 const StyledSelect = styled(Select)`
+  & .select-display {
+    display: flex;
+    flex-flow: row wrap;
+    align-items:center;
+  }
+  & .select-input {
+    flex: 1 1 auto;
+    & input {
+      width:100%;
+    }
+  }
   min-width: ${props => useTheme(props, "inputMinWidth")};
   position: relative;
 	display: ${props => (props.inline ? "inline-block" : "block")};

@@ -19,7 +19,6 @@ class InputValidator extends React.Component {
     if (this.props.children.props.onChange)
       this.props.children.props.onChange.apply(this.props.children, args);
     const [e, ...rest] = args;
-    console.log(e.target.value);
     this.setState({ inputValue: e.target.value }, this.validate);
   };
   validate = () => {

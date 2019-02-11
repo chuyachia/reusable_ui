@@ -1,6 +1,6 @@
 /*global console*/
-import React from "react";
 
+import React, { useState } from "react";
 import {
   Button,
   Input,
@@ -317,14 +317,15 @@ class App extends React.Component {
             <TableRow>
               <TableCell>
                 <Tag onClick={() => console.log("field1")}>Field1</Tag>
+                <Button minimal={true} small={true}>
+                  <Arrow direction="down" />
+                </Button>
               </TableCell>
               <TableCell>
-                <div>
-                  Field2{" "}
-                  <Button minimal={true} small={true}>
-                    <Arrow direction="down" />
-                  </Button>
-                </div>
+                Field2{" "}
+                <Button minimal={true} small={true}>
+                  <Arrow direction="down" />
+                </Button>
               </TableCell>
             </TableRow>
           </TableHead>

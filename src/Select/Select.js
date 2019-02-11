@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import Button from "../Button";
@@ -6,61 +6,79 @@ import Input from "../Input/Input";
 import Tag from "../Tag";
 import Arrow from "../Arrow";
 
-class Select extends React.Component {
-  state = { open: false, textinput: "" };
-  openClose = () => {
-    this.setState({ open: this.state.open ? false : true });
-  };
-  open = () => {
-    this.setState({ open: true });
-  };
-  setTextInput = e => {
-    this.props.onInput(e.target.value);
-    this.setState({ textinput: e.target.value });
-  };
-  deleteLastSelection = e => {
+const Select = ({
+  suggestion,
+  multiple,
+  selected,
+  controlled,
+  open,
+  className,
+  onDelete,
+  onInput,
+  onSelect,
+  variant,
+  children,
+}) => {
+  const [stateOpen, setStateOpen] = useState(false);
+  const [textInput, setTextInput] = useState("");
+  const deleteLastSelection = e => {
     var key = e.keyCode || e.charCode;
-    if ((key == 8 || key == 46) && this.state.textinput.length == 0) {
+    if ((key == 8 || key == 46) && textInput.length == 0) {
       e.preventDefault();
-      this.props.onDelete();
+      onDelete();
     }
   };
-  deleteSelection = e => {
-    this.props.onDelete(e.target.getAttribute("value"));
+  const deleteSelection = e => {
+    onDelete(e.target.getAttribute("value"));
   };
-  selectOption = e => {
-    this.setState({ textinput: "" });
-    this.props.onSelect({
+  const selectOption = e => {
+    setTextInput("");
+    onSelect({
       value: e.target.getAttribute("value"),
       label: e.target.getAttribute("label"),
     });
-    if (this.props.onInput) {
-      this.props.onInput("");
+    if (onInput) {
+      onInput("");
     }
   };
-  render() {
-    const {
-      selected,
-      variant,
-      children,
-      multiple,
-      suggestion,
-      className,
-      open,
-      controlled,
-    } = this.props;
-    var isopen = controlled ? open : this.state.open;
-    return (
-      <div className={className}>
+  const isopen = controlled ? open : stateOpen;
+  const suggestionInput = suggestion ? (
+    <Input
+      controlled
+      value={textInput}
+      onFocus={() => setStateOpen(true)}
+      onChange={e => {
+        onInput(e.target.value);
+        setTextInput(e.target.value);
+      }}
+      onKeyDown={deleteLastSelection}
+      className="select-input"
+    />
+  ) : (
+    <div className="select-input" />
+  );
+
+  const arrowButton = isopen ? (
+    <Button onClick={() => setStateOpen(!stateOpen)}>
+      <Arrow direction="up" />
+    </Button>
+  ) : (
+    <Button onClick={() => setStateOpen(!stateOpen)}>
+      <Arrow direction="down" />
+    </Button>
+  );
+  return (
+    <div className={className}>
+      <div className="select-display">
         {multiple ? (
-          <div>
+          <React.Fragment>
             {selected.length > 0 ? (
               selected.map(s => (
                 <Tag
                   variant={variant}
                   key={s.value}
                   value={s.value}
-                  onClick={this.deleteSelection}
+                  onClick={deleteSelection}
                 >
                   {s.label}
                 </Tag>
@@ -68,64 +86,30 @@ class Select extends React.Component {
             ) : (
               <span>&nbsp;</span>
             )}
-            {suggestion && (
-              <Input
-                controlled
-                value={this.state.textinput}
-                onFocus={this.open}
-                onChange={this.setTextInput}
-                onKeyDown={this.deleteLastSelection}
-              />
-            )}
-            {isopen ? (
-              <Button onClick={this.openClose}>
-                <Arrow direction="up" />
-              </Button>
-            ) : (
-              <Button onClick={this.openClose}>
-                <Arrow direction="down" />
-              </Button>
-            )}
-          </div>
+          </React.Fragment>
         ) : (
-          <div>
+          <React.Fragment>
             {selected && selected.label ? (
               <span>{selected.label}</span>
             ) : (
               <span>&nbsp;</span>
             )}
-            {suggestion && (
-              <Input
-                controlled
-                value={this.state.textinput}
-                onFocus={this.open}
-                onChange={this.setTextInput}
-                onKeyDown={this.deleteLastSelection}
-              />
-            )}
-            {isopen ? (
-              <Button onClick={this.openClose}>
-                <Arrow direction="up" />
-              </Button>
-            ) : (
-              <Button onClick={this.openClose}>
-                <Arrow direction="down" />
-              </Button>
-            )}
-          </div>
+          </React.Fragment>
         )}
-        {React.Children.map(children, child =>
-          React.cloneElement(child, {
-            variant: variant,
-            open: isopen,
-            onClick: this.selectOption,
-            onClickParent: this.openClose,
-          })
-        )}
+        {suggestionInput}
+        {arrowButton}
       </div>
-    );
-  }
-}
+      {React.Children.map(children, child =>
+        React.cloneElement(child, {
+          variant: variant,
+          open: isopen,
+          onClick: selectOption,
+          onClickParent: () => setStateOpen(!stateOpen),
+        })
+      )}
+    </div>
+  );
+};
 
 Select.propTypes = {
   onInput: PropTypes.func,

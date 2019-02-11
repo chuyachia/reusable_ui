@@ -1,33 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-class Table extends React.Component {
-  constructor() {
-    super();
-    this.state = { hoverColumn: undefined };
-  }
-  setHoverColumn = e => {
-    this.setState({ hoverColumn: e.target.getAttribute("index") });
-  };
-  clearHoverColumn = () => {
-    this.setState({ hoverColumn: undefined });
-  };
-  render() {
-    return (
-      <table
-        className={this.props.className}
-        onMouseOver={this.setHoverColumn}
-        onMouseLeave={this.clearHoverColumn}
-      >
-        {React.Children.map(this.props.children, child =>
-          React.cloneElement(child, {
-            hoverColumn: this.state.hoverColumn,
-          })
-        )}
-      </table>
-    );
-  }
-}
+const Table = ({ children, ...props }) => {
+  const [hoverColumn, setHoverColumn] = useState(undefined);
+  return (
+    <table
+      {...props}
+      onMouseOver={e => setHoverColumn(e.target.getAttribute("index"))}
+      onMouseLeave={() => setHoverColumn(undefined)}
+    >
+      {React.Children.map(children, child =>
+        React.cloneElement(child, {
+          hoverColumn: hoverColumn,
+        })
+      )}
+    </table>
+  );
+};
 
 Table.propTypes = {
   className: PropTypes.string,

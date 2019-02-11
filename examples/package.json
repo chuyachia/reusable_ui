@@ -8,8 +8,8 @@
     "build": "webpack --mode=production"
   },
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "reusable-components-poc": "file:.."
   },
   "devDependencies": {
