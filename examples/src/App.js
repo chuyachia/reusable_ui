@@ -18,6 +18,8 @@ import {
   Tag,
   Arrow,
   InputValidator,
+  InputGroup,
+  Pagination,
 } from "reusable-components-poc";
 
 class App extends React.Component {
@@ -110,13 +112,17 @@ class App extends React.Component {
     });
     return (
       <div>
-        <Button onClick={this.showClick}>Click me</Button>
-        <Button variant="secondary" onClick={this.showClick}>
-          Click me
-        </Button>
-        <Button small={true} hollow={true} onClick={this.showClick}>
-          Click me
-        </Button>
+        <InputGroup>
+          <Button disabled onClick={this.showClick}>
+            Click me
+          </Button>
+          <Button disabled variant="secondary" onClick={this.showClick}>
+            Click me
+          </Button>
+          <Button small={true} hollow={true} onClick={this.showClick}>
+            Click me
+          </Button>
+        </InputGroup>
         <Button variant="secondary" hollow={true} onClick={this.showClick}>
           Click me
         </Button>
@@ -358,6 +364,7 @@ class App extends React.Component {
             </TableRow>
           </TableBody>
         </Table>
+        <Pagination />
       </div>
     );
   }

@@ -11,13 +11,21 @@ class InputValidator extends React.Component {
   }
   handleClick = args => {
     if (this.props.children.props.onClick)
-      this.props.children.props.onClick.apply(this.props.children, args);
+      Reflect.apply(
+        this.props.children.props.onClick,
+        this.props.children,
+        args
+      );
     const [e, ...rest] = args;
     this.setState({ inputValue: e.target.value }, this.validate);
   };
   handleChange = args => {
     if (this.props.children.props.onChange)
-      this.props.children.props.onChange.apply(this.props.children, args);
+      Reflect.apply(
+        this.props.children.props.onChange,
+        this.props.children,
+        args
+      );
     const [e, ...rest] = args;
     this.setState({ inputValue: e.target.value }, this.validate);
   };

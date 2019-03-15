@@ -14,8 +14,7 @@ const StyledDropDownList = styled(DropDownList)`
   margin: 0;
   border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;
-  border-color: ${props => useTheme(props, "lightGrey")};
-  box-shadow: ${props => useTheme(props, "boxShadow")};
+  border-color: ${props => useTheme(props, "primary")};
   background-color: ${props => useTheme(props, "white")};
   transform: ${props => (props.open ? "scaleY(1)" : "scaleY(0)")};
   opacity: ${props => (props.open ? "1" : "0")};

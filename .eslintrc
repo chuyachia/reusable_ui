@@ -10,11 +10,13 @@
 			"prettier/prettier": "error",
 			"no-console": "off",
       "no-unused-vars" : "off",
+      "prefer-reflect" : "error",
 		},
 		"globals":{
 			"shallow":true,
 			"render":true,
 			"mount":true,
+      "Reflect":true,
 		},
 		"extends": ["eslint:recommended", "plugin:react/recommended","prettier"]
 }

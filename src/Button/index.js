@@ -10,6 +10,8 @@ const StyledButton = styled(Button)`
   background-color: ${props => {
     if (props.hollow || props.minimal) {
       return useTheme(props, "white");
+    } else if (props.disabled) {
+      return useTheme(props, "silver");
     } else if (props.context === "input" || props.context === "select") {
       return "transparent";
     } else {
@@ -63,21 +65,21 @@ const StyledButton = styled(Button)`
   }};
   outline: 0;
   border-width: ${props => {
-    if (props.minimal) {
-      return 0;
-    } else {
-      return useTheme(props, "borderWidth");
-    }
+    return useTheme(props, "borderWidth");
   }};
   border-style: solid;
   border-color: ${props => {
-    switch (props.variant) {
-      case "secondary":
-        return useTheme(props, "secondary");
-      case "warning":
-        return useTheme(props, "warning");
-      default:
-        return useTheme(props, "primary");
+    if (props.disabled) {
+      return useTheme(props, "silver");
+    } else {
+      switch (props.variant) {
+        case "secondary":
+          return useTheme(props, "secondary");
+        case "warning":
+          return useTheme(props, "warning");
+        default:
+          return useTheme(props, "primary");
+      }
     }
   }};
   border-radius: ${props => useTheme(props, "baseRadius")};
@@ -85,6 +87,8 @@ const StyledButton = styled(Button)`
     ${props => {
       if (props.minimal) {
         return "background-color:" + useTheme(props, "white");
+      } else if (props.disabled) {
+        return "background-color:" + useTheme(props, "silver");
       } else if (props.hollow) {
         switch (props.variant) {
           case "secondary":
