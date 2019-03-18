@@ -1,2 +1,3 @@
-import Pagination from "./Pagination";
-export default Pagination;
+import React from "react";
+
+export { default } from "./Pagination";

@@ -10,7 +10,7 @@ export default styled(InputValidator)`
   font-size: ${props => useTheme(props, "footnoteFontSize")};
   vertical-align: top;
   & span {
-    color: ${props => useTheme(props, "darkGrey")};
+    color: ${props => useTheme(props, "silver")};
   }
   & .warning {
     color: ${props => useTheme(props, "warning")};

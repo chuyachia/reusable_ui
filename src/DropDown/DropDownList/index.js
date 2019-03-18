@@ -9,12 +9,11 @@ const DropDownListContext = React.createContext();
 const StyledDropDownList = styled(DropDownList)`
   position: absolute;
   z-index: 10;
-  width: 100%;
   padding: 0;
   margin: 0;
   border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;
-  border-color: ${props => useTheme(props, "primary")};
+  border-color: ${props => useTheme(props, "baseTextColor")};
   background-color: ${props => useTheme(props, "white")};
   transform: ${props => (props.open ? "scaleY(1)" : "scaleY(0)")};
   opacity: ${props => (props.open ? "1" : "0")};

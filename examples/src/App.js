@@ -113,10 +113,10 @@ class App extends React.Component {
     return (
       <div>
         <InputGroup>
-          <Button disabled onClick={this.showClick}>
+          <Button variant="primary" onClick={this.showClick}>
             Click me
           </Button>
-          <Button disabled variant="secondary" onClick={this.showClick}>
+          <Button variant="secondary" onClick={this.showClick}>
             Click me
           </Button>
           <Button small={true} hollow={true} onClick={this.showClick}>
@@ -322,16 +322,20 @@ class App extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell>
-                <Tag onClick={() => console.log("field1")}>Field1</Tag>
-                <Button minimal={true} small={true}>
-                  <Arrow direction="down" />
-                </Button>
+                Field1 <Arrow direction="down" />
               </TableCell>
               <TableCell>
                 Field2{" "}
                 <Button minimal={true} small={true}>
                   <Arrow direction="down" />
                 </Button>
+                <DropDownList open={true}>
+                  {multiSelectOptions.map(s => (
+                    <DropDownItem key={s.value} {...s}>
+                      {s.label}
+                    </DropDownItem>
+                  ))}
+                </DropDownList>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -364,7 +368,7 @@ class App extends React.Component {
             </TableRow>
           </TableBody>
         </Table>
-        <Pagination />
+        <Pagination dataLength={102} numberPerPage={10} variant="primary" />
       </div>
     );
   }

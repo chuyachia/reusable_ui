@@ -6,43 +6,32 @@ import Button from "./Button";
 
 const ButtonContext = React.createContext("default");
 const StyledButton = styled(Button)`
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
   background-color: ${props => {
+    if (props.disabled) {
+      return useTheme(props, "silver");
+    }
+    if (props.context === "input" || props.context === "select") {
+      return "transparent";
+    }
     if (props.hollow || props.minimal) {
       return useTheme(props, "white");
-    } else if (props.disabled) {
-      return useTheme(props, "silver");
-    } else if (props.context === "input" || props.context === "select") {
-      return "transparent";
-    } else {
-      switch (props.variant) {
-        case "secondary":
-          return useTheme(props, "secondary");
-        case "warning":
-          return useTheme(props, "warning");
-        default:
-          return useTheme(props, "primary");
-      }
     }
+    if (props.variant) {
+      return useTheme(props, props.variant);
+    }
+    return useTheme(props, "silver");
   }};
   color: ${props => {
     if (props.context === "input" || props.context === "select") {
       return useTheme(props, "baseTextColor");
     }
-    switch (props.variant) {
-      case "secondary":
-        return props.hollow
-          ? useTheme(props, "secondary")
-          : useTheme(props, "secondaryContrastText");
-      case "warning":
-        return props.hollow
-          ? useTheme(props, "warning")
-          : useTheme(props, "warningContrastText");
-      default:
-        return props.hollow
-          ? useTheme(props, "primary")
-          : useTheme(props, "primaryContrastText");
+    if (props.variant) {
+      return props.hollow || props.disabled
+        ? useTheme(props, props.variant)
+        : useTheme(props, props.variant + "ContrastText");
     }
+    return useTheme(props, "baseTextColor");
   }};
   font-family: ${props => useTheme(props, "fontSans")};
   padding: ${props => {
@@ -69,52 +58,43 @@ const StyledButton = styled(Button)`
   }};
   border-style: solid;
   border-color: ${props => {
-    if (props.disabled) {
+    if (props.variant) {
+      return useTheme(props, props.variant);
+    } else if (props.disabled) {
       return useTheme(props, "silver");
     } else {
-      switch (props.variant) {
-        case "secondary":
-          return useTheme(props, "secondary");
-        case "warning":
-          return useTheme(props, "warning");
-        default:
-          return useTheme(props, "primary");
-      }
+      return useTheme(props, "baseTextColor");
     }
   }};
   border-radius: ${props => useTheme(props, "baseRadius")};
   &:hover {
-    ${props => {
-      if (props.minimal) {
-        return "background-color:" + useTheme(props, "white");
-      } else if (props.disabled) {
-        return "background-color:" + useTheme(props, "silver");
-      } else if (props.hollow) {
-        switch (props.variant) {
-          case "secondary":
-            return "background-color:" + useTheme(props, "secondaryLight");
-          case "warning":
-            return "background-color:" + useTheme(props, "warningLight");
-          default:
-            return "background-color:" + useTheme(props, "primaryLight");
-        }
-      } else if (props.context === "input" || props.context === "select") {
+    background-color: ${props => {
+      if (
+        props.minimal ||
+        props.context === "select" ||
+        props.context === "input"
+      ) {
+        return useTheme(props, "white");
+      }
+      if (props.disabled) {
+        return useTheme(props, "silver");
+      }
+      if (props.variant) {
+        return props.hollow
+          ? useTheme(props, props.variant + "Light")
+          : useTheme(props, props.variant + "Dark");
+      }
+      return useTheme(props, "silver");
+    }};
+    font-weight: ${props => {
+      if (props.context === "input" || props.context === "select") {
         return "font-weight:" + useTheme(props, "fontBold");
-      } else {
-        switch (props.variant) {
-          case "secondary":
-            return "background-color:" + useTheme(props, "secondaryDark");
-          case "warning":
-            return "background-color:" + useTheme(props, "warningDark");
-          default:
-            return "background-color:" + useTheme(props, "primaryDark");
-        }
       }
     }};
   }
 
   ${props => {
-    if (props.context !== "default") {
+    if (props.context === "input" || props.context === "select") {
       return "border:0;";
     }
   }};

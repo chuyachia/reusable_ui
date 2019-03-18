@@ -6,15 +6,10 @@ import Arrow from "./Arrow";
 const StyledArrow = styled(Arrow)`
   border-style: solid;
   border-color: ${props => {
-    switch (props.variant) {
-      case "secondary":
-        return useTheme(props, "secondary");
-      case "warning":
-        return useTheme(props, "warning");
-      case "primary":
-        return useTheme(props, "primary");
-      default:
-        return useTheme(props, "black");
+    if (props.variant) {
+      return useTheme(props, props.variant);
+    } else {
+      return useTheme(props, "baseTextColor");
     }
   }};
   display: inline-block;
@@ -33,9 +28,9 @@ const StyledArrow = styled(Arrow)`
       case "left":
         return "transform: rotate(135deg)";
       case "up":
-        return "transform: rotate(-135deg)";
+        return "transform: translateY(25%) rotate(-135deg)";
       case "down":
-        return "transform: rotate(45deg)";
+        return "transform: translateY(-25%) rotate(45deg)";
     }
   }};
   transition: transform 0.3s;
