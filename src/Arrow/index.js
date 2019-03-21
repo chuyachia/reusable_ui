@@ -8,9 +8,11 @@ const StyledArrow = styled(Arrow)`
   border-color: ${props => {
     if (props.variant) {
       return useTheme(props, props.variant);
-    } else {
-      return useTheme(props, "baseTextColor");
     }
+    if (props.disabled) {
+      return useTheme(props, "grey");
+    }
+    return useTheme(props, "primary");
   }};
   display: inline-block;
   padding: ${props => {

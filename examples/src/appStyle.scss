@@ -1,0 +1,39 @@
+@import "./node_modules/reusable-components-poc/dist/defaultTheme";
+
+html, body, #root {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+.wrapper {
+  height:100%;
+  display:flex;
+  flex-flow:row nowrap;
+}
+.sidebar {
+  flex: 1 0;
+  background-color: $dark-slate-blue;
+  overflow-y:auto;
+}
+.main {
+  flex: 3 0;
+  padding: 0.5em;
+}
+a {
+  color: inherit; 
+  text-decoration: inherit;
+}
+h1, h2, h3, h4 ,h5 {
+  font-family:$font-sans;
+}
+.sidebar > section {
+  padding: 0.5em;
+  border-bottom: 1px solid $silver;
+  cursor:pointer;
+  color: $primary-contrast-text;
+}
+
+.main  section {
+  padding: 0.5em;
+  display: inline-block;
+}

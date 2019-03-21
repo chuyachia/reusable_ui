@@ -5,12 +5,15 @@ $beige: #e5c4a1;
 $silver: #c4cfd0;
 $white: #fff;
 $black: #212529;
+$grey: darken($silver,20%);
 
 $base-text-color: $black;
 
 $primary: $dark-slate-blue;
 $secondary: $azure;
 $warning: $tomato;
+$disabled: $silver;
+
 @function contrast-background-color($color) {
   @if (lightness($color) > 50) {
     @return $base-text-color;
@@ -47,6 +50,7 @@ $font-bold: 700;
 
 $small-line-height: 1.5;
 $base-line-height: 2.5;
+$large-line-height: 3.5;
 
 $small-margin: 0.5em;
 $small-padding: 0 0.5em;

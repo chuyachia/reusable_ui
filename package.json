@@ -10,6 +10,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.4",
     "@emotion/styled": "^10.0.4",
+    "concurrently": "^4.1.0",
     "emotion-theming": "^10.0.4",
     "prop-types": "^15.6.2"
   },
@@ -23,6 +24,7 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^5.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "esdoc": "^1.1.0",

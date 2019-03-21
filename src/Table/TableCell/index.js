@@ -6,12 +6,18 @@ import TableCell from "./TableCell";
 import { TableContext } from "../Table";
 const TableCellContext = React.createContext();
 const StyledTableCell = styled(TableCell)`
+  position: relative;
   line-height: ${props => useTheme(props, "baseLineHeight")};
   padding: ${props => useTheme(props, "basePadding")};
-  border-color: ${props => useTheme(props, "lightGrey")};
+  border-bottom-color: ${props => {
+    if (props.variant) {
+      return useTheme(props, props.variant);
+    }
+    useTheme(props, "primary");
+  }};
   border-bottom-style: solid;
   border-width: ${props => (props.context === "head" ? "medium" : "thin")};
-	${props => {
+  ${props => {
     if (props.highlight === "column" && props.isHoverColumn) {
       switch (props.variant) {
         case "secondary":
@@ -23,8 +29,8 @@ const StyledTableCell = styled(TableCell)`
       }
     }
   }};
-	&:hover {
-		${props => {
+  &:hover {
+    ${props => {
       if (props.highlight === "cell") {
         switch (props.variant) {
           case "secondary":
@@ -36,6 +42,17 @@ const StyledTableCell = styled(TableCell)`
         }
       }
     }}
+  }
+  &:not(:last-child):after {
+    content: "";
+    height: 1em;
+    border: 1px solid
+      ${props =>
+        props.context === "head" ? "transparent" : useTheme(props, "silver")};
+    position: absolute;
+    top: 25%;
+    right: 0;
+  }
 `;
 export { TableCellContext };
 const StyledTableCellWContext = props => (

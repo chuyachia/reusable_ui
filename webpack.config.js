@@ -1,6 +1,7 @@
 /*global require module __dirname */
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = (env, argv) => ({
   entry: "./src/index.js",
@@ -51,5 +52,8 @@ module.exports = (env, argv) => ({
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(["dist"])],
+  plugins: [
+    new CleanWebpackPlugin(["dist"]),
+    new CopyWebpackPlugin([{ from: "src/defaultTheme.scss" }]),
+  ],
 });

@@ -5,6 +5,8 @@ import Button from "../Button";
 import Input from "../Input/Input";
 import Tag from "../Tag";
 import Arrow from "../Arrow";
+import { DropDownList } from "../DropDown";
+import { DropDownItem } from "../DropDown";
 
 const Select = ({
   suggestion,
@@ -18,6 +20,7 @@ const Select = ({
   onSelect,
   variant,
   children,
+  options,
 }) => {
   const [stateOpen, setStateOpen] = useState(false);
   const [textInput, setTextInput] = useState("");
@@ -99,14 +102,18 @@ const Select = ({
         {suggestionInput}
         {arrowButton}
       </div>
-      {React.Children.map(children, child =>
-        React.cloneElement(child, {
-          variant: variant,
-          open: isopen,
-          onClick: selectOption,
-          onClickParent: () => setStateOpen(!stateOpen),
-        })
-      )}
+      <DropDownList
+        variant={variant}
+        open={isopen}
+        onClick={selectOption}
+        onClickParent={() => setStateOpen(!stateOpen)}
+      >
+        {options.map(s => (
+          <DropDownItem key={s.value} {...s}>
+            {s.label}
+          </DropDownItem>
+        ))}
+      </DropDownList>
     </div>
   );
 };
@@ -134,6 +141,7 @@ Select.propTypes = {
   multiple: PropTypes.bool,
   suggestion: PropTypes.bool,
   className: PropTypes.string,
+  options: PropTypes.array,
 };
 
 export default Select;

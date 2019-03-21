@@ -34,7 +34,7 @@ const StyledSelect = styled(Select)`
     line-height: ${props => useTheme(props, "baseLineHeight")};
     border-width: ${props => useTheme(props, "borderWidth")};
     border-style: solid;
-    border-color: ${props => useTheme(props, "primary")};
+    border-color: ${props => useTheme(props, "baseTextColor")};
     border-radius: ${props => useTheme(props, "baseRadius")};
     display:block;
   }

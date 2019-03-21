@@ -23,6 +23,5 @@ export default styled(DropDownItem)`
           return useTheme(props, "primaryLight");
       }
     }};
-    font-weight: ${props => useTheme(props, "fontSemibold")};
   }
 `;

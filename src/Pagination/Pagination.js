@@ -91,4 +91,11 @@ const Pagination = ({ onPageChange, dataLength, numberPerPage, variant }) => {
     </InputGroup>
   );
 };
+
+Pagination.propTypes = {
+  onPageChange: PropTypes.func,
+  dataLength: PropTypes.number,
+  numberPerPage: PropTypes.number,
+  variant: PropTypes.string,
+};
 export default Pagination;
