@@ -12,8 +12,6 @@ const Select = ({
   suggestion,
   multiple,
   selected,
-  controlled,
-  open,
   className,
   onDelete,
   onInput,
@@ -33,21 +31,34 @@ const Select = ({
   };
   const deleteSelection = e => {
     onDelete(e.target.getAttribute("value"));
+    setStateOpen(true);
   };
   const selectOption = e => {
-    setTextInput("");
-    onSelect({
+    const option = {
       value: e.target.getAttribute("value"),
       label: e.target.getAttribute("label"),
-    });
+    };
+    setTextInput("");
+    if (
+      multiple &&
+      selected.findIndex(
+        s => s.value === option.value && s.label === option.label
+      ) >= 0
+    ) {
+      onDelete(option.value);
+    } else {
+      onSelect({
+        value: e.target.getAttribute("value"),
+        label: e.target.getAttribute("label"),
+      });
+    }
     if (onInput) {
       onInput("");
     }
   };
-  const isopen = controlled ? open : stateOpen;
   const suggestionInput = suggestion ? (
     <Input
-      controlled
+      controlled={true}
       value={textInput}
       onFocus={() => setStateOpen(true)}
       onChange={e => {
@@ -61,7 +72,7 @@ const Select = ({
     <div className="select-input" />
   );
 
-  const arrowButton = isopen ? (
+  const arrowButton = stateOpen ? (
     <Button onClick={() => setStateOpen(!stateOpen)}>
       <Arrow direction="up" />
     </Button>
@@ -104,7 +115,7 @@ const Select = ({
       </div>
       <DropDownList
         variant={variant}
-        open={isopen}
+        open={stateOpen}
         onClick={selectOption}
         onClickParent={() => setStateOpen(!stateOpen)}
       >
@@ -135,9 +146,7 @@ Select.propTypes = {
     ),
   ]),
   variant: PropTypes.string,
-  open: PropTypes.bool,
   children: PropTypes.node,
-  controlled: PropTypes.bool,
   multiple: PropTypes.bool,
   suggestion: PropTypes.bool,
   className: PropTypes.string,

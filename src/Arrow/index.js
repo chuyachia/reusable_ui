@@ -12,7 +12,7 @@ const StyledArrow = styled(Arrow)`
     if (props.disabled) {
       return useTheme(props, "grey");
     }
-    return useTheme(props, "primary");
+    return useTheme(props, "baseTextColor");
   }};
   display: inline-block;
   padding: ${props => {

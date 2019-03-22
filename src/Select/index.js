@@ -15,9 +15,6 @@ const StyledSelect = styled(Select)`
   }
   & .select-input {
     flex: 1 1 auto;
-    & input {
-      width:100%;
-    }
   }
   min-width: ${props => useTheme(props, "inputMinWidth")};
   position: relative;
