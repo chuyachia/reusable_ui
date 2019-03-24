@@ -19,9 +19,11 @@ const StyledInput = styled(Input)`
   border-color: ${props => {
     if (props.variant === "warning") {
       return useTheme(props, "warning");
-    } else {
+    }
+    if (props.variant === "focus") {
       return useTheme(props, "primary");
     }
+    return useTheme(props, "silver");
   }};
   border-radius: ${props => useTheme(props, "baseRadius")};
   & input {

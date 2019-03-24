@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   Input,
   InputValidator,
@@ -22,9 +22,9 @@ const InputsExample = () => {
           inline={true}
           controlled={true}
           value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
+          onChange={useCallback(e => setInputValue(e.target.value))}
           resetButton={true}
-          onReset={() => setInputValue("")}
+          onReset={useCallback(() => setInputValue(""))}
         />
       </section>
       <section>
@@ -38,9 +38,9 @@ const InputsExample = () => {
             inline={true}
             controlled={true}
             value={inputValue}
-            onChange={e => setInputValue(e.target.value)}
+            onChange={useCallback(e => setInputValue(e.target.value))}
             resetButton={true}
-            onReset={() => setInputValue("")}
+            onReset={useCallback(() => setInputValue(""))}
           />
         </InputValidator>
       </section>

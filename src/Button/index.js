@@ -57,7 +57,6 @@ const StyledButton = styled(Button)`
       return useTheme(props, "baseLineHeight");
     }
   }};
-  outline: 0;
   border-width: ${props => {
     return useTheme(props, "borderWidth");
   }};

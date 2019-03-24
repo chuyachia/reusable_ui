@@ -6,6 +6,7 @@ class InputValidator extends React.Component {
     super();
     this.state = {
       valid: true,
+      focus: false,
       inputValue: "",
     };
   }
@@ -17,7 +18,10 @@ class InputValidator extends React.Component {
         args
       );
     const [e, ...rest] = args;
-    this.setState({ inputValue: e.target.value }, this.validate);
+    this.setState({ inputValue: e.target.value, focus: true }, this.validate);
+  };
+  handleBlur = () => {
+    this.setState({ focus: false });
   };
   handleChange = args => {
     if (this.props.children.props.onChange)
@@ -38,14 +42,17 @@ class InputValidator extends React.Component {
       <div className={this.props.className}>
         {React.cloneElement(this.props.children, {
           onChange: (...args) => this.handleChange(args),
-          onClick: (...args) => this.handleClick(args),
+          onFocus: (...args) => this.handleClick(args),
+          onBlur: (...args) => this.handleBlur(args),
           inline: false,
           variant: this.state.valid
-            ? this.props.children.props.variant
+            ? this.state.focus
+              ? "focus"
+              : ""
             : "warning",
         })}
         {this.state.valid ? (
-          <span>{this.props.helpText}</span>
+          this.state.focus && <span>{this.props.helpText}</span>
         ) : (
           <span className="warning">{this.props.warningText}</span>
         )}

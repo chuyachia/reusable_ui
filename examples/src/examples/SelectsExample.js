@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Select } from "reusable-components-poc";
 
 const options = [
@@ -18,18 +18,26 @@ const SelectsExample = () => {
   const [multipleSelecteds, setMultipleSelected] = useState([]);
   const [filterTerm, setFilterTerm] = useState("");
 
-  const removeFromSelected = value => {
-    const index = multipleSelecteds.findIndex(
-      selected => selected.value === value
-    );
-    setMultipleSelected(
-      multipleSelecteds
-        .slice(0, index)
-        .concat(multipleSelecteds.slice(index + 1))
-    );
-  };
-  const filteredOptions = options.filter(
-    option => option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) >= 0
+  const removeFromSelected = useMemo(
+    () => value => {
+      const index = value
+        ? multipleSelecteds.findIndex(selected => selected.value === value)
+        : multipleSelecteds.length - 1;
+      setMultipleSelected(
+        multipleSelecteds
+          .slice(0, index)
+          .concat(multipleSelecteds.slice(index + 1))
+      );
+    },
+    [multipleSelecteds, setMultipleSelected]
+  );
+  const filteredOptions = useMemo(
+    () =>
+      options.filter(
+        option =>
+          option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) >= 0
+      ),
+    [filterTerm]
   );
 
   return (
@@ -40,7 +48,7 @@ const SelectsExample = () => {
           <Select
             inline={true}
             selected={singleSelected}
-            onSelect={option => setSingleSelected(option)}
+            onSelect={useCallback(option => setSingleSelected(option))}
             options={options}
           />
         </section>
@@ -51,9 +59,9 @@ const SelectsExample = () => {
             suggestion={true}
             inline={true}
             selected={singleSelected}
-            onInput={value => setFilterTerm(value)}
-            onSelect={option => setSingleSelected(option)}
-            onDelete={() => setSingleSelected(null)}
+            onInput={useCallback(value => setFilterTerm(value))}
+            onSelect={useCallback(option => setSingleSelected(option))}
+            onDelete={useCallback(() => setSingleSelected(null))}
             options={filteredOptions}
           />
         </section>
@@ -65,10 +73,10 @@ const SelectsExample = () => {
             inline={true}
             multiple={true}
             selected={multipleSelecteds}
-            onSelect={option =>
+            onSelect={useCallback(option =>
               setMultipleSelected([...multipleSelecteds, option])
-            }
-            onDelete={value => removeFromSelected(value)}
+            )}
+            onDelete={useCallback(value => removeFromSelected(value))}
             options={options}
           />
         </section>
@@ -80,11 +88,11 @@ const SelectsExample = () => {
             suggestion={true}
             multiple={true}
             selected={multipleSelecteds}
-            onInput={value => setFilterTerm(value)}
-            onSelect={option =>
+            onInput={useCallback(value => setFilterTerm(value))}
+            onSelect={useCallback(option =>
               setMultipleSelected([...multipleSelecteds, option])
-            }
-            onDelete={value => removeFromSelected(value)}
+            )}
+            onDelete={useCallback(value => removeFromSelected(value))}
             options={filteredOptions}
           />
         </section>

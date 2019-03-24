@@ -8,14 +8,6 @@ import { DropDownListContext } from "../DropDown/DropDownList";
 import useTheme from "../useTheme";
 
 const StyledSelect = styled(Select)`
-  & .select-display {
-    display: flex;
-    flex-flow: row wrap;
-    align-items:center;
-  }
-  & .select-input {
-    flex: 1 1 auto;
-  }
   min-width: ${props => useTheme(props, "inputMinWidth")};
   position: relative;
 	display: ${props => (props.inline ? "inline-block" : "block")};
@@ -31,7 +23,7 @@ const StyledSelect = styled(Select)`
     line-height: ${props => useTheme(props, "baseLineHeight")};
     border-width: ${props => useTheme(props, "borderWidth")};
     border-style: solid;
-    border-color: ${props => useTheme(props, "baseTextColor")};
+    border-color: ${props => useTheme(props, "silver")};
     border-radius: ${props => useTheme(props, "baseRadius")};
     display:block;
   }

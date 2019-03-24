@@ -2,9 +2,9 @@
 
 const defaultTheme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./defaultTheme.scss');
 
-export default ({ theme }, prop) => {
-  if (Reflect.has(theme, prop)) {
-    return theme[prop];
+export default ({ theme }, name) => {
+  if (Reflect.has(theme, name)) {
+    return theme[name];
   }
-  return defaultTheme[prop];
+  return defaultTheme[name];
 };

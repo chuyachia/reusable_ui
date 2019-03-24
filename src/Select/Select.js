@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 
 import Button from "../Button";
@@ -22,7 +22,14 @@ const Select = ({
 }) => {
   const [stateOpen, setStateOpen] = useState(false);
   const [textInput, setTextInput] = useState("");
-  const deleteLastSelection = e => {
+  const [activeItem, setActiveItem] = useState(0);
+  const dropDownRef = React.createRef();
+  const isSelected = option =>
+    selected.findIndex(
+      s => s.value === option.value && s.label === option.label
+    ) >= 0;
+  const inputKeyDown = e => {
+    setStateOpen(true);
     var key = e.keyCode || e.charCode;
     if ((key == 8 || key == 46) && textInput.length == 0) {
       e.preventDefault();
@@ -31,29 +38,53 @@ const Select = ({
   };
   const deleteSelection = e => {
     onDelete(e.target.getAttribute("value"));
-    setStateOpen(true);
   };
-  const selectOption = e => {
-    const option = {
-      value: e.target.getAttribute("value"),
-      label: e.target.getAttribute("label"),
-    };
-    setTextInput("");
-    if (
-      multiple &&
-      selected.findIndex(
-        s => s.value === option.value && s.label === option.label
-      ) >= 0
-    ) {
+  const selectOption = option => {
+    if (multiple && isSelected(option)) {
       onDelete(option.value);
     } else {
-      onSelect({
-        value: e.target.getAttribute("value"),
-        label: e.target.getAttribute("label"),
-      });
+      onSelect(option);
     }
     if (onInput) {
       onInput("");
+    }
+    setTextInput("");
+    if (!multiple) setStateOpen(false);
+  };
+  const handleItemClick = e => {
+    if (e.target.nodeName === "LI") {
+      const option = {
+        value: e.target.getAttribute("value"),
+        label: e.target.getAttribute("label"),
+      };
+      selectOption(option);
+    }
+  };
+  const keyDownOpenDropDown = e => {
+    if (e.keyCode === 13) {
+      if (!stateOpen) {
+        setStateOpen(true);
+      } else {
+        const option = options[activeItem];
+        selectOption(option);
+      }
+    } else if (e.keyCode === 40) {
+      if (!stateOpen) {
+        setStateOpen(true);
+      } else {
+        keyDownChangeActive(e);
+      }
+    } else if (e.keyCode === 38 && stateOpen) {
+      keyDownChangeActive(e);
+    }
+  };
+  const keyDownChangeActive = e => {
+    if (e.keyCode === 40 && activeItem < options.length - 1) {
+      setActiveItem(activeItem + 1);
+      dropDownRef.current.scrollBy(0, 40);
+    } else if (e.keyCode === 38 && activeItem > 0) {
+      setActiveItem(activeItem - 1);
+      dropDownRef.current.scrollBy(0, -40);
     }
   };
   const suggestionInput = suggestion ? (
@@ -64,8 +95,9 @@ const Select = ({
       onChange={e => {
         onInput(e.target.value);
         setTextInput(e.target.value);
+        setActiveItem(0);
       }}
-      onKeyDown={deleteLastSelection}
+      onKeyDown={inputKeyDown}
       className="select-input"
     />
   ) : (
@@ -82,7 +114,12 @@ const Select = ({
     </Button>
   );
   return (
-    <div className={className}>
+    <div
+      className={className}
+      tabIndex={0}
+      onKeyDown={keyDownOpenDropDown}
+      onBlur={() => setStateOpen(false)}
+    >
       <div className="select-display">
         {multiple ? (
           <React.Fragment>
@@ -113,17 +150,21 @@ const Select = ({
         {suggestionInput}
         {arrowButton}
       </div>
-      <DropDownList
-        variant={variant}
-        open={stateOpen}
-        onClick={selectOption}
-        onClickParent={() => setStateOpen(!stateOpen)}
-      >
-        {options.map(s => (
-          <DropDownItem key={s.value} {...s}>
+      <DropDownList variant={variant} open={stateOpen} ref={dropDownRef}>
+        {options.map((s, i) => (
+          <DropDownItem
+            className={`${i === activeItem && "active"}`}
+            key={s.value}
+            {...s}
+            disabled={multiple && selected && isSelected(s)}
+            onClick={handleItemClick}
+          >
             {s.label}
           </DropDownItem>
         ))}
+        {options.length === 0 && (
+          <DropDownItem disabled={true}>No result found</DropDownItem>
+        )}
       </DropDownList>
     </div>
   );

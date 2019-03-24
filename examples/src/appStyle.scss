@@ -33,7 +33,12 @@ h1, h2, h3, h4 ,h5 {
   color: $primary-contrast-text;
 }
 
-.main  section {
+.main > * {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content:flex-start;
+}
+.main section {
   padding: 0.5em;
   display: inline-block;
   vertical-align: top;

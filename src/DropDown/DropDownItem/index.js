@@ -10,18 +10,20 @@ export default styled(DropDownItem)`
   font-family: ${props => useTheme(props, "fontSans")};
   font-size: ${props => useTheme(props, "baseFontSize")};
   font-weight: ${props => useTheme(props, "fontNormal")};
-  color: ${props => useTheme(props, "baseTextColor")};
+  color: ${props => {
+    if (props.disabled) {
+      return useTheme(props, "silver");
+    }
+    return useTheme(props, "baseTextColor");
+  }};
   line-height: ${props => useTheme(props, "baseLineHeight")};
-  &:hover {
+  &:hover,
+  &.active {
     background-color: ${props => {
-      switch (props.variant) {
-        case "secondary":
-          return useTheme(props, "secondaryLight");
-        case "warning":
-          return useTheme(props, "warningLight");
-        default:
-          return useTheme(props, "primaryLight");
+      if (props.variant) {
+        return useTheme(props, props.variant + "Light");
       }
+      return useTheme(props, "primaryLight");
     }};
   }
 `;
