@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { combineCallBacks, combineClassNames } from "../util";
+
 class InputValidator extends React.Component {
   constructor() {
     super();
@@ -10,29 +12,6 @@ class InputValidator extends React.Component {
       inputValue: "",
     };
   }
-  handleClick = args => {
-    if (this.props.children.props.onClick)
-      Reflect.apply(
-        this.props.children.props.onClick,
-        this.props.children,
-        args
-      );
-    const [e, ...rest] = args;
-    this.setState({ inputValue: e.target.value, focus: true }, this.validate);
-  };
-  handleBlur = () => {
-    this.setState({ focus: false });
-  };
-  handleChange = args => {
-    if (this.props.children.props.onChange)
-      Reflect.apply(
-        this.props.children.props.onChange,
-        this.props.children,
-        args
-      );
-    const [e, ...rest] = args;
-    this.setState({ inputValue: e.target.value }, this.validate);
-  };
   validate = () => {
     var validateResult = this.props.validator(this.state.inputValue);
     this.setState({ valid: validateResult });
@@ -41,9 +20,18 @@ class InputValidator extends React.Component {
     return (
       <div className={this.props.className}>
         {React.cloneElement(this.props.children, {
-          onChange: (...args) => this.handleChange(args),
-          onFocus: (...args) => this.handleClick(args),
-          onBlur: (...args) => this.handleBlur(args),
+          onChange: combineCallBacks(this.props.children.props.onChange, e =>
+            this.setState({ inputValue: e.target.value }, this.validate)
+          ),
+          onFocus: combineCallBacks(this.props.children.props.onFocus, e =>
+            this.setState(
+              { inputValue: e.target.value, focus: true },
+              this.validate
+            )
+          ),
+          onBlur: combineCallBacks(this.props.children.props.onBlur, e =>
+            this.setState({ focus: false })
+          ),
           inline: false,
           variant: this.state.valid
             ? this.state.focus

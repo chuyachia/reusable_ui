@@ -17,7 +17,6 @@ export default styled(DropDownItem)`
     return useTheme(props, "baseTextColor");
   }};
   line-height: ${props => useTheme(props, "baseLineHeight")};
-  &:hover,
   &.active {
     background-color: ${props => {
       if (props.variant) {

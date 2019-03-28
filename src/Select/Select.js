@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 
 import Button from "../Button";
@@ -23,7 +23,7 @@ const Select = ({
   const [stateOpen, setStateOpen] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [activeItem, setActiveItem] = useState(0);
-  const dropDownRef = React.createRef();
+  const dropDownRef = useRef(null);
   const isSelected = option =>
     selected.findIndex(
       s => s.value === option.value && s.label === option.label
@@ -78,6 +78,7 @@ const Select = ({
       keyDownChangeActive(e);
     }
   };
+
   const keyDownChangeActive = e => {
     if (e.keyCode === 40 && activeItem < options.length - 1) {
       setActiveItem(activeItem + 1);
@@ -150,14 +151,20 @@ const Select = ({
         {suggestionInput}
         {arrowButton}
       </div>
-      <DropDownList variant={variant} open={stateOpen} ref={dropDownRef}>
+      <DropDownList
+        variant={variant}
+        open={stateOpen}
+        ref={dropDownRef}
+        controlled={true}
+      >
         {options.map((s, i) => (
           <DropDownItem
-            className={`${i === activeItem && "active"}`}
             key={s.value}
             {...s}
             disabled={multiple && selected && isSelected(s)}
             onClick={handleItemClick}
+            className={i === activeItem && "active"}
+            onMouseOver={() => setActiveItem(i)}
           >
             {s.label}
           </DropDownItem>
