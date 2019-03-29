@@ -1,15 +1,27 @@
 import React from "react";
-import { Button } from "reusable-components-poc";
+import { Button, Toaster } from "reusable-components-poc";
 
 const ButtonsExample = () => {
   return (
     <React.Fragment>
       <div>
         <section>
-          <Button variant="primary">Primary</Button>
+          <Button
+            variant="primary"
+            onClick={() => Toaster.show("You clicked on a primary button")}
+          >
+            Primary
+          </Button>
         </section>
         <section>
-          <Button variant="secondary">Secondary</Button>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              Toaster.show("You clicked on a secondary button", "secondary")
+            }
+          >
+            Secondary
+          </Button>
         </section>
         <section>
           <Button variant="warning">Warning</Button>

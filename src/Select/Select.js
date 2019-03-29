@@ -115,12 +115,7 @@ const Select = ({
     </Button>
   );
   return (
-    <div
-      className={className}
-      tabIndex={0}
-      onKeyDown={keyDownOpenDropDown}
-      onBlur={() => setStateOpen(false)}
-    >
+    <div className={className} tabIndex={0} onKeyDown={keyDownOpenDropDown}>
       <div className="select-display">
         {multiple ? (
           <React.Fragment>

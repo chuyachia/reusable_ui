@@ -11,4 +11,5 @@ export { default as Arrow } from "./Arrow";
 export { default as InputValidator } from "./InputValidator";
 export { default as InputGroup } from "./InputGroup";
 export { default as Pagination } from "./Pagination";
-export { default as SideBar } from "./SideBar";
+export { default as Toast } from "./Toast";
+export { default as Toaster } from "./Toast/Toaster";
