@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
 
 import useTheme from "../useTheme";
@@ -17,6 +16,15 @@ const StyledToast = styled(Toast)`
       return useTheme(props, props.variant + "ContrastText");
     }
     return useTheme(props, "primaryContrastText");
+  }};
+  border-style: solid;
+  border-width: ${props => useTheme(props, "borderWidth")};
+  border-radius: ${props => useTheme(props, "baseRadius")};
+  border-color: ${props => {
+    if (props.variant) {
+      return useTheme(props, props.variant + "Dark");
+    }
+    return useTheme(props, "primaryDark");
   }};
   font-family: ${props => useTheme(props, "fontSans")};
   font-weight: ${props => useTheme(props, "fontSemibold")};

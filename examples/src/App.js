@@ -10,6 +10,7 @@ import "./appStyle.scss";
 const ButtonsExample = lazy(() => import("./examples/ButtonsExample"));
 const InputsExample = lazy(() => import("./examples/InputsExample"));
 const SelectsExample = lazy(() => import("./examples/SelectsExample"));
+const ChecksExample = lazy(() => import("./examples/ChecksExample"));
 
 class App extends React.Component {
   state = {
@@ -56,6 +57,11 @@ class App extends React.Component {
                 <h3>Select</h3>
               </Link>
             </section>
+            <section>
+              <Link to="/checkradio">
+                <h3>Checkbox and Radio Button</h3>
+              </Link>
+            </section>
           </aside>
           <main className="main">
             <Suspense fallback={<div>Loading...</div>}>
@@ -63,6 +69,7 @@ class App extends React.Component {
                 <Route path="/button" component={ButtonsExample} />
                 <Route path="/input" component={InputsExample} />
                 <Route path="/select" component={SelectsExample} />
+                <Route path="/checkradio" component={ChecksExample} />
               </Switch>
             </Suspense>
           </main>

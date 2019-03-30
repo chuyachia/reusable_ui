@@ -34,4 +34,7 @@ const DropDownListWContext = React.forwardRef((props, ref) => (
     }}
   </DropDownListContext.Consumer>
 ));
+
+DropDownListWContext.displayName = "DropDownListWContext";
+
 export default DropDownListWContext;

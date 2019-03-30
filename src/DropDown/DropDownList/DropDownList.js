@@ -29,6 +29,8 @@ const DropDownList = React.forwardRef(
   }
 );
 
+DropDownList.displayName = "DropDownList";
+
 DropDownList.propTypes = {
   open: PropTypes.bool,
   onClick: PropTypes.func,

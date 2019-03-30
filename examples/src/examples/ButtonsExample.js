@@ -24,7 +24,14 @@ const ButtonsExample = () => {
           </Button>
         </section>
         <section>
-          <Button variant="warning">Warning</Button>
+          <Button
+            variant="warning"
+            onClick={() =>
+              Toaster.show("You clicked on a warning button", "secondary")
+            }
+          >
+            Warning
+          </Button>
         </section>
         <section>
           <Button variant="warning" disabled={true}>
