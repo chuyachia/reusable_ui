@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { Select } from "reusable-components-poc";
 
+import useMultiSelect from "../hooks/multiSelectHook";
+
 const options = [
   { label: "Poppy", value: "poppy" },
   { label: "Bella", value: "bella" },
@@ -15,22 +17,9 @@ const options = [
 ];
 const SelectsExample = () => {
   const [singleSelected, setSingleSelected] = useState(null);
-  const [multipleSelecteds, setMultipleSelected] = useState([]);
+  const [multipleSelecteds, setMultipleSelected] = useMultiSelect([]);
   const [filterTerm, setFilterTerm] = useState("");
 
-  const removeFromSelected = useMemo(
-    () => value => {
-      const index = value
-        ? multipleSelecteds.findIndex(selected => selected.value === value)
-        : multipleSelecteds.length - 1;
-      setMultipleSelected(
-        multipleSelecteds
-          .slice(0, index)
-          .concat(multipleSelecteds.slice(index + 1))
-      );
-    },
-    [multipleSelecteds, setMultipleSelected]
-  );
   const filteredOptions = useMemo(
     () =>
       options.filter(
@@ -73,10 +62,8 @@ const SelectsExample = () => {
             inline={true}
             multiple={true}
             selected={multipleSelecteds}
-            onSelect={useCallback(option =>
-              setMultipleSelected([...multipleSelecteds, option])
-            )}
-            onDelete={useCallback(value => removeFromSelected(value))}
+            onSelect={useCallback(option => setMultipleSelected(option))}
+            onDelete={useCallback(value => setMultipleSelected(value))}
             options={options}
           />
         </section>
@@ -89,10 +76,8 @@ const SelectsExample = () => {
             multiple={true}
             selected={multipleSelecteds}
             onInput={useCallback(value => setFilterTerm(value))}
-            onSelect={useCallback(option =>
-              setMultipleSelected([...multipleSelecteds, option])
-            )}
-            onDelete={useCallback(value => removeFromSelected(value))}
+            onSelect={useCallback(option => setMultipleSelected(option))}
+            onDelete={useCallback(value => setMultipleSelected(value))}
             options={filteredOptions}
           />
         </section>

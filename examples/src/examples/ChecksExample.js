@@ -5,6 +5,8 @@ import {
   Checkbox,
 } from "reusable-components-poc";
 
+import useMultiSelect from "../hooks/multiSelectHook";
+
 const options = [
   { label: "Poppy", value: "poppy" },
   { label: "Bella", value: "bella" },
@@ -18,23 +20,9 @@ const options = [
   { label: "Millie", value: "millie" },
 ];
 
-const useCheckBoxSelected = () => {
-  const [checked, setChecked] = useState([]);
-  const updateChecked = value => {
-    const existedIndex = checked.indexOf(value);
-    if (existedIndex >= 0) {
-      setChecked(
-        checked.slice(0, existedIndex).concat(checked.slice(existedIndex + 1))
-      );
-    } else {
-      setChecked([...checked, value]);
-    }
-  };
-  return [checked, updateChecked];
-};
 const ChecksExample = () => {
-  const [radioSelected, setRadioSelected] = useState(null);
-  const [checkSelecteds, setCheckSelecteds] = useCheckBoxSelected();
+  const [radioSelected, setRadioSelected] = useState("");
+  const [checkSelecteds, setCheckSelecteds] = useMultiSelect();
   return (
     <React.Fragment>
       <div>

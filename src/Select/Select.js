@@ -17,7 +17,6 @@ const Select = ({
   onInput,
   onSelect,
   variant,
-  children,
   options,
 }) => {
   const [stateOpen, setStateOpen] = useState(false);
@@ -29,7 +28,6 @@ const Select = ({
       s => s.value === option.value && s.label === option.label
     ) >= 0;
   const inputKeyDown = e => {
-    setStateOpen(true);
     var key = e.keyCode || e.charCode;
     if ((key == 8 || key == 46) && textInput.length == 0) {
       e.preventDefault();
@@ -37,11 +35,15 @@ const Select = ({
     }
   };
   const deleteSelection = e => {
-    onDelete(e.target.getAttribute("value"));
+    const option = {
+      value: e.target.getAttribute("value"),
+      label: e.target.getAttribute("label"),
+    };
+    onDelete(option);
   };
   const selectOption = option => {
     if (multiple && isSelected(option)) {
-      onDelete(option.value);
+      onDelete(option);
     } else {
       onSelect(option);
     }
@@ -49,7 +51,6 @@ const Select = ({
       onInput("");
     }
     setTextInput("");
-    if (!multiple) setStateOpen(false);
   };
   const handleItemClick = e => {
     if (e.target.nodeName === "LI") {
@@ -62,16 +63,12 @@ const Select = ({
   };
   const keyDownOpenDropDown = e => {
     if (e.keyCode === 13) {
-      if (!stateOpen) {
-        setStateOpen(true);
-      } else {
+      if (stateOpen) {
         const option = options[activeItem];
         selectOption(option);
       }
     } else if (e.keyCode === 40) {
-      if (!stateOpen) {
-        setStateOpen(true);
-      } else {
+      if (stateOpen) {
         keyDownChangeActive(e);
       }
     } else if (e.keyCode === 38 && stateOpen) {
@@ -92,7 +89,6 @@ const Select = ({
     <Input
       controlled={true}
       value={textInput}
-      onFocus={() => setStateOpen(true)}
       onChange={e => {
         onInput(e.target.value);
         setTextInput(e.target.value);
@@ -106,16 +102,19 @@ const Select = ({
   );
 
   const arrowButton = stateOpen ? (
-    <Button onClick={() => setStateOpen(!stateOpen)}>
-      <Arrow direction="up" />
-    </Button>
+    <Arrow direction="up" />
   ) : (
-    <Button onClick={() => setStateOpen(!stateOpen)}>
-      <Arrow direction="down" />
-    </Button>
+    <Arrow direction="down" />
   );
+
   return (
-    <div className={className} tabIndex={0} onKeyDown={keyDownOpenDropDown}>
+    <div
+      className={className}
+      tabIndex={0}
+      onKeyDown={keyDownOpenDropDown}
+      onClick={e => setStateOpen(true)}
+      onBlur={e => setStateOpen(false)}
+    >
       <div className="select-display">
         {multiple ? (
           <React.Fragment>
@@ -125,6 +124,7 @@ const Select = ({
                   variant={variant}
                   key={s.value}
                   value={s.value}
+                  label={s.label}
                   onClick={deleteSelection}
                 >
                   {s.label}
@@ -144,7 +144,7 @@ const Select = ({
           </React.Fragment>
         )}
         {suggestionInput}
-        {arrowButton}
+        <span style={{ float: "right" }}>{arrowButton}</span>
       </div>
       <DropDownList
         variant={variant}
