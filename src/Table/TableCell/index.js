@@ -13,7 +13,7 @@ const StyledTableCell = styled(TableCell)`
     if (props.variant) {
       return useTheme(props, props.variant);
     }
-    useTheme(props, "primary");
+    return useTheme(props, "primary");
   }};
   border-bottom-style: solid;
   border-width: ${props => (props.context === "head" ? "medium" : "thin")};

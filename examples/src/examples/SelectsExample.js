@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { Select } from "reusable-components-poc";
 
-import useMultiSelect from "../hooks/multiSelectHook";
+import useMultiSelect from "../hooks/useMultiSelect";
 
 const options = [
   { label: "Poppy", value: "poppy" },

@@ -22,6 +22,7 @@ const Select = ({
   const [stateOpen, setStateOpen] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [activeItem, setActiveItem] = useState(0);
+  const [inputFocus, setInputFocus] = useState(false);
   const dropDownRef = useRef(null);
   const isSelected = option =>
     selected.findIndex(
@@ -94,6 +95,8 @@ const Select = ({
         setTextInput(e.target.value);
         setActiveItem(0);
       }}
+      onFocus={() => setInputFocus(true)}
+      onBlur={() => setInputFocus(false)}
       onKeyDown={inputKeyDown}
       className="select-input"
     />
@@ -113,7 +116,15 @@ const Select = ({
       tabIndex={0}
       onKeyDown={keyDownOpenDropDown}
       onClick={e => setStateOpen(true)}
-      onBlur={e => setStateOpen(false)}
+      onBlur={e => {
+        if (suggestion) {
+          if (!inputFocus) {
+            setStateOpen(false);
+          }
+        } else {
+          setStateOpen(false);
+        }
+      }}
     >
       <div className="select-display">
         {multiple ? (

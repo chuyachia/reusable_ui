@@ -5,7 +5,7 @@ import {
   Checkbox,
 } from "reusable-components-poc";
 
-import useMultiSelect from "../hooks/multiSelectHook";
+import useMultiSelect from "../hooks/useMultiSelect";
 
 const options = [
   { label: "Poppy", value: "poppy" },

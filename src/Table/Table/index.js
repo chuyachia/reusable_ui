@@ -6,6 +6,7 @@ import useTheme from "../../useTheme";
 import Table from "./Table";
 const TableContext = React.createContext();
 const StyledTable = styled(Table)`
+  display: table;
   border-collapse: collapse;
   font-family: ${props => useTheme(props, "fontSans")};
 `;
