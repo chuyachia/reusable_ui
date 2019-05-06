@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 
 import Arrow from "../Arrow";
@@ -6,84 +6,128 @@ import Button from "../Button";
 import InputGroup from "../InputGroup";
 
 const calculateSequence = (currentPage, totalPages) => {
-  let sequence = [currentPage];
-  if (currentPage - 1 >= 0) {
-    sequence.unshift(currentPage - 1);
+  const seq = [];
+  let i = 1;
+  let j = 1;
+  let k = 1;
+
+  while (currentPage - j > 0 && j < 3) {
+    seq.unshift(currentPage - j);
+    i++;
+    j++;
   }
-  if (currentPage + 1 < totalPages) {
-    sequence.push(currentPage + 1);
+  seq.push(currentPage);
+  i++;
+  while (currentPage + k <= totalPages && k < 3) {
+    seq.push(currentPage + k);
+    i++;
+    k++;
   }
-  if (sequence[0] - 0 > 2) {
-    sequence.unshift(-1);
-    sequence.unshift(0);
-  } else {
-    if (sequence[0] > 1) {
-      sequence.unshift(1);
-    }
-    if (sequence[0] > 0) {
-      sequence.unshift(0);
-    }
+  while (i <= 5 && currentPage - j > 0) {
+    seq.unshift(currentPage - j);
+    j++;
+    i++;
   }
-  if (totalPages - 1 - sequence[sequence.length - 1] > 2) {
-    sequence.push(-1);
-    sequence.push(totalPages - 1);
-  } else {
-    if (sequence[sequence.length - 1] < totalPages - 2) {
-      sequence.push(totalPages - 2);
-    }
-    if (sequence[sequence.length - 1] < totalPages - 1) {
-      sequence.push(totalPages - 1);
-    }
+  while (i <= 5 && currentPage + k <= totalPages) {
+    seq.push(currentPage + k);
+    k++;
+    i++;
   }
-  return sequence;
+
+  return seq;
 };
-const Pagination = ({ onPageChange, dataLength, numberPerPage, variant }) => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const pageLength = Math.ceil(dataLength / numberPerPage);
+
+const Pagination = ({
+  onPageChange,
+  dataLength,
+  numberPerPage,
+  variant,
+  ...props
+}) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageLength = useMemo(() => Math.ceil(dataLength / numberPerPage), [
+    dataLength,
+    numberPerPage,
+  ]);
   return (
-    <InputGroup>
+    <InputGroup {...props}>
       <Button
         hollow={true}
-        disabled={currentPage == 0}
+        disabled={currentPage <= 1}
         variant={variant}
-        onClick={() => {
-          if (currentPage > 0) setCurrentPage(currentPage - 1);
-          if (onPageChange) onPageChange(currentPage - 1);
-        }}
+        onClick={useCallback(() => {
+          if (currentPage > 1) {
+            setCurrentPage(1);
+            if (onPageChange) onPageChange(1);
+          }
+        }, [currentPage, onPageChange])}
       >
-        <Arrow direction="left" variant={variant} disabled={currentPage == 0} />
+        <Arrow direction="left" variant={variant} disabled={currentPage <= 1} />
+        <Arrow direction="left" variant={variant} disabled={currentPage <= 1} />
+      </Button>
+      <Button
+        hollow={true}
+        disabled={currentPage <= 1}
+        variant={variant}
+        onClick={useCallback(() => {
+          if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+            if (onPageChange) onPageChange(currentPage - 1);
+          }
+        }, [currentPage, onPageChange])}
+      >
+        <Arrow direction="left" variant={variant} disabled={currentPage <= 1} />
       </Button>
       {calculateSequence(currentPage, pageLength).map((number, i) => {
         return (
           <Button
             key={i}
-            disabled={number == -1}
             hollow={number !== currentPage}
             variant={variant}
-            onClick={() => {
-              if (number !== -1) {
-                setCurrentPage(number);
-              }
+            onClick={useCallback(() => {
+              setCurrentPage(number);
               if (onPageChange) onPageChange(number);
-            }}
+            }, [onPageChange, number])}
           >
-            {number == -1 ? "..." : number + 1}
+            {number}
           </Button>
         );
       })}
       <Button
-        disabled={currentPage >= pageLength - 1}
+        disabled={currentPage >= pageLength}
         hollow={true}
         variant={variant}
-        onClick={() => {
-          if (currentPage < pageLength - 1) {
+        onClick={useCallback(() => {
+          if (currentPage < pageLength) {
             setCurrentPage(currentPage + 1);
             if (onPageChange) onPageChange(currentPage + 1);
           }
-        }}
+        }, [currentPage, pageLength, onPageChange])}
       >
         <Arrow
-          disabled={currentPage >= pageLength - 1}
+          disabled={currentPage >= pageLength}
+          direction="right"
+          variant={variant}
+        />
+      </Button>
+      <Button
+        disabled={currentPage >= pageLength}
+        hollow={true}
+        variant={variant}
+        onClick={useCallback(() => {
+          if (currentPage < pageLength) {
+            setCurrentPage(pageLength);
+            if (onPageChange) onPageChange(pageLength);
+          }
+        }, [currentPage, pageLength, onPageChange])}
+      >
+        <Arrow
+          disabled={currentPage >= pageLength}
+          direction="right"
+          variant={variant}
+        />
+        <Arrow
+          disabled={currentPage >= pageLength}
           direction="right"
           variant={variant}
         />

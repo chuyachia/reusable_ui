@@ -14,30 +14,6 @@ const ChecksExample = lazy(() => import("./examples/ChecksExample"));
 const TableExample = lazy(() => import("./examples/TableExample"));
 
 class App extends React.Component {
-  state = {
-    // input: "",
-    // select: { value: "", label: "" },
-    // multiselect: [],
-    // selectoptions: [
-    //   { value: "coco", label: "Coco" },
-    //   { value: "gare", label: "Gare" },
-    //   { value: "montreal", label: "Montreal" },
-    // ],
-    // radiooptions: [
-    //   { value: "coco", label: "Coco" },
-    //   { value: "gare", label: "Gare" },
-    //   { value: "montreal", label: "Montreal" },
-    // ],
-    // radioselection: "",
-    // checkoptions: [
-    //   { value: "coco", label: "Coco" },
-    //   { value: "gare", label: "Gare" },
-    //   { value: "montreal", label: "Montreal" },
-    // ],
-    // checkselection: [],
-    // filter: "",
-  };
-
   render() {
     return (
       <BrowserRouter>
@@ -80,95 +56,6 @@ class App extends React.Component {
               </Switch>
             </Suspense>
           </main>
-          {/*
-        <RadioCheckGroup
-          onChange={this.showChange}
-          variant="secondary"
-          childrenType="radio"
-          selected={this.state.radiooptions[0].value}
-        >
-          {this.state.radiooptions.map(({ value, label }) => (
-            <RadioButton
-              key={value}
-              label={label}
-              value={value}
-              name="radiogroup"
-            />
-          ))}
-        </RadioCheckGroup>
-        <RadioCheckGroup
-          onChange={this.showChange}
-          variant="secondary"
-          childrenType="checkbox"
-          selected={[
-            this.state.checkoptions[0].value,
-            this.state.checkoptions[1].value,
-          ]}
-        >
-          {this.state.checkoptions.map(({ value, label }) => (
-            <Checkbox key={value} label={label} value={value} />
-          ))}
-        </RadioCheckGroup>
-        <RadioCheckGroup
-          onChange={this.showChange}
-          variant="warning"
-          direction="horizontal"
-        >
-          <RadioButton label="A" value="a" name="radiogroup2" />
-          <RadioButton label="B" value="b" name="radiogroup2" />
-          <RadioButton label="C" value="c" name="radiogroup2" />
-        </RadioCheckGroup>
-        <Table variant="warning" highlight="column">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                Field1 <Arrow direction="down" />
-              </TableCell>
-              <TableCell>
-                Field2{" "}
-                <Button minimal={true} small={true}>
-                  <Arrow direction="down" />
-                </Button>
-                <DropDownList open={true}>
-                  {multiSelectOptions.map(s => (
-                    <DropDownItem key={s.value} {...s}>
-                      {s.label}
-                    </DropDownItem>
-                  ))}
-                </DropDownList>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>409280</TableCell>
-              <TableCell>hi</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>367112</TableCell>
-              <TableCell>he</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-        <Table variant="secondary" highlight="row">
-          <TableHead>
-            <TableRow>
-              <TableCell>Field1</TableCell>
-              <TableCell>Field2</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>409280</TableCell>
-              <TableCell>hi</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>367112</TableCell>
-              <TableCell>he</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-        <Pagination dataLength={102} numberPerPage={10} />*/}
         </div>
       </BrowserRouter>
     );

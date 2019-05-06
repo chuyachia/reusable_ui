@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const InputGroup = ({ children, className }) => {
-  return <div className={className}>{children}</div>;
+const InputGroup = ({ children, className, ...props }) => {
+  return (
+    <div className={className} {...props}>
+      {children}
+    </div>
+  );
 };
 
 InputGroup.propTypes = {

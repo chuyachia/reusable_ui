@@ -17,6 +17,7 @@ const StyledTableCell = styled(TableCell)`
   }};
   border-bottom-style: solid;
   border-width: ${props => (props.context === "head" ? "medium" : "thin")};
+  background-clip: padding-box;
   ${props => {
     if (props.highlight === "column" && props.isHoverColumn) {
       switch (props.variant) {

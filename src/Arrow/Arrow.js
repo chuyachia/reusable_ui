@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-const Arrow = ({ className }) => <i className={className} />;
+const Arrow = props => <i {...props} />;
 Arrow.propTypes = {
   className: PropTypes.string,
 };

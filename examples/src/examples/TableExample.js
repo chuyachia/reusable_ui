@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Table,
   TableHead,
@@ -6,6 +6,8 @@ import {
   TableRow,
   TableCell,
   Arrow,
+  RadioCheckGroup,
+  RadioButton,
   Pagination,
 } from "reusable-components-poc";
 import useSort from "../hooks/useSort";
@@ -27,44 +29,62 @@ const tableFieldMap = { name: "Name", age: "Age", description: "Description" };
 
 const TableExample = () => {
   const [sortedData, setSortedData] = useSort(tableData);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortDirection, setSortDirection] = useState({});
+  const [highlightDir, setHighlightDir] = useState("row");
+  const paginatedData = useMemo(
+    () => sortedData.slice((currentPage - 1) * 3, currentPage * 3),
+    [currentPage, sortedData]
+  );
   return (
     <React.Fragment>
       <section>
-        <h5>Simple table with highlighting rows</h5>
-        <Table highlight="row">
+        <h5>Simple table with sorting and highlighting</h5>
+        <RadioCheckGroup
+          onChange={e => setHighlightDir(e.target.value)}
+          childrenType="radio"
+          selected={highlightDir}
+          variant="secondary"
+          direction="horizontal"
+        >
+          <RadioButton label="Highlight by row" value="row" key="row" />
+          <RadioButton
+            label="Highlight by column"
+            value="column"
+            key="column"
+          />
+          <RadioButton label="No highlight" value="none" key="none" />
+        </RadioCheckGroup>
+        <Table highlight={highlightDir}>
           <TableHead>
             <TableRow>
-              {Object.keys(sortedData[0]).map(field => (
-                <TableCell key={field}>{tableFieldMap[field]}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedData.map(data => (
-              <TableRow key={data.name}>
-                <TableCell>{data.name}</TableCell>
-                <TableCell>{data.age}</TableCell>
-                <TableCell>{data.description}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        {/*<Pagination dataLength={102} numberPerPage={10} />*/}
-      </section>
-      <section>
-        <h5>Simple table with highlighting rows</h5>
-        <Table highlight="row">
-          <TableHead>
-            <TableRow>
-              {Object.keys(sortedData[0]).map(field => (
+              {Object.keys(paginatedData[0]).map(field => (
                 <TableCell key={field}>
-                  {tableFieldMap[field]} <Arrow direction="down" />
+                  <span
+                    onClick={() => {
+                      setSortDirection({
+                        [field]:
+                          sortDirection[field] === "desc" ? "asc" : "desc",
+                      });
+                      setSortedData(field);
+                    }}
+                    style={{ cursor: "pointer", paddingRight: "1em" }}
+                  >
+                    {tableFieldMap[field]}
+                  </span>
+                  {Reflect.has(sortDirection, field) && (
+                    <Arrow
+                      direction={
+                        sortDirection[field] === "desc" ? "down" : "up"
+                      }
+                    />
+                  )}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedData.map(data => (
+            {paginatedData.map(data => (
               <TableRow key={data.name}>
                 <TableCell>{data.name}</TableCell>
                 <TableCell>{data.age}</TableCell>
@@ -73,7 +93,14 @@ const TableExample = () => {
             ))}
           </TableBody>
         </Table>
-        {/*<Pagination dataLength={102} numberPerPage={10} />*/}
+        <Pagination
+          style={{ marginTop: "15px" }}
+          dataLength={sortedData.length}
+          numberPerPage={3}
+          onPageChange={page => {
+            setCurrentPage(page);
+          }}
+        />
       </section>
     </React.Fragment>
   );
