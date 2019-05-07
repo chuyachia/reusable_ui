@@ -8,6 +8,7 @@ const DropDownListContext = React.createContext();
 
 const StyledDropDownList = styled(DropDownList)`
   position: absolute;
+  ${props => (props.rightSideAlign ? "right:0px" : "left:0px")};
   z-index: 10;
   padding: 0;
   margin: 0;

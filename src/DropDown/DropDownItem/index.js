@@ -25,4 +25,8 @@ export default styled(DropDownItem)`
       return useTheme(props, "primaryLight");
     }};
   }
+  & > * {
+    display: inline-block;
+    width: 100%;
+  }
 `;

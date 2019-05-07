@@ -1,10 +1,8 @@
-/*global console*/
-
-import React, { useState, Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 
-//import ButtonsExample from "./examples/ButtonsExample";
-//import InputsExample from "./examples/InputsExample";
+import useMedia from "./hooks/useMedia";
+import { Button, DropDownItem, DropDownList } from "reusable-components-poc";
 import "./appStyle.scss";
 
 const ButtonsExample = lazy(() => import("./examples/ButtonsExample"));
@@ -13,12 +11,54 @@ const SelectsExample = lazy(() => import("./examples/SelectsExample"));
 const ChecksExample = lazy(() => import("./examples/ChecksExample"));
 const TableExample = lazy(() => import("./examples/TableExample"));
 
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="wrapper">
+const App = () => {
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+  const mediaQueryMatch = useMedia(
+    ["(min-width: 992px)", "(min-width: 768px)", "(min-width: 576px)"],
+    ["large", "medium", "small"],
+    "small"
+  );
+
+  return (
+    <BrowserRouter>
+      <div className="wrapper">
+        {mediaQueryMatch === "small" ? (
+          <aside className="topbar">
+            <h4 className="logo">Reusable components example page</h4>
+            <div className="dropdown-wrap">
+              <Button onClick={() => setDropDownOpen(!dropDownOpen)}>
+                <div className="menu-icon" />
+                <div className="menu-icon" />
+                <div className="menu-icon" />
+              </Button>
+              <DropDownList
+                open={dropDownOpen}
+                onClick={() => setDropDownOpen(false)}
+                rightSideAlign={true}
+              >
+                <DropDownItem>
+                  <Link to="/button">Button</Link>
+                </DropDownItem>
+                <DropDownItem>
+                  <Link to="/input">Input</Link>
+                </DropDownItem>
+                <DropDownItem>
+                  <Link to="/select">Select</Link>
+                </DropDownItem>
+                <DropDownItem>
+                  <Link to="/checkradio">Checkbox and Radio Button</Link>
+                </DropDownItem>
+                <DropDownItem>
+                  <Link to="/table">Table</Link>
+                </DropDownItem>
+              </DropDownList>
+            </div>
+          </aside>
+        ) : (
           <aside className="sidebar">
+            <section>
+              <h3 className="logo">Reusable components example page</h3>
+            </section>
             <section>
               <Link to="/button">
                 <h3>Button</h3>
@@ -45,21 +85,21 @@ class App extends React.Component {
               </Link>
             </section>
           </aside>
-          <main className="main">
-            <Suspense fallback={<div>Loading...</div>}>
-              <Switch>
-                <Route path="/button" component={ButtonsExample} />
-                <Route path="/input" component={InputsExample} />
-                <Route path="/select" component={SelectsExample} />
-                <Route path="/checkradio" component={ChecksExample} />
-                <Route path="/table" component={TableExample} />
-              </Switch>
-            </Suspense>
-          </main>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+        )}
+        <main className="main">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route path="/button" component={ButtonsExample} />
+              <Route path="/input" component={InputsExample} />
+              <Route path="/select" component={SelectsExample} />
+              <Route path="/checkradio" component={ChecksExample} />
+              <Route path="/table" component={TableExample} />
+            </Switch>
+          </Suspense>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default App;
