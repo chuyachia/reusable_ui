@@ -1,8 +1,10 @@
+import React from "react";
 import styled from "@emotion/styled";
-import InputGroup from "./InputGroup";
-import useTheme from "../useTheme";
 
-export default styled(InputGroup)`
+import InputGroup from "./InputGroup";
+import ThemeContext from "../ThemeContext";
+
+const StyledInputGroup = styled(InputGroup)`
   & *:first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -15,3 +17,10 @@ export default styled(InputGroup)`
     border-radius: 0;
   }
 `;
+const StyledInputGroupWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledInputGroup {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledInputGroupWContext;

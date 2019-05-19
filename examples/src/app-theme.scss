@@ -1,0 +1,37 @@
+$primary:#6CB7DA;
+$secondary: #61A2DA;
+$warning:  #D77186;
+$disabled: #B5B5B3;
+$grey:#939598;
+$base-text-color:#58595B;
+
+@function contrast-background-color($color) {
+  @if (lightness($color) > 50) {
+    @return $base-text-color;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+@function contrast-background-color($color) {
+  @if (lightness($color) > 50) {
+    @return $base-text-color;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+$primary-contrast-text: contrast-background-color($primary);
+$secondary-contrast-text: contrast-background-color($secondary);
+$warning-contrast-text: contrast-background-color($warning);
+
+$primary-light: lighten($primary, 20%);
+$secondary-light: lighten($secondary, 20%);
+$warning-light: lighten($warning, 20%);
+
+$primary-dark: darken($primary, 20%);
+$secondary-dark: darken($secondary, 20%);
+$warning-dark: darken($warning, 20%);
+
+$title-font:Garamond, Georgia, serif;
+$content-font:Garamond, Georgia, serif;

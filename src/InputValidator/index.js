@@ -1,8 +1,11 @@
+import React from "react";
 import styled from "@emotion/styled";
+
 import InputValidator from "./InputValidator";
 import useTheme from "../useTheme";
+import ThemeContext from "../ThemeContext";
 
-export default styled(InputValidator)`
+const StyledInputValidator = styled(InputValidator)`
   display: ${props => {
     return props.children.props.inline ? "inline-block" : "block";
   }};
@@ -16,3 +19,11 @@ export default styled(InputValidator)`
     color: ${props => useTheme(props, "warning")};
   }
 `;
+
+const StyledInputValidatorWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledInputValidator {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledInputValidatorWContext;

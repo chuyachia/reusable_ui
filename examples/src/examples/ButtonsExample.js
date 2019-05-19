@@ -27,7 +27,7 @@ const ButtonsExample = () => {
           <Button
             variant="warning"
             onClick={() =>
-              Toaster.show("You clicked on a warning button", "secondary")
+              Toaster.show("You clicked on a warning button", "warning")
             }
           >
             Warning

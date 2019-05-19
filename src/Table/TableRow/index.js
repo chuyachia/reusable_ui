@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import useTheme from "../../useTheme";
 import TableRow from "./TableRow";
 import { TableContext } from "../Table";
+import ThemeContext from "../../ThemeContext";
 const StyledTableRow = styled(TableRow)`
 	&:hover {
 		${props => {
@@ -19,10 +20,19 @@ const StyledTableRow = styled(TableRow)`
       }
     }}`;
 const StyledTableRowWContext = props => (
-  <TableContext.Consumer>
-    {({ variant, highlight }) => (
-      <StyledTableRow variant={variant} {...props} highlight={highlight} />
+  <ThemeContext.Consumer>
+    {({ theme }) => (
+      <TableContext.Consumer>
+        {({ variant, highlight }) => (
+          <StyledTableRow
+            variant={variant}
+            {...props}
+            highlight={highlight}
+            theme={theme}
+          />
+        )}
+      </TableContext.Consumer>
     )}
-  </TableContext.Consumer>
+  </ThemeContext.Consumer>
 );
 export default StyledTableRowWContext;

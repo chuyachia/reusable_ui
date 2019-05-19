@@ -4,10 +4,11 @@ import styled from "@emotion/styled";
 import useTheme from "../../useTheme";
 import TableCell from "./TableCell";
 import { TableContext } from "../Table";
+import ThemeContext from "../../ThemeContext";
 const TableCellContext = React.createContext();
 const StyledTableCell = styled(TableCell)`
   position: relative;
-  line-height: ${props => useTheme(props, "baseLineHeight")};
+  height: ${props => useTheme(props, "baseLineHeight")};
   padding: ${props => useTheme(props, "basePadding")};
   border-bottom-color: ${props => {
     if (props.variant) {
@@ -57,19 +58,24 @@ const StyledTableCell = styled(TableCell)`
 `;
 export { TableCellContext };
 const StyledTableCellWContext = props => (
-  <TableContext.Consumer>
-    {({ variant, highlight }) => (
-      <TableCellContext.Consumer>
-        {context => (
-          <StyledTableCell
-            variant={variant}
-            {...props}
-            highlight={highlight}
-            context={context}
-          />
+  <ThemeContext.Consumer>
+    {({ theme }) => (
+      <TableContext.Consumer>
+        {({ variant, highlight }) => (
+          <TableCellContext.Consumer>
+            {context => (
+              <StyledTableCell
+                variant={variant}
+                {...props}
+                highlight={highlight}
+                context={context}
+                theme={theme}
+              />
+            )}
+          </TableCellContext.Consumer>
         )}
-      </TableCellContext.Consumer>
+      </TableContext.Consumer>
     )}
-  </TableContext.Consumer>
+  </ThemeContext.Consumer>
 );
 export default StyledTableCellWContext;

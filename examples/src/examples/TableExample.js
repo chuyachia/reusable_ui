@@ -55,7 +55,7 @@ const TableExample = () => {
           />
           <RadioButton label="No highlight" value="none" key="none" />
         </RadioCheckGroup>
-        <Table highlight={highlightDir}>
+        <Table highlight={highlightDir} variant="secondary">
           <TableHead>
             <TableRow>
               {Object.keys(paginatedData[0]).map(field => (
@@ -100,6 +100,7 @@ const TableExample = () => {
           onPageChange={page => {
             setCurrentPage(page);
           }}
+          variant="secondary"
         />
       </section>
     </React.Fragment>

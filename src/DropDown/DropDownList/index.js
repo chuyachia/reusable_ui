@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import useTheme from "../../useTheme";
 import DropDownList from "./DropDownList";
+import ThemeContext from "../../ThemeContext";
 
 const DropDownListContext = React.createContext();
 
@@ -28,12 +29,16 @@ const StyledDropDownList = styled(DropDownList)`
 
 export { DropDownListContext };
 const DropDownListWContext = React.forwardRef((props, ref) => (
-  <DropDownListContext.Consumer>
-    {open => {
-      let newProps = { ...props, show: open };
-      return <StyledDropDownList {...newProps} ref={ref} />;
-    }}
-  </DropDownListContext.Consumer>
+  <ThemeContext.Consumer>
+    {({ theme }) => (
+      <DropDownListContext.Consumer>
+        {open => {
+          let newProps = { ...props, show: open };
+          return <StyledDropDownList {...newProps} ref={ref} theme={theme} />;
+        }}
+      </DropDownListContext.Consumer>
+    )}
+  </ThemeContext.Consumer>
 ));
 
 DropDownListWContext.displayName = "DropDownListWContext";

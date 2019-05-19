@@ -1,12 +1,14 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 import useTheme from "../useTheme";
 import RadioButton from "./RadioButton";
+import ThemeContext from "../ThemeContext";
 
-export default styled(RadioButton)`
+const StyledRadioButton = styled(RadioButton)`
   display: ${props =>
     props.direction == "horizontal" ? "inline-block" : "block"};
-
+  color: ${props => useTheme(props, "baseTextColor")};
   position: relative;
   cursor: pointer;
   font-family: ${props => useTheme(props, "fontSans")};
@@ -67,3 +69,11 @@ export default styled(RadioButton)`
     transform: translate(-50%, -50%);
   }
 `;
+
+const StyledRadioButtonWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledRadioButton {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledRadioButtonWContext;

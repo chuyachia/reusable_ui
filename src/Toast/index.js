@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import useTheme from "../useTheme";
 import Toast from "./Toast";
+import ThemeContext from "../ThemeContext";
 
 const StyledToast = styled(Toast)`
   background-color: ${props => {
@@ -39,4 +40,10 @@ const StyledToast = styled(Toast)`
   }
 `;
 
-export default StyledToast;
+const StyledToastWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledToast {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledToastWContext;

@@ -1,9 +1,11 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 import useTheme from "../../useTheme";
 import DropDownItem from "./DropDownItem";
+import ThemeContext from "../../ThemeContext";
 
-export default styled(DropDownItem)`
+const StyledDropDownItem = styled(DropDownItem)`
   list-style: none;
   cursor: pointer;
   padding: ${props => useTheme(props, "basePadding")};
@@ -30,3 +32,11 @@ export default styled(DropDownItem)`
     width: 100%;
   }
 `;
+
+const StyledDropDownItemWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledDropDownItem {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledDropDownItemWContext;

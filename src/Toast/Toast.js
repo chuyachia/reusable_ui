@@ -8,9 +8,9 @@ const Toast = ({ message, variant, className, open, onClose }) => {
     open && (
       <div variant={variant} className={className}>
         <span>{message}</span>
-        <Button variant={variant} onClick={onClose}>
+        <span onClick={onClose} style={{ cursor: "pointer" }}>
           X
-        </Button>
+        </span>
       </div>
     )
   );

@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import useTheme from "../useTheme";
 import Input from "./Input";
 import { ButtonContext } from "../Button";
+import ThemeContext from "../ThemeContext";
 
 const StyledInput = styled(Input)`
   display: ${props => (props.inline ? "inline-block" : "block")};
@@ -38,8 +39,12 @@ const StyledInput = styled(Input)`
   }
 `;
 const StyledInputWContext = props => (
-  <ButtonContext.Provider value="input">
-    <StyledInput {...props} />
-  </ButtonContext.Provider>
+  <ThemeContext.Consumer>
+    {({ theme }) => (
+      <ButtonContext.Provider value="input">
+        <StyledInput {...props} theme={theme} />
+      </ButtonContext.Provider>
+    )}
+  </ThemeContext.Consumer>
 );
 export default StyledInputWContext;

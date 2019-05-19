@@ -1,6 +1,8 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 import useTheme from "../useTheme";
+import ThemeContext from "../ThemeContext";
 import Arrow from "./Arrow";
 
 const StyledArrow = styled(Arrow)`
@@ -38,4 +40,10 @@ const StyledArrow = styled(Arrow)`
   transition: transform 0.3s;
 `;
 
-export default StyledArrow;
+const StyledArrowWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledArrow {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledArrowWContext;

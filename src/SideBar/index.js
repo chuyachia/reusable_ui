@@ -1,8 +1,10 @@
+import React from "react";
 import styled from "@emotion/styled";
 import useTheme from "../useTheme";
 import SideBar from "./SideBar";
+import ThemeContext from "../ThemeContext";
 
-export default styled(SideBar)`
+const StyledSideBar = styled(SideBar)`
   height: 100%;
   & > .sidebar-element {
     padding: ${props => useTheme(props, "basePadding")};
@@ -10,3 +12,11 @@ export default styled(SideBar)`
     border-bottom: 1px solid ${props => useTheme(props, "silver")};
   }
 `;
+
+const StyledSideBarWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledSideBar {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledSideBarWContext;

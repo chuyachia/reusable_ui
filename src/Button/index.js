@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import useTheme from "../useTheme";
 import Button from "./Button";
+import ThemeContext from "../ThemeContext";
 
 const ButtonContext = React.createContext("default");
 const StyledButton = styled(Button)`
@@ -113,7 +114,14 @@ const StyledButton = styled(Button)`
 export { ButtonContext };
 const StyledButtonWContext = props => (
   <ButtonContext.Consumer>
-    {context => <StyledButton {...props} context={context} />}
+    {context => (
+      <ThemeContext.Consumer>
+        {({ theme }) => (
+          <StyledButton {...props} context={context} theme={theme} />
+        )}
+      </ThemeContext.Consumer>
+    )}
   </ButtonContext.Consumer>
 );
+
 export default StyledButtonWContext;

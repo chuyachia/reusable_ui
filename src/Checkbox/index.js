@@ -1,12 +1,14 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 import useTheme from "../useTheme";
+import ThemeContext from "../ThemeContext";
 import Checkbox from "./Checkbox";
 
-export default styled(Checkbox)`
+const StyledCheckbox = styled(Checkbox)`
   display: ${props =>
     props.direction == "horizontal" ? "inline-block" : "block"};
-
+  color: ${props => useTheme(props, "baseTextColor")};
   position: relative;
   cursor: pointer;
   font-family: ${props => useTheme(props, "fontSans")};
@@ -67,3 +69,11 @@ export default styled(Checkbox)`
     transform: translate(-50%, -75%) rotate(45deg);
   }
 `;
+
+const StyledCheckboxWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledCheckbox {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledCheckboxWContext;

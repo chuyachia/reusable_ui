@@ -1,9 +1,11 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 import Tag from "./Tag";
 import useTheme from "../useTheme";
+import ThemeContext from "../ThemeContext";
 
-export default styled(Tag)`
+const StyledTag = styled(Tag)`
   cursor: pointer;
   color: ${props => useTheme(props, "baseTextColor")};
   background-color: ${props => {
@@ -34,3 +36,11 @@ export default styled(Tag)`
   display: inline-block;
   margin-right: ${props => useTheme(props, "smallMargin")};
 `;
+
+const StyledTagWContext = props => (
+  <ThemeContext.Consumer>
+    {({ theme }) => <StyledTag {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+
+export default StyledTagWContext;

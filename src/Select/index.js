@@ -6,6 +6,7 @@ import Select from "./Select";
 import { ButtonContext } from "../Button";
 import { DropDownListContext } from "../DropDown/DropDownList";
 import useTheme from "../useTheme";
+import ThemeContext from "../ThemeContext";
 
 const StyledSelect = styled(Select)`
   min-width: ${props => useTheme(props, "inputMinWidth")};
@@ -39,11 +40,15 @@ const StyledSelect = styled(Select)`
 `;
 
 const StyledSelectWContext = props => (
-  <ButtonContext.Provider value="select">
-    <DropDownListContext.Provider value={props.open}>
-      <StyledSelect {...props} />
-    </DropDownListContext.Provider>
-  </ButtonContext.Provider>
+  <ThemeContext.Consumer>
+    {({ theme }) => (
+      <ButtonContext.Provider value="select">
+        <DropDownListContext.Provider value={props.open}>
+          <StyledSelect {...props} theme={theme} />
+        </DropDownListContext.Provider>
+      </ButtonContext.Provider>
+    )}
+  </ThemeContext.Consumer>
 );
 StyledSelectWContext.propTypes = {
   open: PropTypes.bool,
