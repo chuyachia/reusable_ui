@@ -15,7 +15,7 @@ $warning: $tomato;
 $disabled: $silver;
 
 @function contrast-background-color($color) {
-  @if (lightness($color) > 50) {
+  @if (lightness($color) > 70) {
     @return $base-text-color;
   } @else {
     @return #ffffff;
@@ -56,11 +56,11 @@ $small-margin: 0.5em;
 $small-padding: 0 0.5em;
 $base-padding: 0 1em;
 
-$base-radius: 2px;
+$base-radius: 0px;
 
 
 $border-width: 1px;
 
-$box-shadow:  1px 2px 2px $grey;
+$base-shadow:1px 2px 2px $grey;
 
 $input-min-width:120px;

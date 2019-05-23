@@ -1,4 +1,4 @@
-@import "./node_modules/reusable-components-poc/dist/defaultTheme";
+@import "./node_modules/reusable-components-poc/dist/default-theme";
 $grey:#939598;
 
 html, body, #root{
@@ -43,6 +43,7 @@ html, body, #root{
 }
 .topbar .nav-button {
   background-color:$grey;
+  border-color:darken($grey,20%);
 }
 .topbar .nav-button:hover {
   background-color:lighten($grey,20%);

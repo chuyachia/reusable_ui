@@ -20,7 +20,7 @@ export default {
     this.variant = variant;
     if (!this.domNode) {
       this.domNode = document.createElement("div");
-      document.body.appendChild(this.domNode);
+      document.getElementById("root").appendChild(this.domNode);
     }
     ReactDOM.render(
       <StyledToast

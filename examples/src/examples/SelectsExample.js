@@ -16,8 +16,11 @@ const options = [
   { label: "Millie", value: "millie" },
 ];
 const SelectsExample = () => {
-  const [singleSelected, setSingleSelected] = useState(null);
-  const [multipleSelecteds, setMultipleSelected] = useMultiSelect([]);
+  const [singleSelected, setSingleSelected] = useState(options[3]);
+  const [multipleSelecteds, setMultipleSelected] = useMultiSelect([
+    options[4],
+    options[7],
+  ]);
   const [filterTerm, setFilterTerm] = useState("");
 
   const filteredOptions = useMemo(
@@ -42,7 +45,7 @@ const SelectsExample = () => {
           />
         </section>
         <section>
-          <h5>Single select with options filter</h5>
+          <h5>Single select with options filter input</h5>
           <Select
             variant="secondary"
             suggestion={true}
@@ -57,10 +60,11 @@ const SelectsExample = () => {
       </div>
       <div>
         <section>
-          <h5>Multiple select</h5>
+          <h5>Multiple select with drop down menu open after selection</h5>
           <Select
             inline={true}
             multiple={true}
+            keepOpen={true}
             selected={multipleSelecteds}
             onSelect={useCallback(option => setMultipleSelected(option))}
             onDelete={useCallback(value => setMultipleSelected(value))}
@@ -68,7 +72,7 @@ const SelectsExample = () => {
           />
         </section>
         <section>
-          <h5>Multiple select with options filter</h5>
+          <h5>Multiple select with options filter input</h5>
           <Select
             variant="warning"
             inline={true}

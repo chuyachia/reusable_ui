@@ -1,5 +1,3 @@
-import ThemeContext from "./ThemeContext";
-
 export { default as Button } from "./Button";
 export { default as Input } from "./Input";
 export { DropDownItem, DropDownList } from "./DropDown";

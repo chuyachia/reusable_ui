@@ -1,7 +1,7 @@
-$primary:#6CB7DA;
-$secondary: #61A2DA;
-$warning:  #D77186;
-$disabled: #B5B5B3;
+$primary:#FF5A5F;
+$secondary: #00A699;
+$warning:  #FC642D;
+$disabled: #767676;
 $grey:#939598;
 $base-text-color:#58595B;
 
@@ -25,13 +25,17 @@ $primary-contrast-text: contrast-background-color($primary);
 $secondary-contrast-text: contrast-background-color($secondary);
 $warning-contrast-text: contrast-background-color($warning);
 
-$primary-light: lighten($primary, 20%);
-$secondary-light: lighten($secondary, 20%);
-$warning-light: lighten($warning, 20%);
+$primary-light: lighten($primary, 10%);
+$secondary-light: lighten($secondary, 10%);
+$warning-light: lighten($warning, 10%);
 
 $primary-dark: darken($primary, 20%);
 $secondary-dark: darken($secondary, 20%);
 $warning-dark: darken($warning, 20%);
 
-$title-font:Garamond, Georgia, serif;
-$content-font:Garamond, Georgia, serif;
+$font-sans: "Courier", monospace;
+
+$base-radius:3px;
+$border-width:2px;
+
+$base-shadow: 0px 0px 0px;

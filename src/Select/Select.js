@@ -18,11 +18,12 @@ const Select = ({
   onSelect,
   variant,
   options,
+  keepOpen,
 }) => {
   const [stateOpen, setStateOpen] = useState(false);
+  const [inputFocused, setInputFocused] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [activeItem, setActiveItem] = useState(0);
-  const [inputFocus, setInputFocus] = useState(false);
   const dropDownRef = useRef(null);
   const isSelected = option =>
     selected.findIndex(
@@ -54,6 +55,7 @@ const Select = ({
     setTextInput("");
   };
   const handleItemClick = e => {
+    e.stopPropagation();
     if (e.target.nodeName === "LI") {
       const option = {
         value: e.target.getAttribute("value"),
@@ -61,12 +63,18 @@ const Select = ({
       };
       selectOption(option);
     }
+    if (!keepOpen) {
+      setStateOpen(false);
+    }
   };
   const keyDownOpenDropDown = e => {
     if (e.keyCode === 13) {
       if (stateOpen) {
         const option = options[activeItem];
         selectOption(option);
+        if (!keepOpen) {
+          setStateOpen(false);
+        }
       }
     } else if (e.keyCode === 40) {
       if (stateOpen) {
@@ -90,13 +98,13 @@ const Select = ({
     <Input
       controlled={true}
       value={textInput}
+      onClick={e => setInputFocused(true)}
       onChange={e => {
         onInput(e.target.value);
         setTextInput(e.target.value);
         setActiveItem(0);
+        setStateOpen(true);
       }}
-      onFocus={() => setInputFocus(true)}
-      onBlur={() => setInputFocus(false)}
       onKeyDown={inputKeyDown}
       className="select-input"
     />
@@ -105,9 +113,23 @@ const Select = ({
   );
 
   const arrowButton = stateOpen ? (
-    <Arrow direction="up" />
+    <Arrow
+      direction="up"
+      style={{ cursor: "pointer" }}
+      onClick={e => {
+        e.stopPropagation();
+        setStateOpen(false);
+      }}
+    />
   ) : (
-    <Arrow direction="down" />
+    <Arrow
+      direction="down"
+      style={{ cursor: "pointer" }}
+      onClick={e => {
+        e.stopPropagation();
+        setStateOpen(true);
+      }}
+    />
   );
 
   return (
@@ -115,15 +137,14 @@ const Select = ({
       className={className}
       tabIndex={0}
       onKeyDown={keyDownOpenDropDown}
-      onClick={e => setStateOpen(true)}
+      onClick={e => {
+        setStateOpen(true);
+      }}
       onBlur={e => {
-        if (suggestion) {
-          if (!inputFocus) {
-            setStateOpen(false);
-          }
-        } else {
+        if (!inputFocused) {
           setStateOpen(false);
         }
+        setInputFocused(false);
       }}
     >
       <div className="select-display">
@@ -205,6 +226,7 @@ Select.propTypes = {
   suggestion: PropTypes.bool,
   className: PropTypes.string,
   options: PropTypes.array,
+  keepOpen: PropTypes.bool,
 };
 
 export default Select;

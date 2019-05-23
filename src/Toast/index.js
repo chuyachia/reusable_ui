@@ -42,7 +42,9 @@ const StyledToast = styled(Toast)`
 
 const StyledToastWContext = props => (
   <ThemeContext.Consumer>
-    {({ theme }) => <StyledToast {...props} theme={theme} />}
+    {props2 => {
+      return <StyledToast {...props} {...props2} />;
+    }}
   </ThemeContext.Consumer>
 );
 

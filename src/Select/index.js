@@ -11,9 +11,10 @@ import ThemeContext from "../ThemeContext";
 const StyledSelect = styled(Select)`
   min-width: ${props => useTheme(props, "inputMinWidth")};
   position: relative;
-	display: ${props => (props.inline ? "inline-block" : "block")};
+  display: ${props => (props.inline ? "inline-block" : "block")};
+  box-shadow: ${props => useTheme(props, "baseShadow")};
   & div {
-    display:inline-block;
+    display: inline-block;
   }
   & > div {
     padding: ${props => useTheme(props, "basePadding")};
@@ -26,17 +27,18 @@ const StyledSelect = styled(Select)`
     border-style: solid;
     border-color: ${props => useTheme(props, "silver")};
     border-radius: ${props => useTheme(props, "baseRadius")};
-    display:block;
+    display: block;
   }
   & input {
     padding: ${props => useTheme(props, "smallPadding")};
     font-family: ${props => useTheme(props, "fontSans")};
-    font-size: ${props => useTheme(props, "baseFontSize")}; 
+    font-size: ${props => useTheme(props, "baseFontSize")};
     font-weight: ${props => useTheme(props, "fontNormal")};
-    outline:0;
+    outline: 0;
     line-height: ${props => useTheme(props, "baseLineHeight")};
-    border:none; 
-    width:${props => useTheme(props, "inputMinWidth")}; 
+    border: none;
+    width: ${props => useTheme(props, "inputMinWidth")};
+  }
 `;
 
 const StyledSelectWContext = props => (

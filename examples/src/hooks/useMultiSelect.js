@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default () => {
-  const [selected, setSelected] = useState([]);
+export default defaultSelected => {
+  const [selected, setSelected] = useState(defaultSelected);
   const updateSelected = option => {
     if (option === undefined) {
       setSelected(selected.slice(0, selected.length - 1));

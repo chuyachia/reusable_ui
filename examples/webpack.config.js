@@ -16,7 +16,7 @@ module.exports = (env, argv) => ({
       assets: path.resolve(__dirname, "assets"),
     },
   },
-  devtool: argv.mode === "development" ? "cheap-source-map" : "",
+  devtool: argv.mode === "development" ? "source-map" : "",
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
   },

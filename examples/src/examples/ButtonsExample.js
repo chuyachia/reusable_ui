@@ -1,14 +1,30 @@
-import React from "react";
-import { Button, Toaster } from "reusable-components-poc";
+import React, { useState } from "react";
+import { Button, Toast } from "reusable-components-poc";
 
 const ButtonsExample = () => {
+  const [toastProps, setToastProps] = useState({
+    open: false,
+    message: "",
+    variant: "",
+  });
   return (
     <React.Fragment>
+      <Toast
+        {...toastProps}
+        onClose={() => setToastProps({ ...toastProps, open: false })}
+      />
       <div>
         <section>
           <Button
             variant="primary"
-            onClick={() => Toaster.show("You clicked on a primary button")}
+            onClick={() =>
+              setToastProps({
+                ...toastProps,
+                open: true,
+                message: "You clicked on a primary button",
+                variant: "primary",
+              })
+            }
           >
             Primary
           </Button>
@@ -17,7 +33,12 @@ const ButtonsExample = () => {
           <Button
             variant="secondary"
             onClick={() =>
-              Toaster.show("You clicked on a secondary button", "secondary")
+              setToastProps({
+                ...toastProps,
+                open: true,
+                message: "You clicked on a secondary button",
+                variant: "secondary",
+              })
             }
           >
             Secondary
@@ -27,7 +48,12 @@ const ButtonsExample = () => {
           <Button
             variant="warning"
             onClick={() =>
-              Toaster.show("You clicked on a warning button", "warning")
+              setToastProps({
+                ...toastProps,
+                open: true,
+                message: "You clicked on a warning button",
+                variant: "warning",
+              })
             }
           >
             Warning

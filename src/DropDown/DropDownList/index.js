@@ -22,7 +22,7 @@ const StyledDropDownList = styled(DropDownList)`
   transform-origin: top;
   transition: ${props =>
     props.open ? "transform 0.3s" : "transform 0.3s,opacity 0.3s"};
-  box-shadow: ${props => useTheme(props, "boxShadow")};
+  box-shadow: ${props => useTheme(props, "baseShadow")};
   max-height: 200px;
   overflow-y: auto;
 `;

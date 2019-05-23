@@ -25,7 +25,7 @@ const StyledButton = styled(Button)`
   }};
   color: ${props => {
     if (props.context === "input" || props.context === "select") {
-      return useTheme(props, "baseTextColor");
+      return useTheme(props, "silver");
     }
     if (props.disabled) {
       return useTheme(props, "grey");
@@ -72,6 +72,17 @@ const StyledButton = styled(Button)`
     return useTheme(props, "primary");
   }};
   border-radius: ${props => useTheme(props, "baseRadius")};
+  ${props => {
+    if (
+      props.minimal ||
+      props.context === "select" ||
+      props.context === "input"
+    ) {
+      return "box-shadow: 0px;";
+    } else {
+      return "box-shadow:" + useTheme(props, "baseShadow") + ";";
+    }
+  }}}
   &:hover {
     background-color: ${props => {
       if (
@@ -93,13 +104,15 @@ const StyledButton = styled(Button)`
         ? useTheme(props, "primaryLight")
         : useTheme(props, "primaryDark");
     }};
-    font-weight: ${props => {
+    ${props => {
       if (props.context === "input" || props.context === "select") {
-        return "font-weight:" + useTheme(props, "fontBold");
+        return "color:" + useTheme(props, "baseTextColor");
       }
     }};
   }
-
+  &:active {
+    box-shadow: 0px 0px 0px;
+  }
   ${props => {
     if (props.context === "input" || props.context === "select") {
       return "border:0;";

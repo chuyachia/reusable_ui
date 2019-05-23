@@ -54,6 +54,6 @@ module.exports = (env, argv) => ({
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
-    new CopyWebpackPlugin([{ from: "src/defaultTheme.scss" }]),
+    new CopyWebpackPlugin([{ from: "src/default-theme.scss" }]),
   ],
 });

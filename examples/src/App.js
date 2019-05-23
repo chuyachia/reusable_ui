@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState } from "react";
-import { BrowserRouter, Route, Link, NavLink, Switch } from "react-router-dom";
+import { HashRouter, Route, Link, NavLink, Switch } from "react-router-dom";
 
 import useMedia from "./hooks/useMedia";
 import { Button, DropDownItem, DropDownList } from "reusable-components-poc";
@@ -14,7 +14,18 @@ const ChecksExample = lazy(() => import("./examples/ChecksExample"));
 const TableExample = lazy(() => import("./examples/TableExample"));
 
 const MainPage = () => {
-  return <div>This is a proof of concept</div>;
+  return (
+    <div>
+      <p>
+        This is a proof of concept of making composable and stylable UI
+        components using React.Hook, React.Context and Styled-Components.
+      </p>
+      <p>
+        Navigate to one of the examples and click on `Change Theme` button to
+        change the theme of the components.
+      </p>
+    </div>
+  );
 };
 
 const App = () => {
@@ -28,7 +39,7 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={useCustomTheme && { theme: appTheme }}>
-      <BrowserRouter>
+      <HashRouter>
         <div className="wrapper">
           <Button
             className="change-theme"
@@ -122,7 +133,7 @@ const App = () => {
             </Suspense>
           </main>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeContext.Provider>
   );
 };

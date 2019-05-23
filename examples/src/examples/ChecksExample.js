@@ -21,8 +21,11 @@ const options = [
 ];
 
 const ChecksExample = () => {
-  const [radioSelected, setRadioSelected] = useState("");
-  const [checkSelecteds, setCheckSelecteds] = useMultiSelect();
+  const [radioSelected, setRadioSelected] = useState(options[5].value);
+  const [checkSelecteds, setCheckSelecteds] = useMultiSelect([
+    options[4].value,
+    options[7].value,
+  ]);
   return (
     <React.Fragment>
       <div>

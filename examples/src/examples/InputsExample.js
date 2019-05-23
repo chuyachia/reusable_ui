@@ -9,7 +9,7 @@ import {
 const validator = value => !isNaN(Number(value));
 
 const InputsExample = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("Peanut butter jelly sandwich");
   return (
     <React.Fragment>
       <section>

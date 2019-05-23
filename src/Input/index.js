@@ -27,6 +27,7 @@ const StyledInput = styled(Input)`
     return useTheme(props, "silver");
   }};
   border-radius: ${props => useTheme(props, "baseRadius")};
+  box-shadow: ${props => useTheme(props, "baseShadow")};
   & input {
     width: 100%;
     border-width: 0px;
