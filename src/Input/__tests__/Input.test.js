@@ -25,6 +25,7 @@ describe("Input", () => {
     mockFunc = jest.fn();
     wrapper = shallow(<Input onChange={mockFunc} />);
     let input = wrapper.find("input");
+    expect(input.length).toBe(1);
     let changeEvent = { target: { value: "Hello" } };
     input.simulate("change", changeEvent);
     // expect(mockFunc.mock.calls[0][0]).toBe(changeEvent);

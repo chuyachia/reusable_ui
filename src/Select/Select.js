@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useCallback } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
 import Button from "../Button";
@@ -20,10 +20,11 @@ const Select = ({
   options,
   keepOpen,
 }) => {
-  const [stateOpen, setStateOpen] = useState(false);
-  const [inputFocused, setInputFocused] = useState(false);
-  const [textInput, setTextInput] = useState("");
-  const [activeItem, setActiveItem] = useState(0);
+  const [stateOpen, setStateOpen] = React.useState(false);
+  // Not use named import {useState} so that we can mock useState in test to spy on state change
+  const [inputFocused, setInputFocused] = React.useState(false);
+  const [textInput, setTextInput] = React.useState("");
+  const [activeItem, setActiveItem] = React.useState(0);
   const dropDownRef = useRef(null);
   const isSelected = option =>
     selected.findIndex(

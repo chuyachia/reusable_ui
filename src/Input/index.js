@@ -13,7 +13,7 @@ const StyledInput = styled(Input)`
   font-weight: ${props => useTheme(props, "fontNormal")};
   line-height: ${props => useTheme(props, "baseLineHeight")};
   padding: ${props => useTheme(props, "basePadding")};
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   font-size: ${props => useTheme(props, "baseFontSize")};
   border-width: ${props => useTheme(props, "borderWidth")};
   border-style: solid;
@@ -36,7 +36,7 @@ const StyledInput = styled(Input)`
     outline: 0;
     font-weight: ${props => useTheme(props, "fontNormal")};
     font-size: ${props => useTheme(props, "baseFontSize")};
-    font-family: ${props => useTheme(props, "fontSans")};
+    font-family: ${props => useTheme(props, "contentFont")};
   }
 `;
 const StyledInputWContext = props => (

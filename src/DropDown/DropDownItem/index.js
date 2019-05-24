@@ -9,7 +9,7 @@ const StyledDropDownItem = styled(DropDownItem)`
   list-style: none;
   cursor: pointer;
   padding: ${props => useTheme(props, "basePadding")};
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   font-size: ${props => useTheme(props, "baseFontSize")};
   font-weight: ${props => useTheme(props, "fontNormal")};
   color: ${props => {

@@ -9,7 +9,7 @@ const StyledInputValidator = styled(InputValidator)`
   display: ${props => {
     return props.children.props.inline ? "inline-block" : "block";
   }};
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   font-size: ${props => useTheme(props, "footnoteFontSize")};
   vertical-align: top;
   & span {

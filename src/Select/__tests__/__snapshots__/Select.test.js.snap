@@ -1,179 +1,207 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select should render 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Select />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <div>
-          <span>
-             
-          </span>
-          <StyledButtonWContext
-            onClick={[Function]}
-          >
-            ▼
-          </StyledButtonWContext>
-        </div>,
-        undefined,
-      ],
-      "className": undefined,
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <span>
-               
-            </span>,
-            undefined,
-            <StyledButtonWContext
-              onClick={[Function]}
-            >
-              ▼
-            </StyledButtonWContext>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": " ",
-            },
-            "ref": null,
-            "rendered": " ",
-            "type": "span",
-          },
-          undefined,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "▼",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": "▼",
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-      undefined,
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div>
-            <span>
-               
-            </span>
-            <StyledButtonWContext
-              onClick={[Function]}
-            >
-              ▼
-            </StyledButtonWContext>
-          </div>,
-          undefined,
-        ],
-        "className": undefined,
-      },
-      "ref": null,
-      "rendered": Array [
+<div
+  onBlur={[Function]}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="select-display"
+  >
+    <span>
+       
+    </span>
+    <div
+      className="select-input"
+    />
+    <span
+      style={
         Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <span>
-                 
-              </span>,
-              undefined,
-              <StyledButtonWContext
-                onClick={[Function]}
-              >
-                ▼
-              </StyledButtonWContext>,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": " ",
-              },
-              "ref": null,
-              "rendered": " ",
-              "type": "span",
-            },
-            undefined,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": "▼",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": "▼",
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-        undefined,
-      ],
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+          "float": "right",
+        }
+      }
+    >
+      <StyledArrowWContext
+        direction="down"
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
+      />
+    </span>
+  </div>
+  <DropDownListWContext
+    controlled={true}
+    open={false}
+  >
+    <StyledDropDownItemWContext
+      className="active"
+      key="a"
+      label="A"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="a"
+    >
+      A
+    </StyledDropDownItemWContext>
+    <StyledDropDownItemWContext
+      className={false}
+      key="b"
+      label="B"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="b"
+    >
+      B
+    </StyledDropDownItemWContext>
+  </DropDownListWContext>
+</div>
+`;
+
+exports[`Select should render multiple select 1`] = `
+<div
+  onBlur={[Function]}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="select-display"
+  >
+    <span>
+       
+    </span>
+    <div
+      className="select-input"
+    />
+    <span
+      style={
+        Object {
+          "float": "right",
+        }
+      }
+    >
+      <StyledArrowWContext
+        direction="down"
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
+      />
+    </span>
+  </div>
+  <DropDownListWContext
+    controlled={true}
+    open={false}
+  >
+    <StyledDropDownItemWContext
+      className="active"
+      key="a"
+      label="A"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="a"
+    >
+      A
+    </StyledDropDownItemWContext>
+    <StyledDropDownItemWContext
+      className={false}
+      key="b"
+      label="B"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="b"
+    >
+      B
+    </StyledDropDownItemWContext>
+    <StyledDropDownItemWContext
+      className={false}
+      key="c"
+      label="C"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="c"
+    >
+      C
+    </StyledDropDownItemWContext>
+  </DropDownListWContext>
+</div>
+`;
+
+exports[`Select should render single select 1`] = `
+<div
+  onBlur={[Function]}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="select-display"
+  >
+    <span>
+      A
+    </span>
+    <div
+      className="select-input"
+    />
+    <span
+      style={
+        Object {
+          "float": "right",
+        }
+      }
+    >
+      <StyledArrowWContext
+        direction="down"
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
+      />
+    </span>
+  </div>
+  <DropDownListWContext
+    controlled={true}
+    open={false}
+  >
+    <StyledDropDownItemWContext
+      className="active"
+      key="a"
+      label="A"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="a"
+    >
+      A
+    </StyledDropDownItemWContext>
+    <StyledDropDownItemWContext
+      className={false}
+      key="b"
+      label="B"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="b"
+    >
+      B
+    </StyledDropDownItemWContext>
+    <StyledDropDownItemWContext
+      className={false}
+      key="c"
+      label="C"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      value="c"
+    >
+      C
+    </StyledDropDownItemWContext>
+  </DropDownListWContext>
+</div>
 `;

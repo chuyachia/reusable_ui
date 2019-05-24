@@ -9,7 +9,7 @@ const TableContext = React.createContext();
 const StyledTable = styled(Table)`
   display: table;
   border-collapse: collapse;
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   color: ${props => useTheme(props, "baseTextColor")};
 `;
 export { TableContext };

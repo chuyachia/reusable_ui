@@ -27,7 +27,7 @@ const StyledToast = styled(Toast)`
     }
     return useTheme(props, "primaryDark");
   }};
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   font-weight: ${props => useTheme(props, "fontSemibold")};
   line-height: ${props => useTheme(props, "baseLineHeight")};
   position: absolute;

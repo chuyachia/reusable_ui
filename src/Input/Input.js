@@ -7,6 +7,8 @@ const Input = ({
   resetButton,
   onReset,
   onKeyDown,
+  onChange,
+  onFocus,
   value,
   controlled,
   inline,
@@ -14,7 +16,8 @@ const Input = ({
 }) => {
   var inputProps = {
     onKeyDown,
-    onChange: () => null,
+    onChange,
+    onFocus,
   };
   if (controlled) inputProps.value = value;
 

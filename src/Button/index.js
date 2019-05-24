@@ -39,7 +39,7 @@ const StyledButton = styled(Button)`
       ? useTheme(props, "primary")
       : useTheme(props, "primaryContrastText");
   }};
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   padding: ${props => {
     if (props.context === "input" || props.context === "select") {
       return 0;

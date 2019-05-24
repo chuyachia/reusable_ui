@@ -18,7 +18,7 @@ const StyledSelect = styled(Select)`
   }
   & > div {
     padding: ${props => useTheme(props, "basePadding")};
-    font-family: ${props => useTheme(props, "fontSans")};
+    font-family: ${props => useTheme(props, "contentFont")};
     font-size: ${props => useTheme(props, "baseFontSize")};
     font-weight: ${props => useTheme(props, "fontNormal")};
     color: ${props => useTheme(props, "baseTextColor")};
@@ -31,7 +31,7 @@ const StyledSelect = styled(Select)`
   }
   & input {
     padding: ${props => useTheme(props, "smallPadding")};
-    font-family: ${props => useTheme(props, "fontSans")};
+    font-family: ${props => useTheme(props, "contentFont")};
     font-size: ${props => useTheme(props, "baseFontSize")};
     font-weight: ${props => useTheme(props, "fontNormal")};
     outline: 0;

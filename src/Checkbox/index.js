@@ -11,7 +11,7 @@ const StyledCheckbox = styled(Checkbox)`
   color: ${props => useTheme(props, "baseTextColor")};
   position: relative;
   cursor: pointer;
-  font-family: ${props => useTheme(props, "fontSans")};
+  font-family: ${props => useTheme(props, "contentFont")};
   padding-left: 1.5em;
   & input {
     position: absolute;

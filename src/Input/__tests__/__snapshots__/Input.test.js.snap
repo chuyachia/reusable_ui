@@ -2,8 +2,6 @@
 
 exports[`Input should render 1`] = `
 <div>
-  <input
-    onChange={[Function]}
-  />
+  <input />
 </div>
 `;
