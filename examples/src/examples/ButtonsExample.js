@@ -9,12 +9,13 @@ const ButtonsExample = () => {
   });
   return (
     <React.Fragment>
-      <Toast
-        {...toastProps}
-        onClose={() => setToastProps({ ...toastProps, open: false })}
-      />
       <div>
+        <Toast
+          {...toastProps}
+          onClose={() => setToastProps({ ...toastProps, open: false })}
+        />
         <section>
+          <h5>Primary button with toast</h5>
           <Button
             variant="primary"
             onClick={() =>
@@ -30,6 +31,7 @@ const ButtonsExample = () => {
           </Button>
         </section>
         <section>
+          <h5>Secondary button with toast</h5>
           <Button
             variant="secondary"
             onClick={() =>
@@ -45,6 +47,7 @@ const ButtonsExample = () => {
           </Button>
         </section>
         <section>
+          <h5>Warning button with toast</h5>
           <Button
             variant="warning"
             onClick={() =>
@@ -60,6 +63,7 @@ const ButtonsExample = () => {
           </Button>
         </section>
         <section>
+          <h5>Disabled button</h5>
           <Button variant="warning" disabled={true}>
             Disabled
           </Button>
@@ -67,16 +71,19 @@ const ButtonsExample = () => {
       </div>
       <div>
         <section>
+          <h5>Hollow primary button</h5>
           <Button variant="primary" hollow={true}>
             Primary
           </Button>
         </section>
         <section>
+          <h5>Hollow secondary button</h5>
           <Button variant="secondary" hollow={true}>
             Secondary
           </Button>
         </section>
         <section>
+          <h5>Hollow warning button</h5>
           <Button variant="warning" hollow={true}>
             Warning
           </Button>
@@ -84,21 +91,25 @@ const ButtonsExample = () => {
       </div>
       <div>
         <section>
+          <h5>Small primary button</h5>
           <Button variant="primary" small={true}>
             Primary
           </Button>
         </section>
         <section>
+          <h5>Small secondary button</h5>
           <Button variant="secondary" small={true}>
             Secondary
           </Button>
         </section>
         <section>
+          <h5>Small warning button</h5>
           <Button variant="warning" small={true}>
             Warning
           </Button>
         </section>
         <section>
+          <h5>Small disabled button</h5>
           <Button variant="warning" disabled={true} small={true}>
             Disabled
           </Button>

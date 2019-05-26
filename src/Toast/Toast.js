@@ -6,7 +6,7 @@ const Toast = ({ message, variant, className, open, onClose }) => {
     open && (
       <div variant={variant} className={className}>
         <span>{message}</span>
-        <span onClick={onClose} style={{ cursor: "pointer" }}>
+        <span onClick={onClose} style={{ cursor: "pointer", float: "right" }}>
           X
         </span>
       </div>
