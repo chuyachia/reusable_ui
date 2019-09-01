@@ -1,7 +1,23 @@
-import React, { useState } from "react";
+/* global document */
+
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const Toast = ({ message, variant, className, open, onClose }) => {
+  if (document !== undefined) {
+    useEffect(() => {
+      document.onkeydown = e => {
+        if (e.keyCode === 27) {
+          onClose();
+        }
+      };
+
+      return function cleanup() {
+        document.onkeydown = null;
+      };
+    });
+  }
+
   return (
     open && (
       <div variant={variant} className={className}>

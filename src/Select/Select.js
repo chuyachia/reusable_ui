@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
-import Button from "../Button";
 import Input from "../Input/Input";
 import Tag from "../Tag";
 import Arrow from "../Arrow";
@@ -80,6 +79,8 @@ const Select = ({
     } else if (e.keyCode === 40) {
       if (stateOpen) {
         keyDownChangeActive(e);
+      } else {
+        setStateOpen(true);
       }
     } else if (e.keyCode === 38 && stateOpen) {
       keyDownChangeActive(e);

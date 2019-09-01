@@ -32,7 +32,7 @@ const ChecksExample = () => {
         <section>
           <h5>Vertical checkboxes</h5>
           <RadioCheckGroup
-            onChange={useCallback(e => setCheckSelecteds(e.target.value))}
+            onChange={useCallback(value => setCheckSelecteds(value))}
             childrenType="checkbox"
             selected={checkSelecteds}
           >
@@ -44,7 +44,7 @@ const ChecksExample = () => {
         <section>
           <h5>Horizontal checkboxes</h5>
           <RadioCheckGroup
-            onChange={useCallback(e => setCheckSelecteds(e.target.value))}
+            onChange={useCallback(value => setCheckSelecteds(value))}
             childrenType="checkbox"
             selected={checkSelecteds}
             direction="horizontal"
@@ -60,7 +60,7 @@ const ChecksExample = () => {
         <section>
           <h5>Vertical radio buttons</h5>
           <RadioCheckGroup
-            onChange={useCallback(e => setRadioSelected(e.target.value))}
+            onChange={useCallback(value => setRadioSelected(value))}
             childrenType="radio"
             selected={radioSelected}
             variant="secondary"
@@ -73,7 +73,7 @@ const ChecksExample = () => {
         <section>
           <h5>Horizontal radio buttons</h5>
           <RadioCheckGroup
-            onChange={useCallback(e => setRadioSelected(e.target.value))}
+            onChange={useCallback(value => setRadioSelected(value))}
             childrenType="radio"
             selected={radioSelected}
             direction="horizontal"

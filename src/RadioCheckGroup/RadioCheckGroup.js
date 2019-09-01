@@ -10,8 +10,19 @@ const RadioCheckGroup = ({
   selected,
 }) => {
   var childrenProps = { variant, direction, groupSelection: selected };
+
+  const selectByClick = e => {
+    onChange(e.target.value);
+  };
+
+  const selectByEnter = e => {
+    if (e.keyCode === 13) {
+      onChange(e.target.getAttribute("value"));
+    }
+  };
+
   return (
-    <div className={className} onChange={onChange}>
+    <div className={className} onChange={selectByClick} onKeyDown={selectByEnter}>
       {children &&
         React.Children.map(children, child =>
           React.cloneElement(child, { ...childrenProps })

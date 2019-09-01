@@ -18,7 +18,7 @@ const RadioButton = ({
     props.checked = false;
   }
   return (
-    <label className={className}>
+    <label className={className} value={value} tabIndex={0}>
       {label}&nbsp;
       <input type="radio" {...props} />
       <span />

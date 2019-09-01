@@ -41,7 +41,7 @@ const TableExample = () => {
       <section>
         <h5>Simple table with sorting and highlighting</h5>
         <RadioCheckGroup
-          onChange={e => setHighlightDir(e.target.value)}
+          onChange={value => setHighlightDir(value)}
           childrenType="radio"
           selected={highlightDir}
           variant="secondary"

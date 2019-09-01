@@ -20,7 +20,7 @@ const Checkbox = ({
     props.checked = false;
   }
   return (
-    <label className={className}>
+    <label className={className} value={value} tabIndex={0}>
       {label}&nbsp;
       <input type="checkbox" {...props} />
       <span />

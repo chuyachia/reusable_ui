@@ -5,13 +5,13 @@ const TableCell = ({ children, className, context, align, index }) => {
   align = align ? align : isNaN(Number(children)) ? "left" : "right";
   if (context === "head") {
     return (
-      <th className={className} style={{ textAlign: align }} index={index}>
+      <th className={className} style={{ textAlign: align }} index={index} tabIndex={0}>
         {children}
       </th>
     );
   } else {
     return (
-      <td className={className} style={{ textAlign: align }} index={index}>
+      <td className={className} style={{ textAlign: align }} index={index} tabIndex={0}>
         {children}
       </td>
     );
